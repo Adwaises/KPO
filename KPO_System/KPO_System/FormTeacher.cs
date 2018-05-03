@@ -16,5 +16,22 @@ namespace KPO_System
         {
             InitializeComponent();
         }
+
+        private void FormTeacher_Load(object sender, EventArgs e)
+        {
+            //запрос к бд и заполнение ComboBox
+        }
+
+        private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPerformance fp = new FormPerformance();
+            fp.ShowDialog();
+        }
+
+        private void посещаемостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAttendance fa = new FormAttendance();
+            fa.ShowDialog();
+        }
     }
 }

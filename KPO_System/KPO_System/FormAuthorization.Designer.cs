@@ -80,6 +80,7 @@
             this.ButLogIn.TabIndex = 2;
             this.ButLogIn.Text = "Войти";
             this.ButLogIn.UseVisualStyleBackColor = true;
+            this.ButLogIn.Click += new System.EventHandler(this.ButLogIn_Click);
             // 
             // FormAuthorization
             // 

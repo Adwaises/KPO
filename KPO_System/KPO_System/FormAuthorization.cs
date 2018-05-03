@@ -16,5 +16,12 @@ namespace KPO_System
         {
             InitializeComponent();
         }
+
+        private void ButLogIn_Click(object sender, EventArgs e)
+        {
+            //валидация
+            //запрос к БД
+            //открытие формы
+        }
     }
 }
