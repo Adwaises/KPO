@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,11 @@ namespace ForBD
             da = new NpgsqlDataAdapter(sql, conn);
             dt = new DataTable();
             da.Fill(dt);
-            
+
+            byte[] UTF8encodes = UTF8Encoding.UTF8.GetBytes(dt.Rows[1][1].ToString());
+            string plainText = UTF8Encoding.UTF8.GetString(UTF8encodes);
+            dt.Rows[1][1] = plainText;
+
             dataGridView1.DataSource = dt;
 
             conn.Close(); //Закрываем соединение.
