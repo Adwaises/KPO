@@ -93,7 +93,7 @@ namespace KPO_System
 
         private void ButGet_Click(object sender, EventArgs e)
         {
-            CBLetter.Items.Clear();
+            
             conn.Open(); //Открываем соединение.
 
             //получили список класса
@@ -147,6 +147,11 @@ namespace KPO_System
             dt.Columns.RemoveAt(0);
 
             dataGridView1.DataSource = dt;
+        }
+
+        private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
