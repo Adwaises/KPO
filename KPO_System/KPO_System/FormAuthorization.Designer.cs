@@ -69,7 +69,7 @@
             this.TBPassword.Location = new System.Drawing.Point(86, 38);
             this.TBPassword.Name = "TBPassword";
             this.TBPassword.Size = new System.Drawing.Size(153, 22);
-            this.TBPassword.TabIndex = 1;
+            this.TBPassword.TabIndex = 2;
             // 
             // ButLogIn
             // 
@@ -77,7 +77,7 @@
             this.ButLogIn.Location = new System.Drawing.Point(139, 75);
             this.ButLogIn.Name = "ButLogIn";
             this.ButLogIn.Size = new System.Drawing.Size(100, 34);
-            this.ButLogIn.TabIndex = 2;
+            this.ButLogIn.TabIndex = 3;
             this.ButLogIn.Text = "Войти";
             this.ButLogIn.UseVisualStyleBackColor = true;
             this.ButLogIn.Click += new System.EventHandler(this.ButLogIn_Click);
@@ -86,7 +86,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(262, 121);
+            this.ClientSize = new System.Drawing.Size(262, 123);
             this.Controls.Add(this.ButLogIn);
             this.Controls.Add(this.TBPassword);
             this.Controls.Add(this.labelPassword);

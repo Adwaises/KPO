@@ -61,6 +61,7 @@
             this.CBClass.Name = "CBClass";
             this.CBClass.Size = new System.Drawing.Size(82, 21);
             this.CBClass.TabIndex = 1;
+            this.CBClass.SelectedIndexChanged += new System.EventHandler(this.CBClass_SelectedIndexChanged);
             // 
             // CBLetter
             // 
@@ -78,6 +79,7 @@
             this.ButGet.TabIndex = 3;
             this.ButGet.Text = "Получить";
             this.ButGet.UseVisualStyleBackColor = true;
+            this.ButGet.Click += new System.EventHandler(this.ButGet_Click);
             // 
             // menuStrip1
             // 
