@@ -14,19 +14,15 @@ namespace KPO_System
 {
     public partial class FormAuthorization : Form
     {
-        private DataTable dt;
-        string conn_param = "Server=127.0.0.1;Port=5432;User Id=postgres; Password=123456;Database=school1; ";
-        string sql = "select id_teacher from teacher where famil = ";
-        NpgsqlDataAdapter da;
-        NpgsqlConnection conn;
         string login = "";
+        string sql = "select id_teacher from teacher where famil = ";
 
+        bool authorization = false;
 
         public FormAuthorization()
         {
             InitializeComponent();
             TBlogin.Text = "Parshina";
-            conn = new NpgsqlConnection(conn_param);
            
         }
 
@@ -35,41 +31,54 @@ namespace KPO_System
             //валидация
             // если есть () или ; или пустые
 
+            if (TBlogin.Text.Contains('(') || TBlogin.Text.Contains(')') || TBlogin.Text.Contains(';') || TBlogin.Text.Length > 20)
+            {
+                return;
+            }
+
+            if (TBPassword.Text.Contains('(') || TBPassword.Text.Contains(')') || TBPassword.Text.Contains(';') || TBPassword.Text.Length > 20)
+            {
+                return;
+            }
 
             //запрос к БД
 
             string sqlOne = sql +String.Format( "'{0}';",TBlogin.Text);
+
+            ManagerBD mBD = new ManagerBD();
+            mBD.init();
             
-            
-            conn.Open(); //Открываем соединение.
 
-            //string sql = "set names 'windows-1251'; SELECT * FROM teacher";
+            DataTable dt = new DataTable();
 
-            da = new NpgsqlDataAdapter(sqlOne, conn);
-            dt = new DataTable();
-            da.Fill(dt);
+            dt = mBD.selectionquery(sqlOne);
 
-            //dataGridView1.DataSource = dt;
-            
-            conn.Close(); //Закрываем соединение.
-
-            if(dt.Rows.Count != 0)
+            if (dt.Rows.Count != 0)
             {
                 login = TBlogin.Text;
+                if(dt.Rows[0][0].ToString() == TBPassword.Text)
+                {
+                    authorization = true;
+                }
             }
 
             //TBPassword.Text = result;
             //открытие формы
-            if(login == "admin")
+            if(login.ToLower() == "admin" && TBPassword.Text.ToLower() == "admin")
             {
-
+                FormAdmin fa = new FormAdmin();
+                fa.ShowDialog();
             } else if(login == "")
             {
-                MessageBox.Show("Ошибка","Не найден логин", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Не найден логин", "Ошибка", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            } else if(authorization) 
+            {
+                authorization = false;
+                FormTeacher ft = new FormTeacher(login);
+                ft.ShowDialog();
             } else
             {
-                FormTeacher ft = new FormTeacher(conn,login);
-                ft.ShowDialog();
+                MessageBox.Show( "Введены неверные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

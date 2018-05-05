@@ -33,6 +33,7 @@ namespace ForBD
 
             //string sql = "set names 'windows-1251'; SET client_encoding = UTF8; SELECT * FROM teacher";
             string sql = "SET client_encoding = 'windows-1251'; SELECT * FROM teacher";
+            
 
             da = new NpgsqlDataAdapter(sql, conn);
             dt = new DataTable();
