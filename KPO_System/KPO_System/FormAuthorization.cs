@@ -90,7 +90,7 @@ namespace KPO_System
 
             DataTable dt = new DataTable();
 
-            dt = mBD.selectionquery(sqlOne);
+            dt = mBD.selectionQuery(sqlOne);
 
             if (dt.Rows.Count != 0)
             {
@@ -116,7 +116,8 @@ namespace KPO_System
             } else if(authorization) 
             {
                 authorization = false;
-                FormTeacher ft = new FormTeacher(login);
+                FormTeacher ft = new FormTeacher();
+                Program.login = login;
                 ft.ShowDialog();
             } else
             {

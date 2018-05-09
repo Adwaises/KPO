@@ -13,48 +13,33 @@ namespace KPO_System
 {
     public partial class FormTeacher : Form
     {
-        string discipline = "";
-        int idDiscipline = 0;
-        private DataTable dt;
-        private DataTable dtMarks;
-        ManagerBD mBD = new ManagerBD();
+        DataTable dt = new DataTable();
+        TeacherController tc = new TeacherController();
+       
+        //string login = "";
 
-        List<int> listID = new List<int>();
-        string login = "";
-
-        DateTime date = DateTime.Now;
-        public FormTeacher(string _login)
+        
+        public FormTeacher()
         {
             InitializeComponent();
-            login = _login;
-            Text += " - "+ login;
-            mBD.init();
+            //login = _login;
+            Text += " - "+ Program.login;
+            //mBD.init();
         }
 
         private void FormTeacher_Load(object sender, EventArgs e)
         {
             //запрос к бд и заполнение ComboBox
 
-
-
-            string sql = " select number from class group by number order by number;";
-
-            dt = mBD.selectionquery(sql);
-
-            for (int i=0; i<dt.Rows.Count;i++)
+            List<string> list = tc.getDiscipline(Program.login);
+            for(int i=0;i<list.Count;i++)
             {
-                CBClass.Items.Add(dt.Rows[i][0].ToString());
+                CBClass.Items.Add(list[i]);
             }
+            
 
-            //запрос дисциплины по учителю
-            sql =  String.Format("select discipline.name,discipline.id_discipline from discipline " +
-"join teacher on discipline.id_teacher = teacher.id_teacher "+
-"where teacher.famil = '{0}'; ", login);
+            CBClass.SelectedIndex = 0;
 
-            dt = mBD.selectionquery(sql);
-
-            discipline = dt.Rows[0][0].ToString();
-            idDiscipline = Convert.ToInt32( dt.Rows[0][1]);
         }
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,74 +57,27 @@ namespace KPO_System
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
         {
             CBLetter.Items.Clear();
-          
 
-            string sql =String.Format( " select letter from class where number = {0} group by letter order by letter;",
-                Convert.ToInt32(CBClass.Text));
+            List<string> list = new List<string>();
 
-            dt = mBD.selectionquery(sql);
+            list = tc.getListLetters(CBClass.Text);
 
 
-
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                CBLetter.Items.Add(dt.Rows[i][0].ToString());
+                CBLetter.Items.Add(list[i]);
             }
+            CBLetter.SelectedIndex = 0;
         }
 
 
-        private void getList()
-        {
-            //получили список класса
-
-            string sql = String.Format(" select id_pupil, famil as Фамилия, pupil.name as Имя, otchestvo as Отчество from pupil " +
-"join class on class.id_class = pupil.id_class " +
-"where number = {0} and letter = '{1}'; ", Convert.ToInt32(CBClass.Text), CBLetter.Text);
-
-
-
-            dt = mBD.selectionquery(sql);
-
-            //dataGridView1.DataSource = dt;
-
-
-            dt.Columns.Add("Оценка");
-
-            //получили список оценок за дату
-
-            sql = String.Format("select id_pupil, mark from performance " +
-"join discipline on discipline.id_discipline = Performance.id_discipline " +
-"where discipline.name = '{0}' and date_letter = '{1}';", discipline, date.ToString("yyyy-MM-dd"));
-
-            dtMarks = new DataTable();
-            dtMarks = mBD.selectionquery(sql);
-
-            //находим соотвествия
-            for (int i = 0; i < dtMarks.Rows.Count; i++)
-            {
-                for (int j = 0; j < dt.Rows.Count; j++)
-                {
-                    if ((dt.Rows[j][0]).ToString() == dtMarks.Rows[i][0].ToString())
-                    {
-                        dt.Rows[j][4] = dtMarks.Rows[i][1];
-                    }
-                }
-            }
-            //сохраняем порядок id и удаляем столбец
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                listID.Add(Convert.ToInt32(dt.Rows[i][0]));
-            }
-
-            dt.Columns.RemoveAt(0);
-        }
 
         private void ButGet_Click(object sender, EventArgs e)
         {
 
+            dt = tc.getList(CBClass.Text, CBLetter.Text);
 
-            listID.Clear();
-            getList();
+
 
             dataGridView1.DataSource = dt;
             TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
@@ -162,39 +100,24 @@ namespace KPO_System
             {
                 return;
             }
-
-            
-            string sql="";
-
-            if (TBMark.Text.Length == 1 && dt.Rows[dataGridView1.CurrentRow.Index][3].ToString() == "")
+            try
             {
-                sql = String.Format("insert into Performance (Date_letter,id_pupil, id_discipline,mark) values ('{0}', {1}, {2},'{3}');",
-                 date.ToString("yyyy-MM-dd"), listID[dataGridView1.CurrentRow.Index], idDiscipline, TBMark.Text);
-
-            } else if(TBMark.Text.Length == 1 && dt.Rows[dataGridView1.CurrentRow.Index][3].ToString() != "")
+                tc.postMark(TBMark.Text, dataGridView1.CurrentRow.Index);
+                MessageBox.Show("Оценка выставлена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } catch(Exception ex)
             {
-                sql = String.Format("update performance set mark = '{0}' where id_pupil = {1} and id_discipline = {2};",
-                    TBMark.Text, listID[dataGridView1.CurrentRow.Index], idDiscipline);
-
-            } else if(TBMark.Text.Length == 0)
-            {
-                sql = String.Format("delete from performance where id_pupil = {0} and id_discipline = {1};",
-                    listID[dataGridView1.CurrentRow.Index], idDiscipline);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            
 
-
-
-
-            mBD.controlquery(sql);
-
-            MessageBox.Show("Оценка выставлена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            getList();
+            dt = tc.getList(CBClass.Text,CBLetter.Text);
 
             dataGridView1.DataSource = dt;
             TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
 
         }
+
+
     }
 }

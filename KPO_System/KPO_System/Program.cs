@@ -8,6 +8,8 @@ namespace KPO_System
 {
     static class Program
     {
+
+        public static string login = "";
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

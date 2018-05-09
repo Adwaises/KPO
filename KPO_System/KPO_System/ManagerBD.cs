@@ -22,7 +22,7 @@ namespace KPO_System
         /// <summary>
         /// Управляющий запрос
         /// </summary>
-        public void controlquery(string сq)
+        public void controlQuery(string сq)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace KPO_System
         /// Запрос выборка
         /// </summary>
         /// <param name="sq"></param>
-        public DataTable selectionquery(string sql)
+        public DataTable selectionQuery(string sql)
         {
             DataTable dt;
             try
