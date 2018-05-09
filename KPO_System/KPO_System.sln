@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPO_System", "KPO_System\KPO_System.csproj", "{2CAA469C-9E81-4F6C-89E5-86BB8F32BA49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForBD", "ForBD\ForBD.csproj", "{ED5E3401-1030-4385-9370-19DF6A57F2B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForBD(mySQL)", "ForBD\ForBD(mySQL).csproj", "{ED5E3401-1030-4385-9370-19DF6A57F2B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

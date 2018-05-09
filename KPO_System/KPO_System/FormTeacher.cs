@@ -92,7 +92,7 @@ namespace KPO_System
         {
             //получили список класса
 
-            string sql = String.Format(" select id_pupil, famil, pupil.name, otchestvo from pupil " +
+            string sql = String.Format(" select id_pupil, famil as Фамилия, pupil.name as Имя, otchestvo as Отчество from pupil " +
 "join class on class.id_class = pupil.id_class " +
 "where number = {0} and letter = '{1}'; ", Convert.ToInt32(CBClass.Text), CBLetter.Text);
 

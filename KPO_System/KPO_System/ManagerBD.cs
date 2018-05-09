@@ -10,7 +10,7 @@ namespace KPO_System
 {
     class ManagerBD
     {
-        string conn_param = "Server=127.0.0.1;Port=5432;User Id=postgres; Password=123456;Database=school3; ";
+        string conn_param = "Server=127.0.0.1;Port=5432;User Id=postgres; Password=123456;Database=school; ";
         NpgsqlDataAdapter da;
         NpgsqlConnection conn;
 
