@@ -1,5 +1,4 @@
-﻿using Npgsql;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,42 +9,83 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MySql.Data.MySqlClient;
+
+
+
+//          uid = "monty";
+//            password = "some_pass";
+
 namespace ForBD
 {
     public partial class Form1 : Form
     {
+        private MySqlConnection connection;
+        private string server;
+        private string database;
+        private string uid;
+        private string password;
+
+        string connStr = "";
 
         private DataTable dt;
-        string conn_param = "Server=127.0.0.1;Port=5432;User Id=postgres; Password=123456;Database=school;";
-        // string sql = "select * from teacher;";
-        //string sql = "";
-        NpgsqlDataAdapter da;
-        NpgsqlConnection conn;
+
         public Form1()
         {
             InitializeComponent();
-            conn = new NpgsqlConnection(conn_param);
+
+            server = "localhost";
+            database = "school1";
+            uid = "monty";
+            password = "some_pass";
+            string connectionString;
+            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
+            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";SslMode=none;charset=utf8";
+
+            connection = new MySqlConnection(connectionString);
+           
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            conn.Open(); //Открываем соединение.
+
 
             //string sql = "set names 'windows-1251'; SET client_encoding = UTF8; SELECT * FROM teacher";
-            string sql = "SET client_encoding = 'windows-1251'; SELECT * FROM teacher";
+            //string sql = "SET client_encoding = 'windows-1251'; SELECT * FROM teacher";
+
+            string sqlProp = 
+            "SET NAMES `utf8`;"+
+             "SET CHARACTER SET 'utf8';"+
+              "SET SESSION collation_connection = 'utf8_general_ci';";
+
+            connection.Open();
+
+
+
+            string sql = "SELECT famil as Фамилия,name as Имя,otchestvo as Отчество FROM teacher"; // Строка запроса
+            dt = new DataTable();
+
+            //sql = "INSERT INTO Teacher (famil,name,otchestvo) VALUES ('Паршина','Людмила', 'Николаевна');";
+
+
+            MySqlCommand sqlCom = new MySqlCommand(sql, connection);
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sqlCom);
+            dataAdapter.Fill(dt);
+
             
 
-            da = new NpgsqlDataAdapter(sql, conn);
-            dt = new DataTable();
-            da.Fill(dt);
+            connection.Close();
 
-            byte[] UTF8encodes = UTF8Encoding.UTF8.GetBytes(dt.Rows[1][1].ToString());
-            string plainText = UTF8Encoding.UTF8.GetString(UTF8encodes);
-            dt.Rows[1][1] = plainText;
+
+
+          
 
             dataGridView1.DataSource = dt;
 
-            conn.Close(); //Закрываем соединение.
+         
+
 
         }
     }

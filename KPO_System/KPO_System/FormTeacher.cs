@@ -22,6 +22,7 @@ namespace KPO_System
         List<int> listID = new List<int>();
         string login = "";
 
+        DateTime date = DateTime.Now;
         public FormTeacher(string _login)
         {
             InitializeComponent();
@@ -104,11 +105,11 @@ namespace KPO_System
 
             dt.Columns.Add("Оценка");
 
-            //получили список оценок
+            //получили список оценок за дату
 
             sql = String.Format("select id_pupil, mark from performance " +
 "join discipline on discipline.id_discipline = Performance.id_discipline " +
-"where discipline.name = '{0}';", discipline);
+"where discipline.name = '{0}' and date_letter = '{1}';", discipline, date.ToString("yyyy-MM-dd"));
 
             dtMarks = new DataTable();
             dtMarks = mBD.selectionquery(sql);
@@ -162,7 +163,7 @@ namespace KPO_System
                 return;
             }
 
-            DateTime date = DateTime.Now;
+            
             string sql="";
 
             if (TBMark.Text.Length == 1 && dt.Rows[dataGridView1.CurrentRow.Index][3].ToString() == "")
