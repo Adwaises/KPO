@@ -24,6 +24,7 @@ namespace KPO_System
         {
             if (comboBox1.Text == "Ученик")
             {
+                dataGridView1.DataSource = null;
                 dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
                     dTPickerFrom.Value,dTPickerBy.Value);
             }
@@ -45,6 +46,7 @@ namespace KPO_System
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+            
         }
 
         private void FormPerformance_Load(object sender, EventArgs e)

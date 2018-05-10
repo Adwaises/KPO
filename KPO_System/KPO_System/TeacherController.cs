@@ -121,6 +121,9 @@ namespace KPO_System
 
         public void postMark(string mark, int index)
         {
+            if (mark == "н")
+                mark = mark.ToUpper();
+
             string sql = "";
 
             if (mark.Length == 1 && dt.Rows[index][3].ToString() == "")
@@ -156,7 +159,7 @@ namespace KPO_System
             while(date1.Date <= date2.Date)
             {
                 DataTable tmp = getMarkPupilDay(id_pupil, date1);
-                date1 = date1.AddDays(1);
+                
 
 
                 if (i == 0)
@@ -166,13 +169,14 @@ namespace KPO_System
                 }
                 else
                 {
-                    dtFinal.Columns.Add(date1.ToString());
+                    dtFinal.Columns.Add(date1.ToString("dd.MM.yyyy"));
                     for (int j = 0; j < dtFinal.Rows.Count; j++)
                     {
                         dtFinal.Rows[j][dtFinal.Columns.Count - 1] = tmp.Rows[j][1];
                     }
                     i++;
                 }
+                date1 = date1.AddDays(1);
             }
 
 
@@ -219,7 +223,7 @@ namespace KPO_System
             //создаём таблицу
             dt = new DataTable();
             dt.Columns.Add("Предмет");
-            dt.Columns.Add(date.ToString("yyyy-MM-dd"));
+            dt.Columns.Add(date.ToString("dd.MM.yyyy"));
             foreach (var d in dict)
             {
                 dt.Rows.Add(d.Key, String.Format("{0:0.#}", d.Value));
@@ -427,6 +431,91 @@ namespace KPO_System
 
 
             return list;
+        }
+
+
+        //посещаемость
+
+        public List<string> getListDisc()
+        {
+            List<string> list = new List<string>();
+            string sql =" select name from discipline;";
+
+            dt = mdb.selectionQuery(sql);
+
+
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                list.Add(dt.Rows[i][0].ToString());
+            }
+            return list;
+        }
+        public DataTable getAttendance(DateTime date1, DateTime date2, string disc)
+        {
+            DataTable dtFinal = new DataTable();
+            dtFinal.Columns.Add("Класс");
+            string sql = "select number, letter from class;";
+
+            dt = mdb.selectionQuery(sql);
+
+            Dictionary<string, int> dictCl = new Dictionary<string, int>();
+            Dictionary<string, int> dictDate = new Dictionary<string, int>();
+
+
+            //заполняем классы
+            int d = 0;
+
+            for(int i = 0; i < dt.Rows.Count; i++)
+            {
+                dictCl.Add(dt.Rows[i][0].ToString() + dt.Rows[i][1].ToString(),d);
+                d++;
+                dtFinal.Rows.Add(dt.Rows[i][0].ToString() + dt.Rows[i][1].ToString());
+            }
+
+
+            sql = String.Format("select class.number,class.letter, date_letter from pupil " +
+"join class on class.id_class = pupil.id_class " +
+"join performance on pupil.id_pupil = Performance.id_pupil " +
+"join discipline on  discipline.id_discipline = Performance.id_discipline " +
+"where discipline.name = '{2}' and Date_letter between '{0}' and '{1}' " +
+"and mark LIKE 'Н' ;", date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd"), disc);
+
+            dt = mdb.selectionQuery(sql);
+
+
+            //заполняем дату
+            d = 0;
+            while (date1.Date <= date2.Date)
+            {
+                dictDate.Add(date1.ToString("dd.MM.yyyy"), d);
+                dtFinal.Columns.Add(date1.ToString("dd.MM.yyyy"));
+                date1 = date1.AddDays(1);
+                d++;
+            }
+
+            //расставляем
+
+
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                string keyCl = dt.Rows[i][0].ToString() + dt.Rows[i][1].ToString();
+                DateTime date = Convert.ToDateTime( dt.Rows[i][2]);
+                string keyDate = date.ToString("dd.MM.yyyy");
+
+                if (dtFinal.Rows[dictCl[keyCl]][dictDate[keyDate] + 1].ToString() == "")
+                {
+                    dtFinal.Rows[dictCl[keyCl]][dictDate[keyDate] + 1] = 1;
+                }
+                else
+                {
+                    dtFinal.Rows[dictCl[keyCl]][dictDate[keyDate] + 1] =
+                      Convert.ToInt32((dtFinal.Rows[dictCl[keyCl]][dictDate[keyDate] + 1])) + 1;
+                }
+            }
+
+            return dtFinal;
         }
 
     }
