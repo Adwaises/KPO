@@ -40,6 +40,8 @@ namespace KPO_System
 
             CBClass.SelectedIndex = 0;
 
+            
+
         }
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,10 +79,9 @@ namespace KPO_System
 
             dt = tc.getList(CBClass.Text, CBLetter.Text);
 
-
-
             dataGridView1.DataSource = dt;
             TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
+            noSort();
         }
 
         private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,6 +127,17 @@ namespace KPO_System
 
             dataGridView1.DataSource = dt;
             TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
+            noSort();
         }
+
+
+        private void noSort()
+        {
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+        }
+
     }
 }

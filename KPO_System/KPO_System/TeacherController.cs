@@ -146,41 +146,72 @@ namespace KPO_System
 
         //успеваемость
 
+        //ToString("yyyy-MM-dd")
 
-        public DataTable getPerformancePupil(int id_pupil,string date1, string date2)
+        public DataTable getPerformancePupil(int id_pupil,DateTime date1, DateTime date2)
+        {
+            DataTable dtFinal = new DataTable();
+            int i = 0;
+
+            while(date1.Date <= date2.Date)
+            {
+                DataTable tmp = getMarkPupilDay(id_pupil, date1);
+                date1 = date1.AddDays(1);
+
+
+                if (i == 0)
+                {
+                    dtFinal = tmp;
+                    i++;
+                }
+                else
+                {
+                    dtFinal.Columns.Add(date1.ToString());
+                    for (int j = 0; j < dtFinal.Rows.Count; j++)
+                    {
+                        dtFinal.Rows[j][dtFinal.Columns.Count - 1] = tmp.Rows[j][1];
+                    }
+                    i++;
+                }
+            }
+
+
+
+            return dtFinal;
+
+        }
+
+
+        private DataTable getMarkPupilDay(int id_pupil, DateTime date)
         {
             string sql = String.Format("select id_discipline,name from discipline;");
             dt = mdb.selectionQuery(sql);
             DataTable dtPupil = new DataTable();
 
-            Dictionary<string, double> dict = new Dictionary<string, double>();
+            Dictionary<string, string> dict = new Dictionary<string, string>();
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                sql = String.Format("select mark from performance where id_pupil = {0} and id_discipline = {1}"+
-                    " and Date_letter between '{2}' and '{3}';", 
-                    listIdPupilPerf[id_pupil],dt.Rows[i][0].ToString(), date1, date2);
+                sql = String.Format("select mark from performance where id_pupil = {0} and id_discipline = {1}" +
+                    " and Date_letter = '{2}';",
+                    listIdPupilPerf[id_pupil], dt.Rows[i][0].ToString(), date.ToString("yyyy-MM-dd"));
 
                 string key = dt.Rows[i][1].ToString();
                 dtPupil = mdb.selectionQuery(sql);
 
                 if (dtPupil.Rows.Count != 0)
                 {
-                    int count = 0;
-                    dict.Add(key, 0);
+                    
+                    //dict.Add(key, 0);
 
-                    //крутим в цикле
-                    for (int j = 0; j < dtPupil.Rows.Count; j++)
-                    {
-                        dict[key] += Convert.ToInt32(dtPupil.Rows[j][0]);
-                        count++;
-                    }
-                    dict[key] /= count;
+                        dict[key]= dtPupil.Rows[0][0].ToString();
+                        
+               
 
                 }
                 else
                 {
-                    dict.Add(key, 0);
+                    dict.Add(key, "0");
                     //0
                 }
             }
@@ -188,10 +219,10 @@ namespace KPO_System
             //создаём таблицу
             dt = new DataTable();
             dt.Columns.Add("Предмет");
-            dt.Columns.Add("Среднее");
+            dt.Columns.Add(date.ToString("yyyy-MM-dd"));
             foreach (var d in dict)
             {
-                dt.Rows.Add(d.Key, d.Value);
+                dt.Rows.Add(d.Key, String.Format("{0:0.#}", d.Value));
             }
 
             return dt;
@@ -199,21 +230,53 @@ namespace KPO_System
 
         public DataTable getPerformanceClass(string number,string letter, string date1, string date2)
         {
-            string sql = String.Format("select id_pupil, famil, name, otchestvo from pupil "+
-            "join class on class.id_class = pupil.id_class " +
-            "where number = {0} and letter = '{1}';", number, letter);
+            DataTable dtFinal = new DataTable();
+            string sql = String.Format("select id_discipline, name from discipline;");
+            DataTable dtDisc = mdb.selectionQuery(sql);
+
+
+
+            for (int i = 0; i < dtDisc.Rows.Count; i++)
+            {
+                DataTable tmp = getAvgDisc(number, letter, date1, date2, dtDisc.Rows[i][0].ToString(), dtDisc.Rows[i][1].ToString());
+                
+                if(i==0)
+                {
+                    dtFinal = tmp;
+                } else
+                {
+                    dtFinal.Columns.Add(dtDisc.Rows[i][1].ToString());
+                    for(int j=0; j< dtFinal.Rows.Count;j++)
+                    {
+                        dtFinal.Rows[j][dtFinal.Columns.Count - 1] = tmp.Rows[j][3];
+                    }
+                }
+
+            }
+
+
+
+            return dtFinal;
+        }
+
+        private DataTable getAvgDisc(string number, string letter, string date1, string date2, string idDisc, string nameDisc)
+        {
+            string sql = String.Format("select id_pupil, famil, name, otchestvo from pupil " +
+"join class on class.id_class = pupil.id_class " +
+"where number = {0} and letter = '{1}';", number, letter);
             dt = mdb.selectionQuery(sql);
+
+
             DataTable dtClass = new DataTable();
-            
             Dictionary<string, double> dict = new Dictionary<string, double>();
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 sql = String.Format("select mark from performance where id_pupil = {0}" +
-                    " and Date_letter between '{1}' and '{2}';", 
-                    dt.Rows[i][0].ToString(), date1, date2);
+                    " and id_discipline = {3} and mark NOT LIKE 'Н' and Date_letter between '{1}' and '{2}';",
+                    dt.Rows[i][0].ToString(), date1, date2,idDisc);
 
 
-                string key = dt.Rows[i][1].ToString() +" "+ dt.Rows[i][2].ToString() +" "+ dt.Rows[i][3].ToString();
+                string key = dt.Rows[i][1].ToString() + " " + dt.Rows[i][2].ToString() + " " + dt.Rows[i][3].ToString();
                 dtClass = mdb.selectionQuery(sql);
 
                 if (dtClass.Rows.Count != 0)
@@ -242,20 +305,53 @@ namespace KPO_System
             dt.Columns.Add("Фамилия");
             dt.Columns.Add("Имя");
             dt.Columns.Add("Отчество");
-            dt.Columns.Add("Среднее");
+            dt.Columns.Add(nameDisc);
 
-            
+
 
             foreach (var d in dict)
             {
                 string[] s = d.Key.Split(' ');
-                dt.Rows.Add(s[0],s[1],s[2], String.Format("{0:0.#}", d.Value));
+                dt.Rows.Add(s[0], s[1], s[2], String.Format("{0:0.#}", d.Value));
             }
 
             return dt;
         }
 
-        public DataTable getPerformanceSchool(string date1, string date2)
+        public DataTable getPerformanceSchool(string date1, string date2) {
+
+            DataTable dtFinal = new DataTable();
+            string sql = String.Format("select id_discipline, name from discipline;");
+            DataTable dtDisc = mdb.selectionQuery(sql);
+
+
+
+            for (int i = 0; i < dtDisc.Rows.Count; i++)
+            {
+                DataTable tmp = getAvgSchool(date1, date2, dtDisc.Rows[i][0].ToString(), dtDisc.Rows[i][1].ToString());
+
+                if (i == 0)
+                {
+                    dtFinal = tmp;
+                }
+                else
+                {
+                    dtFinal.Columns.Add(dtDisc.Rows[i][1].ToString());
+                    for (int j = 0; j < dtFinal.Rows.Count; j++)
+                    {
+                        dtFinal.Rows[j][dtFinal.Columns.Count - 1] = tmp.Rows[j][1];
+                    }
+                }
+
+            }
+
+
+
+            return dtFinal;
+
+        }
+
+        public DataTable getAvgSchool(string date1, string date2, string idDisc, string nameDisc)
         {
             string sql = String.Format("select id_class,number,letter from class;");
             dt = mdb.selectionQuery(sql);
@@ -268,9 +364,9 @@ namespace KPO_System
                 sql = String.Format("select  mark from pupil "+
                 "join class on class.id_class = pupil.id_class " +
                 "join performance on pupil.id_pupil = Performance.id_pupil " +
-                "where class.id_class={0} and mark NOT LIKE 'Н' " +
+                "where class.id_class={0} and id_discipline = {3} and mark NOT LIKE 'Н' " +
                     " and Date_letter between '{1}' and '{2}';",
-                    dt.Rows[i][0].ToString(), date1, date2);
+                    dt.Rows[i][0].ToString(), date1, date2,idDisc);
 
                 string key = dt.Rows[i][1].ToString() + dt.Rows[i][2].ToString();
                 dtSchool = mdb.selectionQuery(sql);
@@ -298,10 +394,10 @@ namespace KPO_System
             //создаём таблицу
             dt = new DataTable();
             dt.Columns.Add("Класс");
-            dt.Columns.Add("Среднее");
+            dt.Columns.Add(nameDisc);
             foreach (var d in dict)
             {
-                dt.Rows.Add(d.Key, d.Value);
+                dt.Rows.Add(d.Key, String.Format("{0:0.#}", d.Value));
             }
 
             return dt;

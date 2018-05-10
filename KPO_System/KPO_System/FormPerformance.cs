@@ -25,7 +25,7 @@ namespace KPO_System
             if (comboBox1.Text == "Ученик")
             {
                 dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
-                    dTPickerFrom.Value.ToString("yyyy-MM-dd"),dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                    dTPickerFrom.Value,dTPickerBy.Value);
             }
             else if (comboBox1.Text == "Класс")
             {
@@ -34,7 +34,16 @@ namespace KPO_System
             }
             else if (comboBox1.Text == "Школа")
             {
-                dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerBy.Value.ToString("yyyy-MM-dd"), dTPickerFrom.Value.ToString("yyyy-MM-dd"));
+                dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+            }
+            noSort();
+        }
+
+        private void noSort()
+        {
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
 
