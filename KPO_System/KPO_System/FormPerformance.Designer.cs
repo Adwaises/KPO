@@ -37,16 +37,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CBLetter = new System.Windows.Forms.ComboBox();
             this.CBClass = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbFamil = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 72);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(530, 217);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(481, 217);
             this.dataGridView1.TabIndex = 6;
             // 
             // button1
@@ -118,13 +121,13 @@
             this.CBClass.TabIndex = 8;
             this.CBClass.SelectedIndexChanged += new System.EventHandler(this.CBClass_SelectedIndexChanged);
             // 
-            // comboBox2
+            // cbFamil
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(186, 386);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(82, 21);
-            this.comboBox2.TabIndex = 9;
+            this.cbFamil.FormattingEnabled = true;
+            this.cbFamil.Location = new System.Drawing.Point(186, 386);
+            this.cbFamil.Name = "cbFamil";
+            this.cbFamil.Size = new System.Drawing.Size(116, 21);
+            this.cbFamil.TabIndex = 9;
             // 
             // FormPerformance
             // 
@@ -133,7 +136,7 @@
             this.ClientSize = new System.Drawing.Size(706, 512);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cbFamil);
             this.Controls.Add(this.CBLetter);
             this.Controls.Add(this.CBClass);
             this.Controls.Add(this.comboBox1);
@@ -161,6 +164,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CBLetter;
         private System.Windows.Forms.ComboBox CBClass;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbFamil;
     }
 }

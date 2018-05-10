@@ -96,6 +96,7 @@ namespace KPO_System
 
         private void ButPost_Click(object sender, EventArgs e)
         {
+            Program.date = dateTimePicker1.Value;
             if (TBMark.Text.Contains('(') || TBMark.Text.Contains(')') || TBMark.Text.Contains(';') || TBMark.Text.Length > 1)
             {
                 return;
@@ -118,6 +119,13 @@ namespace KPO_System
 
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Program.date = dateTimePicker1.Value;
+            dt = tc.getList(CBClass.Text, CBLetter.Text);
 
+            dataGridView1.DataSource = dt;
+            TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace KPO_System
     {
 
         public static string login = "";
+        public static DateTime date = DateTime.Now;
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

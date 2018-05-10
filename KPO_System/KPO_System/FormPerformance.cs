@@ -24,15 +24,17 @@ namespace KPO_System
         {
             if (comboBox1.Text == "Ученик")
             {
-
+                dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
+                    dTPickerFrom.Value.ToString("yyyy-MM-dd"),dTPickerBy.Value.ToString("yyyy-MM-dd"));
             }
             else if (comboBox1.Text == "Класс")
             {
-
+                dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
             }
             else if (comboBox1.Text == "Школа")
             {
-
+                dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerBy.Value.ToString("yyyy-MM-dd"), dTPickerFrom.Value.ToString("yyyy-MM-dd"));
             }
         }
 
@@ -76,7 +78,14 @@ namespace KPO_System
 
         private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            cbFamil.Items.Clear();
+            List<string> list = new List<string>();
+            list = tc.getFamilPupils(CBClass.Text,CBLetter.Text);
+            for (int i = 0; i < list.Count; i++)
+            {
+                cbFamil.Items.Add(list[i]);
+            }
+            cbFamil.SelectedIndex = 0;
         }
     }
 }
