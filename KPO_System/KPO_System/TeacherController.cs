@@ -205,18 +205,11 @@ namespace KPO_System
 
                 if (dtPupil.Rows.Count != 0)
                 {
-                    
-                    //dict.Add(key, 0);
-
-                        dict[key]= dtPupil.Rows[0][0].ToString();
-                        
-               
-
+                    dict[key]= dtPupil.Rows[0][0].ToString();
                 }
                 else
                 {
-                    dict.Add(key, "0");
-                    //0
+                    dict.Add(key, "");
                 }
             }
 
@@ -237,8 +230,6 @@ namespace KPO_System
             DataTable dtFinal = new DataTable();
             string sql = String.Format("select id_discipline, name from discipline;");
             DataTable dtDisc = mdb.selectionQuery(sql);
-
-
 
             for (int i = 0; i < dtDisc.Rows.Count; i++)
             {

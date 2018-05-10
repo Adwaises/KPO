@@ -16,6 +16,7 @@ namespace KPO_System
         public FormAttendance()
         {
             InitializeComponent();
+           // dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
         }
 
         private void FormAttendance_Load(object sender, EventArgs e)
@@ -45,5 +46,18 @@ namespace KPO_System
             }
         }
 
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count)
+            {
+                e.PaintBackground(e.CellBounds, true);
+                e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
+                e.Graphics.RotateTransform(270);
+                e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                e.Graphics.ResetTransform();
+                e.Handled = true;
+                dataGridView1.ColumnHeadersHeight = 70;
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace KPO_System
         public FormPerformance()
         {
             InitializeComponent();
-
+            //dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -97,6 +97,49 @@ namespace KPO_System
                 cbFamil.Items.Add(list[i]);
             }
             cbFamil.SelectedIndex = 0;
+        }
+
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (comboBox1.Text == "Ученик")
+            {
+                if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 0)
+                {
+                    e.PaintBackground(e.CellBounds, true);
+                    e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
+                    e.Graphics.RotateTransform(270);
+                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                    e.Graphics.ResetTransform();
+                    e.Handled = true;
+                    dataGridView1.ColumnHeadersHeight = 70;
+                }
+            } else if(comboBox1.Text == "Класс")
+            {
+                if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 2)
+                {
+                    e.PaintBackground(e.CellBounds, true);
+                    e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
+                    e.Graphics.RotateTransform(270);
+                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                    e.Graphics.ResetTransform();
+                    e.Handled = true;
+                    dataGridView1.ColumnHeadersHeight = 100;
+                }
+            } else
+            {
+                if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count)
+                {
+                    e.PaintBackground(e.CellBounds, true);
+                    e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
+                    e.Graphics.RotateTransform(270);
+                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                    e.Graphics.ResetTransform();
+                    e.Handled = true;
+                    dataGridView1.ColumnHeadersHeight = 100;
+                }
+            }
+
+
         }
     }
 }
