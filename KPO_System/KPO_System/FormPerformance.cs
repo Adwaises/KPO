@@ -59,16 +59,39 @@ namespace KPO_System
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CBClass.Items.Clear();
-
-            List<string> list = tc.getDiscipline(Program.login);
-            for (int i = 0; i < list.Count; i++)
+            if(comboBox1.Text == "Ученик")
             {
-                CBClass.Items.Add(list[i]);
+                groupBox1.Visible = true;
+                label5.Visible = true;
+                cbFamil.Visible = true;
+                groupBox1.Height = 90;
+
+                CBClass.Items.Clear();
+
+                List<string> list = tc.getDiscipline(Program.login);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    CBClass.Items.Add(list[i]);
+                }
+                CBClass.SelectedIndex = 0;
+            } else if(comboBox1.Text == "Класс")
+            {
+                groupBox1.Visible = true;
+
+                label5.Visible = false;
+                cbFamil.Visible = false;
+                groupBox1.Height = 60;
+                   
+
+            }
+            else if (comboBox1.Text == "Школа")
+            {
+                groupBox1.Visible = false;
             }
 
 
-            CBClass.SelectedIndex = 0;
+
+
         }
 
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
