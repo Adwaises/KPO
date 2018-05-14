@@ -14,28 +14,36 @@ namespace KPO_System
     public partial class FormPerformance : Form
     {
         TeacherController tc = new TeacherController();
+        DataTable dt = new DataTable();
         public FormPerformance()
         {
             InitializeComponent();
-            //dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             if (comboBox1.Text == "Ученик")
             {
-                dataGridView1.DataSource = null;
                 dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
                     dTPickerFrom.Value,dTPickerBy.Value);
+
+                dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
             }
             else if (comboBox1.Text == "Класс")
             {
                 dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
                     dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+
+                dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
             }
             else if (comboBox1.Text == "Школа")
             {
                 dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
             }
             noSort();
         }
@@ -135,6 +143,15 @@ namespace KPO_System
                     e.Graphics.ResetTransform();
                     e.Handled = true;
                     dataGridView1.ColumnHeadersHeight = 70;
+                    //dataGridView1.RowHeadersWidth = 20;
+                    if (e.ColumnIndex > 0)
+                    {
+                        DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        column.Width = 20;
+                    }
+
+
                 }
             } else if(comboBox1.Text == "Класс")
             {
@@ -147,10 +164,18 @@ namespace KPO_System
                     e.Graphics.ResetTransform();
                     e.Handled = true;
                     dataGridView1.ColumnHeadersHeight = 100;
+                    
+                    if (e.ColumnIndex > 2)
+                    {
+                        DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                        column.Width = 30;
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+
                 }
             } else
             {
-                if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count)
+                if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 0)
                 {
                     e.PaintBackground(e.CellBounds, true);
                     e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
@@ -159,7 +184,53 @@ namespace KPO_System
                     e.Graphics.ResetTransform();
                     e.Handled = true;
                     dataGridView1.ColumnHeadersHeight = 100;
+                    
+                    if (e.ColumnIndex > 0)
+                    {
+                        DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        column.Width = 30;
+                    }
+
                 }
+                //else if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex == 0)
+                //{
+                //    DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                //    column.Width = 50;
+                //}
+            }
+
+        }
+
+        Reports report = new Reports();
+        private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (comboBox1.Text == "Ученик")
+            {
+                //dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
+                //    dTPickerFrom.Value, dTPickerBy.Value);
+
+                //dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
+
+                report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
+                MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (comboBox1.Text == "Класс")
+            {
+                //dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+
+                //dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+
+                report.createReportClass(dt, CBClass.Text+ CBLetter.Text, dTPickerFrom.Value, dTPickerBy.Value);
+                MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (comboBox1.Text == "Школа")
+            {
+                //dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                //dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
             }
 
 
