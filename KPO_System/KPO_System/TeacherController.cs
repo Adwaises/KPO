@@ -442,7 +442,7 @@ namespace KPO_System
             }
             return list;
         }
-        public DataTable getAttendance(DateTime date1, DateTime date2, string disc)
+        public DataTable getAttendanceOnDisc(DateTime date1, DateTime date2, string disc)
         {
             DataTable dtFinal = new DataTable();
             dtFinal.Columns.Add("Класс");
@@ -508,6 +508,78 @@ namespace KPO_System
 
             return dtFinal;
         }
+
+
+
+        public DataTable getAttendanceOnClass(DateTime date1, DateTime date2, string number, string letter)
+        {
+            DataTable dtFinal = new DataTable();
+            dtFinal.Columns.Add("Дисциплина");
+            string sql = "select discipline.name from discipline;";
+            dt = mdb.selectionQuery(sql);
+
+            Dictionary<string, int> dictDisc = new Dictionary<string, int>();
+            Dictionary<string, int> dictDate = new Dictionary<string, int>();
+
+
+            //заполняем дисц
+            int d = 0;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dictDisc.Add(dt.Rows[i][0].ToString(), d);
+                d++;
+                dtFinal.Rows.Add(dt.Rows[i][0].ToString() );
+            }
+
+
+            sql = String.Format("select discipline.name, date_letter from pupil " +
+            "join class on class.id_class = pupil.id_class " +
+            "join performance on pupil.id_pupil = Performance.id_pupil " +
+            "join discipline on  discipline.id_discipline = Performance.id_discipline " +
+            "where class.number = '{2}' and class.letter = '{3}' " +
+            "and Date_letter between '{0}' and '{1}' " +
+            "and mark LIKE 'Н' ;", date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd"), number, letter);
+
+
+            dt = mdb.selectionQuery(sql);
+
+
+            //заполняем дату
+            d = 0;
+            while (date1.Date <= date2.Date)
+            {
+                dictDate.Add(date1.ToString("dd.MM.yyyy"), d);
+                dtFinal.Columns.Add(date1.ToString("dd.MM.yyyy"));
+                date1 = date1.AddDays(1);
+                d++;
+            }
+
+            //расставляем
+
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                string keyDisc = dt.Rows[i][0].ToString();
+                DateTime date = Convert.ToDateTime(dt.Rows[i][1]);
+                string keyDate = date.ToString("dd.MM.yyyy");
+
+                if (dtFinal.Rows[dictDisc[keyDisc]][dictDate[keyDate] + 1].ToString() == "")
+                {
+                    dtFinal.Rows[dictDisc[keyDisc]][dictDate[keyDate] + 1] = 1;
+                }
+                else
+                {
+                    dtFinal.Rows[dictDisc[keyDisc]][dictDate[keyDate] + 1] =
+                      Convert.ToInt32((dtFinal.Rows[dictDisc[keyDisc]][dictDate[keyDate] + 1])) + 1;
+                }
+            }
+
+
+            return dtFinal;
+        }
+
+
 
     }
 }

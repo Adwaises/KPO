@@ -27,24 +27,25 @@ namespace KPO_System
             dataGridView1.DataSource = null;
             if (comboBox1.Text == "Ученик")
             {
-                dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
-                    dTPickerFrom.Value,dTPickerBy.Value);
+                //dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
+                //    dTPickerFrom.Value,dTPickerBy.Value);
 
                 dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
             }
             else if (comboBox1.Text == "Класс")
             {
-                dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
-                    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                //dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
 
                 dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
                     dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
             }
             else if (comboBox1.Text == "Школа")
             {
-                dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                //dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
                 dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
             }
+            dataGridView1.DataSource = dt;
             noSort();
         }
 
