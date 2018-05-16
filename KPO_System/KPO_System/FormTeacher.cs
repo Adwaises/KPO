@@ -14,6 +14,7 @@ namespace KPO_System
     public partial class FormTeacher : Form
     {
         DataTable dt = new DataTable();
+        FileManager fm = new FileManager();
         TeacherController tc = new TeacherController();
        
         //string login = "";
@@ -138,6 +139,15 @@ namespace KPO_System
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
+
+        private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tc.connect();
+
+        }
+
+
+
 
     }
 }

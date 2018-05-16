@@ -133,6 +133,7 @@
             this.подключениеКБДToolStripMenuItem.Name = "подключениеКБДToolStripMenuItem";
             this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.подключениеКБДToolStripMenuItem.Text = "Подключение к БД";
+            this.подключениеКБДToolStripMenuItem.Click += new System.EventHandler(this.подключениеКБДToolStripMenuItem_Click);
             // 
             // label1
             // 

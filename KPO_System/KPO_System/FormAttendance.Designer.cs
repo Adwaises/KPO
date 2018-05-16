@@ -41,7 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CBLetter = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.подключениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сформироватьОтчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
@@ -162,19 +161,12 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.подключениеToolStripMenuItem,
             this.отчетыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(877, 24);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // подключениеToolStripMenuItem
-            // 
-            this.подключениеToolStripMenuItem.Name = "подключениеToolStripMenuItem";
-            this.подключениеToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
-            this.подключениеToolStripMenuItem.Text = "Подключение";
             // 
             // отчетыToolStripMenuItem
             // 
@@ -245,7 +237,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CBLetter;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem подключениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сформироватьОтчётToolStripMenuItem;
         private System.Windows.Forms.Label label5;
