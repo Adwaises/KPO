@@ -10,6 +10,7 @@ namespace KPO_System
     public class TeacherController
     {
         ManagerBD mdb = new ManagerBD();
+        FileManager fm = new FileManager();
         DataTable dt = new DataTable();
         DataTable dtMarks = new DataTable();
         List<int> listID = new List<int>();
@@ -23,7 +24,26 @@ namespace KPO_System
 
         public TeacherController()
         {
-            mdb.init();
+            //using (FileStream fstream = File.OpenRead(@"ConnectParam.txt"))
+            //{
+            //    // преобразуем строку в байты
+            //    byte[] array = new byte[fstream.Length];
+            //    // считываем данные
+            //    fstream.Read(array, 0, array.Length);
+            //    // декодируем байты в строку
+            //    string textFromFile = System.Text.Encoding.Default.GetString(array);
+            //    //Console.WriteLine("Текст из файла: {0}", textFromFile);
+            
+            string[] param = fm.getParam();
+            mdb.init(param[0], param[1], param[2], param[3], param[4]);
+
+            //if (mdb.conn == null)
+            //{
+            //    FormConnect fc = new FormConnect();
+            //    fc.ShowDialog();
+            //}
+            //}
+            // mdb.init();
         }
 
         public DataTable getList(string nClass, string letter)

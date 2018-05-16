@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileManager.cs" />
     <Compile Include="FormAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +83,12 @@
     </Compile>
     <Compile Include="FormAuthorization.Designer.cs">
       <DependentUpon>FormAuthorization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConnect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConnect.Designer.cs">
+      <DependentUpon>FormConnect.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPerformance.cs">
       <SubType>Form</SubType>
@@ -105,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAuthorization.resx">
       <DependentUpon>FormAuthorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConnect.resx">
+      <DependentUpon>FormConnect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPerformance.resx">
       <DependentUpon>FormPerformance.cs</DependentUpon>

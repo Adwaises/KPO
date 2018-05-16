@@ -10,12 +10,14 @@ namespace KPO_System
 {
     class ManagerBD
     {
-        string conn_param = "Server=127.0.0.1;Port=5432;User Id=postgres; Password=123456;Database=school; ";
+        
         NpgsqlDataAdapter da;
-        NpgsqlConnection conn;
+        public NpgsqlConnection conn;
+        string conn_param;
 
-        public void init()
+        public void init(string server, string port, string userId, string passw, string dataBase)
         {
+            conn_param = String.Format( "Server={0};Port={1};User Id={2}; Password={3};Database={4}; ", server, port, userId, passw, dataBase);
             conn = new NpgsqlConnection(conn_param);
         }
 
@@ -64,6 +66,24 @@ namespace KPO_System
                 throw ex;
             }
             return dt;
+        }
+
+        public bool isConnect()
+        {
+            try
+            {
+                conn.Open(); //Открываем соединение.
+
+                conn.Close(); //Закрываем соединение.
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //conn.Close();
+                return false;
+                //throw ex;
+            }
+           
         }
     }
 }
