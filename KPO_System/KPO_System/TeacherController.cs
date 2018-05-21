@@ -95,8 +95,10 @@ namespace KPO_System
             return dt;
         }
 
+        //кажется это 2 разные функции, разобраться
         public List<string> getDiscipline(string login)
         {
+            //запрос номеров классов
             List<string> list = new List<string>();
             string sql = " select number from class group by number order by number;";
 

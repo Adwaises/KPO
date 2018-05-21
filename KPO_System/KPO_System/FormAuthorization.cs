@@ -23,10 +23,10 @@ namespace KPO_System
         public FormAuthorization()
         {
             InitializeComponent();
-            TBlogin.Text = "Паршина";
+            TBlogin.Text = "admin";
+            TBPassword.Text = "admin";
 
 
-            
 
         }
 
@@ -34,6 +34,8 @@ namespace KPO_System
         {
             //валидация
             // если есть () или ; или пустые
+
+            login = TBlogin.Text;
 
             if (TBlogin.Text.Contains('(') || TBlogin.Text.Contains(')') || TBlogin.Text.Contains(';') || TBlogin.Text.Length > 20)
             {
