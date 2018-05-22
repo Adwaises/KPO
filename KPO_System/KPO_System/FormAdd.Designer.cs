@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.buttonOK = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -48,7 +49,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(82, 28);
+            this.textBox1.Location = new System.Drawing.Point(95, 27);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
@@ -64,7 +65,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(82, 54);
+            this.textBox2.Location = new System.Drawing.Point(95, 53);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 1;
@@ -80,7 +81,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(82, 80);
+            this.textBox3.Location = new System.Drawing.Point(95, 80);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 1;
@@ -95,11 +96,20 @@
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(95, 53);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.TabIndex = 3;
+            // 
             // FormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(207, 153);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label3);
@@ -124,5 +134,6 @@
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.Button buttonOK;
+        public System.Windows.Forms.ComboBox comboBox1;
     }
 }
