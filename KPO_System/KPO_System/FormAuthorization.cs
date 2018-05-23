@@ -147,8 +147,8 @@ namespace KPO_System
                 else if (authorization)
                 {
                     authorization = false;
-                    FormTeacher ft = new FormTeacher();
                     Program.login = login;
+                    FormTeacher ft = new FormTeacher();
                     ft.ShowDialog();
                 }
                 else

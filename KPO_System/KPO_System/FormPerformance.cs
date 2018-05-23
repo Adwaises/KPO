@@ -77,7 +77,7 @@ namespace KPO_System
 
                 CBClass.Items.Clear();
 
-                List<string> list = tc.getDiscipline(Program.login);
+                List<string> list = tc.getListNumClass();
                 for (int i = 0; i < list.Count; i++)
                 {
                     CBClass.Items.Add(list[i]);

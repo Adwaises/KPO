@@ -44,6 +44,7 @@ namespace KPO_System
             //}
             //}
             // mdb.init();
+            getDiscipline(Program.login);
         }
 
         public DataTable getList(string nClass, string letter)
@@ -96,7 +97,7 @@ namespace KPO_System
         }
 
         //кажется это 2 разные функции, разобраться
-        public List<string> getDiscipline(string login)
+        public List<string> getListNumClass()
         {
             //запрос номеров классов
             List<string> list = new List<string>();
@@ -108,10 +109,15 @@ namespace KPO_System
             {
                 list.Add(dt.Rows[i][0].ToString());
             }
-           
 
+            return list;
+        }
+
+
+        public void getDiscipline (string login)
+        {
             //запрос дисциплины по учителю
-            sql = String.Format("select discipline.name,discipline.id_discipline from discipline " +
+            string sql = String.Format("select discipline.name,discipline.id_discipline from discipline " +
 "join teacher on discipline.id_teacher = teacher.id_teacher " +
 "where teacher.famil = '{0}'; ", login);
 
@@ -119,8 +125,6 @@ namespace KPO_System
 
             discipline = dt.Rows[0][0].ToString();
             idDiscipline = Convert.ToInt32(dt.Rows[0][1]);
-
-            return list;
         }
 
         public List<string> getListLetters(string nClass)

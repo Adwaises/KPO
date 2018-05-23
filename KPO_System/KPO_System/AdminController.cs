@@ -51,16 +51,6 @@ namespace KPO_System
             }
 
 
-//            //запрос дисциплины по учителю
-//            sql = String.Format("select discipline.name,discipline.id_discipline from discipline " +
-//"join teacher on discipline.id_teacher = teacher.id_teacher " +
-//"where teacher.famil = '{0}'; ", login);
-
-//            dt = mdb.selectionQuery(sql);
-
-//            discipline = dt.Rows[0][0].ToString();
-//            idDiscipline = Convert.ToInt32(dt.Rows[0][1]);
-
             return list;
         }
 
@@ -96,31 +86,6 @@ namespace KPO_System
 
             dt = mdb.selectionQuery(sql);
 
-            //dataGridView1.DataSource = dt;
-
-
-//            dt.Columns.Add("Оценка");
-
-//            //получили список оценок за дату
-
-//            sql = String.Format("select id_pupil, mark from performance " +
-//"join discipline on discipline.id_discipline = Performance.id_discipline " +
-//"where discipline.name = '{0}' and date_letter = '{1}';", discipline, Program.date.ToString("yyyy-MM-dd"));
-
-//            dtMarks = new DataTable();
-//            dtMarks = mdb.selectionQuery(sql);
-
-//            //находим соотвествия
-//            for (int i = 0; i < dtMarks.Rows.Count; i++)
-//            {
-//                for (int j = 0; j < dt.Rows.Count; j++)
-//                {
-//                    if ((dt.Rows[j][0]).ToString() == dtMarks.Rows[i][0].ToString())
-//                    {
-//                        dt.Rows[j][4] = dtMarks.Rows[i][1];
-//                    }
-//                }
-//            }
             //сохраняем порядок id и удаляем столбец
             for (int i = 0; i < dt.Rows.Count; i++)
             {

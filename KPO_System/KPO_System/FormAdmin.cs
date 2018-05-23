@@ -27,7 +27,7 @@ namespace KPO_System
 
         private void FormAdmin_Load(object sender, EventArgs e)
         {
-            TeacherController tc = new TeacherController();
+            //TeacherController tc = new TeacherController();
 
             comboBoxVariants.Items.Add("Учителя");
             comboBoxVariants.Items.Add("Предметы");
@@ -44,6 +44,7 @@ namespace KPO_System
                 label2.Visible = false;
                 CBClass.Visible = false;
                 CBLetter.Visible = false;
+                groupBox1.Visible = false;
             }
             else if (comboBoxVariants.Text == "Предметы")
             {
@@ -51,6 +52,7 @@ namespace KPO_System
                 label2.Visible = false;
                 CBClass.Visible = false;
                 CBLetter.Visible = false;
+                groupBox1.Visible = false;
             }
             else if (comboBoxVariants.Text == "Классы")
             {
@@ -58,6 +60,7 @@ namespace KPO_System
                 label2.Visible = false;
                 CBClass.Visible = false;
                 CBLetter.Visible = false;
+                groupBox1.Visible = false;
             }
             else if (comboBoxVariants.Text == "Класс")
             {
@@ -65,6 +68,7 @@ namespace KPO_System
                 label2.Visible = true;
                 CBClass.Visible = true;
                 CBLetter.Visible = true;
+                groupBox1.Visible = true;
 
                 updateCBClass();
 
@@ -75,19 +79,29 @@ namespace KPO_System
         private void updateCBClass()
         {
             CBClass.Items.Clear();
-            List<string> list = ac.getNumbersClass();
-            for (int i = 0; i < list.Count; i++)
+
+            try
             {
-                CBClass.Items.Add(list[i]);
+                List<string> list = ac.getNumbersClass();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    CBClass.Items.Add(list[i]);
+                }
+
+                CBClass.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            CBClass.SelectedIndex = 0;
         }
 
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
         {
             CBLetter.Items.Clear();
 
+            try { 
             List<string> list = new List<string>();
 
             list = ac.getListLetters(CBClass.Text);
@@ -98,6 +112,11 @@ namespace KPO_System
                 CBLetter.Items.Add(list[i]);
             }
             CBLetter.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ButGet_Click(object sender, EventArgs e)
@@ -112,33 +131,34 @@ namespace KPO_System
             dt = null;
             dataGridView1.DataSource = null;
 
-            if (comboBoxVariants.Text == "Учителя")
-            {
-                dt = ac.getListTeachers();
-                dataGridView1.DataSource = dt;
-                noSort();
-            }
-            else if (comboBoxVariants.Text == "Предметы")
-            {
-                dt = ac.getListDiscipline();
-                dataGridView1.DataSource = dt;
-                noSort();
-            }
-            else if (comboBoxVariants.Text == "Классы")
-            {
-                dt = ac.getListClasses();
-                dataGridView1.DataSource = dt;
-                noSort();
-            }
-            else if (comboBoxVariants.Text == "Класс")
-            {
-                dt = ac.getList(CBClass.Text, CBLetter.Text);
 
+            try
+            {
+                if (comboBoxVariants.Text == "Учителя")
+                {
+                    dt = ac.getListTeachers();  
+                }
+                else if (comboBoxVariants.Text == "Предметы")
+                {
+                    dt = ac.getListDiscipline();
+                }
+                else if (comboBoxVariants.Text == "Классы")
+                {
+                    dt = ac.getListClasses();
+                }
+                else if (comboBoxVariants.Text == "Класс")
+                {
+                    dt = ac.getList(CBClass.Text, CBLetter.Text);
+                }
                 dataGridView1.DataSource = dt;
-                //TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
                 noSort();
-
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+           
         }
 
         private void noSort()
@@ -170,24 +190,11 @@ namespace KPO_System
 
                     //валидация
 
-                    if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';') || fa.textBox1.Text.Length > 20)
+                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
                     {
+                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
-                    if (fa.textBox2.Text.Contains('(') || fa.textBox2.Text.Contains(')') || fa.textBox2.Text.Contains(';') || fa.textBox2.Text.Length > 20)
-                    {
-                        return;
-                    }
-
-                    if (fa.textBox3.Text.Contains('(') || fa.textBox3.Text.Contains(')') || fa.textBox3.Text.Contains(';') || fa.textBox3.Text.Length > 20)
-                    {
-                        return;
-                    }
-
-                    //Console.WriteLine(fa.textBox1.Text);
-                    //Console.WriteLine(fa.textBox2.Text);
-                    //Console.WriteLine(fa.textBox3.Text);
 
                     //insert
 
@@ -215,11 +222,16 @@ namespace KPO_System
                 {
                     //валидация
 
-                    if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';') || fa.textBox1.Text.Length > 20)
+                    //if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';') || fa.textBox1.Text.Length > 20 || fa.textBox1.Text.Length ==0)
+                    //{
+                    //    return;
+                    //}
+
+                    if (!validate(fa.textBox1.Text))
                     {
+                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
 
                     try
                     {
@@ -247,13 +259,19 @@ namespace KPO_System
                 {
                     //валидация
 
-                    if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';') || fa.textBox1.Text.Length > 20)
-                    {
-                        return;
-                    }
+                    //if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';') || fa.textBox1.Text.Length > 20 || fa.textBox1.Text.Length ==0)
+                    //{
+                    //    return;
+                    //}
 
-                    if (fa.textBox2.Text.Contains('(') || fa.textBox2.Text.Contains(')') || fa.textBox2.Text.Contains(';') || fa.textBox2.Text.Length > 20)
+                    //if (fa.textBox2.Text.Contains('(') || fa.textBox2.Text.Contains(')') || fa.textBox2.Text.Contains(';') || fa.textBox2.Text.Length > 20 || fa.textBox2.Text.Length == 0)
+                    //{
+                    //    return;
+                    //}
+
+                    if (!validate(fa.textBox1.Text, fa.textBox2.Text))
                     {
+                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -283,18 +301,27 @@ namespace KPO_System
                 {
                     //валидация
 
-                    if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';') || fa.textBox1.Text.Length > 20)
-                    {
-                        return;
-                    }
+                    //if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';')
+                    //|| fa.textBox1.Text.Length > 20 || fa.textBox1.Text.Length == 0)
+                    //{
+                    //    return;
+                    //}
 
-                    if (fa.textBox2.Text.Contains('(') || fa.textBox2.Text.Contains(')') || fa.textBox2.Text.Contains(';') || fa.textBox2.Text.Length > 20)
-                    {
-                        return;
-                    }
+                    //if (fa.textBox2.Text.Contains('(') || fa.textBox2.Text.Contains(')') || fa.textBox2.Text.Contains(';')
+                    //|| fa.textBox2.Text.Length > 20 || fa.textBox2.Text.Length == 0)
+                    //{
+                    //    return;
+                    //}
 
-                    if (fa.textBox3.Text.Contains('(') || fa.textBox3.Text.Contains(')') || fa.textBox3.Text.Contains(';') || fa.textBox3.Text.Length > 20)
+                    //if (fa.textBox3.Text.Contains('(') || fa.textBox3.Text.Contains(')') || fa.textBox3.Text.Contains(';')
+                    //|| fa.textBox3.Text.Length > 20 || fa.textBox3.Text.Length == 0)
+                    //{
+                    //    return;
+                    //}
+
+                    if(!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
                     {
+                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -336,9 +363,15 @@ namespace KPO_System
                 , "Удалить", MessageBoxButtons.OKCancel);
             if (dialogResult == DialogResult.OK)
             {
-                //do something
-                ac.delete(dataGridView1.CurrentRow.Index, comboBoxVariants.Text);
-                MessageBox.Show("Удалено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    ac.delete(dataGridView1.CurrentRow.Index, comboBoxVariants.Text);
+                    MessageBox.Show("Удалено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 getList();
             }
 
@@ -361,39 +394,26 @@ namespace KPO_System
                     dt.Rows[dataGridView1.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][2].ToString());
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
+
+                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
+                    {
+                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    try { 
                     ac.updateTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text,dataGridView1.CurrentRow.Index);
                     MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 };
                 fa.ShowDialog();
             }
             else if (comboBoxVariants.Text == "Предметы")
             {
-
-                //FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers());
-                //fa.buttonOK.Click += (senderSlave, eSlave) =>
-                //{
-                //    //валидация
-
-                //    if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';') || fa.textBox1.Text.Length > 20)
-                //    {
-                //        return;
-                //    }
-
-
-                //    try
-                //    {
-                //        //ac.insertTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text);
-                //        ac.insertDiscipline(fa.textBox1.Text, fa.comboBox1.SelectedIndex);
-                //        MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    }
-
-                //};
-                //fa.ShowDialog();
 
                 int idDisc = ac.getIdDisc(dataGridView1.CurrentRow.Index);
 
@@ -404,6 +424,12 @@ namespace KPO_System
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     //валидация
+
+                    if (!validate(fa.textBox1.Text))
+                    {
+                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                     try
                     {
@@ -434,6 +460,12 @@ namespace KPO_System
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     //валидация
+                    if (!validate(fa.textBox1.Text, fa.textBox2.Text))
+                    {
+                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
 
                     try
                     {
@@ -458,21 +490,77 @@ namespace KPO_System
     dt.Rows[dataGridView1.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][2].ToString());
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
+                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
+                    {
+                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    try { 
                     ac.updatePupil(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, dataGridView1.CurrentRow.Index);
-
-                    MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                    catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 };
                 fa.ShowDialog();
 
             }
             getList();
 
-            //FormAdd fa = new FormAdd(comboBoxVariants.Text);
-            //fa.buttonOK.Click += (senderSlave, eSlave) =>
-            //{
-            //};
-            //fa.ShowDialog();
 
         }
+
+        private bool validate(string s1,string s2, string s3)
+        {
+            if (s1.Contains('(') || s1.Contains(')') || s1.Contains(';')
+|| s1.Length > 20 || s1.Length == 0)
+            {
+                return false;
+            }
+
+            if (s2.Contains('(') || s2.Contains(')') || s2.Contains(';')
+            || s2.Length > 20 || s2.Length == 0)
+            {
+                return false;
+            }
+
+            if (s3.Contains('(') || s3.Contains(')') || s3.Contains(';')
+            || s3.Length > 20 || s3.Length == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool validate(string s1, string s2)
+        {
+            if (s1.Contains('(') || s1.Contains(')') || s1.Contains(';')
+|| s1.Length > 20 || s1.Length == 0)
+            {
+                return false;
+            }
+
+            if (s2.Contains('(') || s2.Contains(')') || s2.Contains(';')
+            || s2.Length > 20 || s2.Length == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool validate(string s1)
+        {
+            if (s1.Contains('(') || s1.Contains(')') || s1.Contains(';')
+|| s1.Length > 20 || s1.Length == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }
