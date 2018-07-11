@@ -128,8 +128,7 @@ namespace KPO_System
 
         private void ButGet_Click(object sender, EventArgs e)
         {
-
-            getList();
+              getList();
 
         }
 

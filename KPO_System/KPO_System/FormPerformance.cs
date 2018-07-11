@@ -24,29 +24,35 @@ namespace KPO_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
-            if (comboBox1.Text == "Ученик")
+            try
             {
-                //dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
-                //    dTPickerFrom.Value,dTPickerBy.Value);
+                dataGridView1.DataSource = null;
+                if (comboBox1.Text == "Ученик")
+                {
+                    //dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
+                    //    dTPickerFrom.Value,dTPickerBy.Value);
 
-                dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
-            }
-            else if (comboBox1.Text == "Класс")
-            {
-                //dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
-                //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                    dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
+                }
+                else if (comboBox1.Text == "Класс")
+                {
+                    //dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                    //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
 
-                dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
-                    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-            }
-            else if (comboBox1.Text == "Школа")
+                    dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                        dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                }
+                else if (comboBox1.Text == "Школа")
+                {
+                    //dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                    dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                }
+                dataGridView1.DataSource = dt;
+                noSort();
+            }catch(Exception ex)
             {
-                //dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-                dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            dataGridView1.DataSource = dt;
-            noSort();
         }
 
         private void noSort()
@@ -108,22 +114,30 @@ namespace KPO_System
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
         {
             CBLetter.Items.Clear();
-
-            List<string> list = new List<string>();
-
-            list = tc.getListLetters(CBClass.Text);
+            try {
 
 
-            for (int i = 0; i < list.Count; i++)
-            {
-                CBLetter.Items.Add(list[i]);
+                List<string> list = new List<string>();
+
+                list = tc.getListLetters(CBClass.Text);
+
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    CBLetter.Items.Add(list[i]);
+                }
+                CBLetter.SelectedIndex = 0;
             }
-            CBLetter.SelectedIndex = 0;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось получить список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbFamil.Items.Clear();
+            try { 
             List<string> list = new List<string>();
             list = tc.getFamilPupils(CBClass.Text,CBLetter.Text);
             for (int i = 0; i < list.Count; i++)
@@ -131,8 +145,12 @@ namespace KPO_System
                 cbFamil.Items.Add(list[i]);
             }
             cbFamil.SelectedIndex = 0;
-            
-           
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось получить список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -215,38 +233,42 @@ namespace KPO_System
                 MessageBox.Show("Получите данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-            if (comboBox1.Text == "Ученик")
+            try
             {
-                //dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
-                //    dTPickerFrom.Value, dTPickerBy.Value);
 
-                //dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
+                if (comboBox1.Text == "Ученик")
+                {
+                    //dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
+                    //    dTPickerFrom.Value, dTPickerBy.Value);
 
-                report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
-                MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (comboBox1.Text == "Класс")
+                    //dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
+
+                    report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
+                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (comboBox1.Text == "Класс")
+                {
+                    //dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                    //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+
+                    //dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                    //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+
+                    report.createReportClass(dt, CBClass.Text + CBLetter.Text, dTPickerFrom.Value, dTPickerBy.Value);
+                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (comboBox1.Text == "Школа")
+                {
+                    //dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+                    //dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+
+                    report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
+                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            } catch (Exception ex)
             {
-                //dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
-                //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-
-                //dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
-                //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-
-                report.createReportClass(dt, CBClass.Text+ CBLetter.Text, dTPickerFrom.Value, dTPickerBy.Value);
-                MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (comboBox1.Text == "Школа")
-            {
-                //dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-                //dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-
-                report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
-                MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-
         }
 
         private void отчётыДляВсегоКлассаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -256,21 +278,29 @@ namespace KPO_System
             {
                 MessageBox.Show("Получите данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
 
-            //dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
-
-            List<string> list = tc.getFamilPupils(CBClass.Text, CBLetter.Text);
-            for (int i=0; i< list.Count;i++)
+            try
             {
-                dt = tc.getPerformancePupil(i, dTPickerFrom.Value, dTPickerBy.Value);
-                report.createReportPupil(dt, list[i], dTPickerFrom.Value, dTPickerBy.Value);
+                //report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
+
+                //dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
+
+                List<string> list = tc.getFamilPupils(CBClass.Text, CBLetter.Text);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    dt = tc.getPerformancePupil(i, dTPickerFrom.Value, dTPickerBy.Value);
+                    report.createReportPupil(dt, list[i], dTPickerFrom.Value, dTPickerBy.Value);
+                }
+
+                dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                       dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+
+                MessageBox.Show("Отчёты сформированы", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
-                   dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-
-            MessageBox.Show("Отчёты сформированы", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

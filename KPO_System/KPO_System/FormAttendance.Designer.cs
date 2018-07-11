@@ -95,6 +95,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(134, 21);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -157,6 +158,7 @@
             this.CBLetter.Name = "CBLetter";
             this.CBLetter.Size = new System.Drawing.Size(55, 21);
             this.CBLetter.TabIndex = 15;
+            this.CBLetter.SelectedIndexChanged += new System.EventHandler(this.CBLetter_SelectedIndexChanged);
             // 
             // menuStrip1
             // 

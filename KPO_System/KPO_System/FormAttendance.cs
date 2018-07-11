@@ -17,7 +17,7 @@ namespace KPO_System
         public FormAttendance()
         {
             InitializeComponent();
-           // dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            // dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
         }
 
         private void FormAttendance_Load(object sender, EventArgs e)
@@ -32,19 +32,27 @@ namespace KPO_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
-            if(comboBox2.Text == "Дисциплина")
+            try
             {
-                
-                dt = tc.getAttendanceOnDisc(dateTimePicker1.Value, dateTimePicker2.Value, comboBox1.SelectedItem.ToString());
-            } else
-            {
-                dt = tc.getAttendanceOnClass(dateTimePicker1.Value, dateTimePicker2.Value, 
-                    CBClass.SelectedItem.ToString(), CBLetter.SelectedItem.ToString());
-            }
-            dataGridView1.DataSource = dt;
+                dataGridView1.DataSource = null;
+                if (comboBox2.Text == "Дисциплина")
+                {
 
-            noSort();
+                    dt = tc.getAttendanceOnDisc(dateTimePicker1.Value, dateTimePicker2.Value, comboBox1.SelectedItem.ToString());
+                }
+                else
+                {
+                    dt = tc.getAttendanceOnClass(dateTimePicker1.Value, dateTimePicker2.Value,
+                        CBClass.SelectedItem.ToString(), CBLetter.SelectedItem.ToString());
+                }
+                dataGridView1.DataSource = dt;
+
+                noSort();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void noSort()
@@ -79,17 +87,25 @@ namespace KPO_System
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox2.Text == "Дисциплина")
+            if (comboBox2.Text == "Дисциплина")
             {
-                comboBox1.Items.Clear();
-                List<string> list = tc.getListDisc();
-                for (int i = 0; i < list.Count; i++)
+                try
                 {
-                    comboBox1.Items.Add(list[i]);
+                    comboBox1.Items.Clear();
+                    List<string> list = tc.getListDisc();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        comboBox1.Items.Add(list[i]);
+                    }
+
+
+                    comboBox1.SelectedIndex = 0;
+
                 }
-
-
-                comboBox1.SelectedIndex = 0;
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось получить список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 label1.Visible = false;
                 label2.Visible = false;
@@ -97,19 +113,25 @@ namespace KPO_System
                 CBLetter.Visible = false;
                 label5.Visible = true;
                 comboBox1.Visible = true;
-            } else
+            }
+            else
             {
 
-
-                CBClass.Items.Clear();
-
-                List<string> list = tc.getListNumClass();
-                for (int i = 0; i < list.Count; i++)
+                try
                 {
-                    CBClass.Items.Add(list[i]);
-                }
-                CBClass.SelectedIndex = 0;
+                    CBClass.Items.Clear();
 
+                    List<string> list = tc.getListNumClass();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        CBClass.Items.Add(list[i]);
+                    }
+                    CBClass.SelectedIndex = 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось получить список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 label1.Visible = true;
                 label2.Visible = true;
@@ -126,17 +148,23 @@ namespace KPO_System
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
         {
             CBLetter.Items.Clear();
-
-            List<string> list = new List<string>();
-
-            list = tc.getListLetters(CBClass.Text);
-
-
-            for (int i = 0; i < list.Count; i++)
+            try
             {
-                CBLetter.Items.Add(list[i]);
+                List<string> list = new List<string>();
+
+                list = tc.getListLetters(CBClass.Text);
+
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    CBLetter.Items.Add(list[i]);
+                }
+                CBLetter.SelectedIndex = 0;
             }
-            CBLetter.SelectedIndex = 0;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось получить список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         Reports report = new Reports();
@@ -144,18 +172,34 @@ namespace KPO_System
         {
             //report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
             //MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-            if (comboBox2.Text == "Дисциплина")
+            try
             {
-                report.createJournal(dt, comboBox1.Text, dateTimePicker1.Value, dateTimePicker2.Value, "Дисциплина");
-                MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (comboBox2.Text == "Дисциплина")
+                {
+                    report.createJournal(dt, comboBox1.Text, dateTimePicker1.Value, dateTimePicker2.Value, "Дисциплина");
+                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    report.createJournal(dt, CBClass.Text + CBLetter.Text, dateTimePicker1.Value, dateTimePicker2.Value, "Класс");
+                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                report.createJournal(dt, CBClass.Text+CBLetter.Text, dateTimePicker1.Value, dateTimePicker2.Value, "Класс");
-                MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
