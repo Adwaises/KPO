@@ -29,12 +29,16 @@ namespace KPO_System
             try
             {
                 conn.Open();
-                using (var cmd = new NpgsqlCommand())
+                using (var t = conn.BeginTransaction(IsolationLevel.ReadUncommitted))
                 {
-                    cmd.Connection = conn;
-                    cmd.CommandText = сq;
-                    //cmd.Parameters.AddWithValue("p", "Hello world");
-                    cmd.ExecuteNonQuery();
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = сq;
+                        //cmd.Parameters.AddWithValue("p", "Hello world");
+                        cmd.ExecuteNonQuery();
+                    }
+                    t.Commit();
                 }
                 conn.Close();
             }
@@ -53,12 +57,16 @@ namespace KPO_System
             try
             {
                 conn.Open(); //Открываем соединение.
-
-                da = new NpgsqlDataAdapter(sql, conn);
-                dt = new DataTable();
-                da.Fill(dt);
+                using (var t = conn.BeginTransaction(IsolationLevel.ReadUncommitted))
+                {
+                    da = new NpgsqlDataAdapter(sql, conn);
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    t.Commit();
+                }
 
                 conn.Close(); //Закрываем соединение.
+
             }
             catch (Exception ex)
             {
