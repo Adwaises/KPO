@@ -511,7 +511,7 @@ namespace KPO_System
         {
             DataTable dtFinal = new DataTable();
 
-            dtFinal.Columns.Add("Дисциплина");
+            dtFinal.Columns.Add("Класс");
             string sql = "select discipline.name from discipline;";
             dt = mdb.selectionQuery(sql);
 

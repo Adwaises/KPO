@@ -127,6 +127,7 @@ namespace KPO_System
         public void createReportClass(DataTable dt, string nClass, DateTime dateBy, DateTime dateTo)
         {
             var doc = new Document();
+            doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             string nameFile = "Отчёт_об_успеваемости_" + nClass.ToString() + "_с_" + dateBy.ToString("dd.MM.yyy") + "_по_" + dateTo.ToString("dd.MM.yyy") + ".pdf";
             PdfWriter.GetInstance(doc, new FileStream(@nameFile, FileMode.Create));
             doc.Open();
@@ -157,14 +158,25 @@ namespace KPO_System
             a.SpacingAfter = 5;
             doc.Add(a);
 
+            
+
+            doc.Add(createTableRepClass(dt, baseFont));
+
+
+
+            doc.Close();
+        }
+
+        PdfPTable createTableRepClass(DataTable dt, BaseFont baseFont)
+        {
             PdfPTable table = new PdfPTable(dt.Columns.Count);
             table.HorizontalAlignment = Element.ALIGN_LEFT;
             //table.WidthPercentage = 100;
             float[] colWidth = new float[dt.Columns.Count];
 
-            colWidth[0] = 5f;
-            colWidth[1] = 5f;
-            colWidth[2] = 5f;
+            colWidth[0] = 4f;
+            colWidth[1] = 4f;
+            colWidth[2] = 4f;
 
             for (int i = 0; i < dt.Columns.Count; i++)
             {
@@ -182,11 +194,11 @@ namespace KPO_System
                 {
                     cell.Rotation = 90;
                     colWidth[i] = 1f;
-                }
+                } 
                 table.AddCell(cell);
             }
 
-            table.TotalWidth = (float)(dt.Columns.Count * 20) + 300;
+            table.TotalWidth = (float)(dt.Columns.Count * 20) + 200;
             table.LockedWidth = true;
 
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -201,20 +213,22 @@ namespace KPO_System
                     cell.VerticalAlignment = Element.ALIGN_CENTER;
                     cell.MinimumHeight = 20;
 
+                    if (j<3) { 
+                        cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    }
+
                     table.AddCell(cell);
                 }
             }
 
             table.SetWidths(colWidth);
-
-            doc.Add(table);
-
-            doc.Close();
+            return table;
         }
 
         public void createReportSchool(DataTable dt, DateTime dateBy, DateTime dateTo)
         {
             var doc = new Document();
+            doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             string nameFile = "Отчёт_об_успеваемости_Школа_с_" + dateBy.ToString("dd.MM.yyy") + "_по_" + dateTo.ToString("dd.MM.yyy") + ".pdf";
             PdfWriter.GetInstance(doc, new FileStream(@nameFile, FileMode.Create));
             doc.Open();
