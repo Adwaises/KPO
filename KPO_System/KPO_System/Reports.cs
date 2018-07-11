@@ -127,7 +127,8 @@ namespace KPO_System
         public void createReportClass(DataTable dt, string nClass, DateTime dateBy, DateTime dateTo)
         {
             var doc = new Document();
-            PdfWriter.GetInstance(doc, new FileStream(@"Document.pdf", FileMode.Create));
+            string nameFile = "Отчёт_об_успеваемости_" + nClass.ToString() + "_с_" + dateBy.ToString("dd.MM.yyy") + "_по_" + dateTo.ToString("dd.MM.yyy") + ".pdf";
+            PdfWriter.GetInstance(doc, new FileStream(@nameFile, FileMode.Create));
             doc.Open();
 
             BaseFont baseFont = BaseFont.CreateFont(@"ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
@@ -211,24 +212,92 @@ namespace KPO_System
             doc.Close();
         }
 
-        public void createReportSchool(DataTable dt)
+        public void createReportSchool(DataTable dt, DateTime dateBy, DateTime dateTo)
         {
             var doc = new Document();
-            PdfWriter.GetInstance(doc, new FileStream(@"Document.pdf", FileMode.Create));
+            string nameFile = "Отчёт_об_успеваемости_Школа_с_" + dateBy.ToString("dd.MM.yyy") + "_по_" + dateTo.ToString("dd.MM.yyy") + ".pdf";
+            PdfWriter.GetInstance(doc, new FileStream(@nameFile, FileMode.Create));
             doc.Open();
 
 
             BaseFont baseFont = BaseFont.CreateFont(@"ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
-            Phrase p = new Phrase("Ученик:",
-            new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+
+            Phrase p = new Phrase("Отчёт об успеваемости",
+           new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
             Paragraph a = new Paragraph(p);
+            a.Alignment = Element.ALIGN_CENTER;
+            a.Add(Environment.NewLine);
+            a.SpacingAfter = 5;
+            doc.Add(a);
+
+            p = new Phrase("Школа",
+            new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+            a = new Paragraph(p);
             a.Alignment = Element.ALIGN_LEFT;
             a.Add(Environment.NewLine);
             doc.Add(a);
 
-            PdfPTable table = new PdfPTable(4);
+            p = new Phrase("Дата: с " + dateBy.ToString("dd.MM.yyyy") + " по " + dateTo.ToString("dd.MM.yyyy"),
+            new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+            a = new Paragraph(p);
+            a.Alignment = Element.ALIGN_LEFT;
+            a.Add(Environment.NewLine);
+            a.SpacingAfter = 5;
+            doc.Add(a);
 
+            PdfPTable table = new PdfPTable(dt.Columns.Count);
+            table.HorizontalAlignment = Element.ALIGN_LEFT;
+            //table.WidthPercentage = 100;
+            float[] colWidth = new float[dt.Columns.Count];
+
+
+            //colWidth[0] = 5f;
+            //colWidth[1] = 5f;
+            //colWidth[2] = 5f;
+
+            for (int i = 0; i < dt.Columns.Count; i++)
+            {
+
+                PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
+                12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+                cell.Colspan = 1;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+
+
+
+                cell.MinimumHeight = 20;
+                //if (i > 0)
+                //{
+                    cell.Rotation = 90;
+                    colWidth[i] = 1f;
+                //}
+                table.AddCell(cell);
+            }
+
+            table.TotalWidth = (float)(dt.Columns.Count * 30);
+            table.LockedWidth = true;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                for (int j = 0; j < dt.Columns.Count; j++)
+                {
+
+                    PdfPCell cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
+                     iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+                    cell.Colspan = 1;
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    cell.VerticalAlignment = Element.ALIGN_CENTER;
+                    cell.MinimumHeight = 20;
+
+                    table.AddCell(cell);
+                }
+            }
+
+            table.SetWidths(colWidth);
+
+            doc.Add(table);
 
 
             doc.Close();
@@ -320,34 +389,57 @@ namespace KPO_System
         public void createJournal(DataTable dt, string cl, DateTime dateBy, DateTime dateTo, string flag)
         {
             var doc = new Document();
-            PdfWriter.GetInstance(doc, new FileStream(@"Document.pdf", FileMode.Create));
+            string nameFile;
+            if (flag == "Ученик")
+            {
+                nameFile = "Отчёт_об_успеваемости_" + flag +"_"+ cl + "_с_" + dateBy.ToString("dd.MM.yyy") + "_по_" + dateTo.ToString("dd.MM.yyy") + ".pdf";
+            }
+            else
+            {
+                nameFile = "Отчёт_о_посещаемости_"+ flag + "_" + cl + "_с_" + dateBy.ToString("dd.MM.yyy") + "_по_" + dateTo.ToString("dd.MM.yyy") + ".pdf";
+            }
+
+
+            PdfWriter.GetInstance(doc, new FileStream(@nameFile, FileMode.Create));
             doc.Open();
             BaseFont baseFont = BaseFont.CreateFont(@"ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
-            Phrase p = new Phrase("Отчёт о посещаемости",
-            new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+            Phrase p;
+            if (flag == "Ученик")
+            {
+                p = new Phrase("Отчёт об успеваемости",
+                    new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+            } else
+            {
+                p = new Phrase("Отчёт о посещаемости",
+                    new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+            }
+
+
             Paragraph a = new Paragraph(p);
             a.Alignment = Element.ALIGN_CENTER;
             a.Add(Environment.NewLine);
             a.SpacingAfter = 5;
             doc.Add(a);
 
-            if (flag == "Класс")
-            {
-                p = new Phrase("Класс: " + cl,
-new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
-            }
-            else if(flag == "Дисциплина")
-            {            
-                p = new Phrase("Дисциплина: " + cl,
-new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
-            }
-            else if (flag == "Ученик")
-            {
-                p = new Phrase("Ученик: " + cl,
-           new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
-            }
+            //if (flag == "Класс")
+            //{
+            //    p = new Phrase("Класс: " + cl,
+            //        new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+            //}
+            //else if(flag == "Дисциплина")
+            //{            
+            //    p = new Phrase("Дисциплина: " + cl,
+            //        new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+            //}
+            //else if (flag == "Ученик")
+            //{
+            //    p = new Phrase("Ученик: " + cl,
+            //        new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+            //}
 
+            p = new Phrase(flag + ": " + cl,
+                new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
 
 
             a = new Paragraph(p);
@@ -436,6 +528,8 @@ new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColo
 
             doc.Close();
         }
+
+
 
 
     }

@@ -179,7 +179,7 @@
             // сформироватьОтчётToolStripMenuItem
             // 
             this.сформироватьОтчётToolStripMenuItem.Name = "сформироватьОтчётToolStripMenuItem";
-            this.сформироватьОтчётToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.сформироватьОтчётToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.сформироватьОтчётToolStripMenuItem.Text = "Сформировать отчёт";
             this.сформироватьОтчётToolStripMenuItem.Click += new System.EventHandler(this.сформироватьОтчётToolStripMenuItem_Click);
             // 

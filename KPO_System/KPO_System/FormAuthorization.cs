@@ -23,8 +23,8 @@ namespace KPO_System
         public FormAuthorization()
         {
             InitializeComponent();
-            TBlogin.Text = "admin";
-            TBPassword.Text = "admin";
+            TBlogin.Text = "Паршина";
+            TBPassword.Text = "1";
 
 
 

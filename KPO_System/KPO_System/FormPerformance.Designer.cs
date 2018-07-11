@@ -45,6 +45,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сформироватьОтчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчётыДляВсегоКлассаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -199,7 +200,8 @@
             // отчетыToolStripMenuItem
             // 
             this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сформироватьОтчётToolStripMenuItem});
+            this.сформироватьОтчётToolStripMenuItem,
+            this.отчётыДляВсегоКлассаToolStripMenuItem});
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
@@ -207,9 +209,16 @@
             // сформироватьОтчётToolStripMenuItem
             // 
             this.сформироватьОтчётToolStripMenuItem.Name = "сформироватьОтчётToolStripMenuItem";
-            this.сформироватьОтчётToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.сформироватьОтчётToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.сформироватьОтчётToolStripMenuItem.Text = "Сформировать отчёт";
             this.сформироватьОтчётToolStripMenuItem.Click += new System.EventHandler(this.сформироватьОтчётToolStripMenuItem_Click);
+            // 
+            // отчётыДляВсегоКлассаToolStripMenuItem
+            // 
+            this.отчётыДляВсегоКлассаToolStripMenuItem.Name = "отчётыДляВсегоКлассаToolStripMenuItem";
+            this.отчётыДляВсегоКлассаToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.отчётыДляВсегоКлассаToolStripMenuItem.Text = "Отчёты для всего класса";
+            this.отчётыДляВсегоКлассаToolStripMenuItem.Click += new System.EventHandler(this.отчётыДляВсегоКлассаToolStripMenuItem_Click);
             // 
             // FormPerformance
             // 
@@ -258,5 +267,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сформироватьОтчётToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчётыДляВсегоКлассаToolStripMenuItem;
     }
 }

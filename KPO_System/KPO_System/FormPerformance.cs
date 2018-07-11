@@ -70,6 +70,7 @@ namespace KPO_System
         {
             if(comboBox1.Text == "Ученик")
             {
+                отчётыДляВсегоКлассаToolStripMenuItem.Visible = false;
                 groupBox1.Visible = true;
                 label5.Visible = true;
                 cbFamil.Visible = true;
@@ -90,12 +91,13 @@ namespace KPO_System
                 label5.Visible = false;
                 cbFamil.Visible = false;
                 groupBox1.Height = 60;
-                   
+                отчётыДляВсегоКлассаToolStripMenuItem.Visible = true;
 
             }
             else if (comboBox1.Text == "Школа")
             {
                 groupBox1.Visible = false;
+                отчётыДляВсегоКлассаToolStripMenuItem.Visible = false;
             }
 
 
@@ -206,7 +208,12 @@ namespace KPO_System
         Reports report = new Reports();
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            if(dataGridView1.DataSource == null)
+            {
+                MessageBox.Show("Получите данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
             if (comboBox1.Text == "Ученик")
             {
                 //dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
@@ -232,9 +239,36 @@ namespace KPO_System
             {
                 //dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
                 //dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+
+                report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
+                MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
+        }
+
+        private void отчётыДляВсегоКлассаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridView1.DataSource == null)
+            {
+                MessageBox.Show("Получите данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
+
+            //dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
+
+            List<string> list = tc.getFamilPupils(CBClass.Text, CBLetter.Text);
+            for (int i=0; i< list.Count;i++)
+            {
+                dt = tc.getPerformancePupil(i, dTPickerFrom.Value, dTPickerBy.Value);
+                report.createReportPupil(dt, list[i], dTPickerFrom.Value, dTPickerBy.Value);
+            }
+
+            dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
+                   dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
+
+            MessageBox.Show("Отчёты сформированы", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
