@@ -246,5 +246,22 @@ namespace KPO_System
             mdb.controlQuery(String.Format("update class set id_teacher = {0} where id_class = {1}", listID[indexTeacher], idDClass));
         }
 
+
+        public void connect()
+        {
+            if (fm.getLengthFile() == 0 || fm.getLinesFile() != 5)
+            {
+                fm.createFileParam();
+                FormConnect fc = new FormConnect(true);
+                fc.ShowDialog();
+            }
+            else
+            {
+                FormConnect fc = new FormConnect(false);
+                fc.ShowDialog();
+            }
+            string[] param = fm.getParam();
+            mdb.init(param[0], param[1], param[2], param[3], param[4]);
+        }
     }
 }

@@ -131,6 +131,8 @@ namespace KPO_System
                 cbFamil.Items.Add(list[i]);
             }
             cbFamil.SelectedIndex = 0;
+            
+           
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)

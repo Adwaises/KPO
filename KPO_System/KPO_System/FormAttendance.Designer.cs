@@ -50,21 +50,21 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(59, 27);
+            this.dateTimePicker1.Location = new System.Drawing.Point(67, 34);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(142, 20);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(59, 53);
+            this.dateTimePicker2.Location = new System.Drawing.Point(67, 60);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(142, 20);
             this.dateTimePicker2.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(353, 84);
+            this.button1.Location = new System.Drawing.Point(405, 86);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -79,27 +79,27 @@
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 113);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 129);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 20;
-            this.dataGridView1.Size = new System.Drawing.Size(530, 193);
+            this.dataGridView1.Size = new System.Drawing.Size(453, 193);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(288, 57);
+            this.comboBox1.Location = new System.Drawing.Point(346, 59);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(140, 21);
+            this.comboBox1.Size = new System.Drawing.Size(134, 21);
             this.comboBox1.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 29);
+            this.label4.Location = new System.Drawing.Point(24, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(14, 13);
             this.label4.TabIndex = 12;
@@ -108,7 +108,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 55);
+            this.label3.Location = new System.Drawing.Point(24, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(21, 13);
             this.label3.TabIndex = 13;
@@ -117,7 +117,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(59, 79);
+            this.comboBox2.Location = new System.Drawing.Point(67, 86);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(142, 21);
             this.comboBox2.TabIndex = 3;
@@ -126,7 +126,7 @@
             // CBClass
             // 
             this.CBClass.FormattingEnabled = true;
-            this.CBClass.Location = new System.Drawing.Point(262, 29);
+            this.CBClass.Location = new System.Drawing.Point(314, 31);
             this.CBClass.Name = "CBClass";
             this.CBClass.Size = new System.Drawing.Size(55, 21);
             this.CBClass.TabIndex = 14;
@@ -135,7 +135,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(330, 33);
+            this.label2.Location = new System.Drawing.Point(382, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 16;
@@ -144,7 +144,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(218, 33);
+            this.label1.Location = new System.Drawing.Point(270, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 17;
@@ -153,7 +153,7 @@
             // CBLetter
             // 
             this.CBLetter.FormattingEnabled = true;
-            this.CBLetter.Location = new System.Drawing.Point(373, 30);
+            this.CBLetter.Location = new System.Drawing.Point(425, 32);
             this.CBLetter.Name = "CBLetter";
             this.CBLetter.Size = new System.Drawing.Size(55, 21);
             this.CBLetter.TabIndex = 15;
@@ -164,7 +164,7 @@
             this.отчетыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(877, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(507, 24);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -179,14 +179,14 @@
             // сформироватьОтчётToolStripMenuItem
             // 
             this.сформироватьОтчётToolStripMenuItem.Name = "сформироватьОтчётToolStripMenuItem";
-            this.сформироватьОтчётToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.сформироватьОтчётToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.сформироватьОтчётToolStripMenuItem.Text = "Сформировать отчёт";
             this.сформироватьОтчётToolStripMenuItem.Click += new System.EventHandler(this.сформироватьОтчётToolStripMenuItem_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(212, 60);
+            this.label5.Location = new System.Drawing.Point(270, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 16;
@@ -196,7 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 605);
+            this.ClientSize = new System.Drawing.Size(507, 348);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.CBClass);
             this.Controls.Add(this.menuStrip1);

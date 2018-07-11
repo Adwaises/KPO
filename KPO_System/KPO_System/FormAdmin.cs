@@ -22,7 +22,14 @@ namespace KPO_System
 
         private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                ac.connect();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FormAdmin_Load(object sender, EventArgs e)

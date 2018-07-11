@@ -173,7 +173,7 @@ namespace KPO_System
         private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            tc.connect();
+            //tc.connect();
 
             try
             {
