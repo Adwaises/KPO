@@ -159,63 +159,132 @@ namespace KPO_System
             doc.Add(a);
 
             
+            if(dt.Columns.Count < 15)
+            {
+                //doc.Add(createTableRepClass(dt, baseFont));
+                doc.Add(createTableRepClassMany(dt, baseFont, 0, dt.Columns.Count));
+            } else
+            {
+                int index = 3;
+                int index2 = dt.Columns.Count;
+               
+                while ((index2 - index) >= 15)
+                {
+                    doc.Add(createTableRepClassMany(dt, baseFont, index, index + 15));
+                    index += 15;
+                }
 
-            doc.Add(createTableRepClass(dt, baseFont));
+                doc.Add(createTableRepClassMany(dt, baseFont, index, index + (index2 - index)));
+            }
+          
 
 
 
             doc.Close();
         }
 
-        PdfPTable createTableRepClass(DataTable dt, BaseFont baseFont)
+        PdfPTable createTableRepClassMany(DataTable dt, BaseFont baseFont, int index1, int index2)
         {
-            PdfPTable table = new PdfPTable(dt.Columns.Count);
+            PdfPTable table = new PdfPTable((index2 - index1) + 3);
+            table.SpacingBefore = 10;
             table.HorizontalAlignment = Element.ALIGN_LEFT;
             //table.WidthPercentage = 100;
-            float[] colWidth = new float[dt.Columns.Count];
+            float[] colWidth = new float[(index2 - index1) + 3];
 
-            colWidth[0] = 4f;
-            colWidth[1] = 4f;
-            colWidth[2] = 4f;
+            PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[0].ToString(), new iTextSharp.text.Font(baseFont,
+12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+            cell.Colspan = 1;
 
-            for (int i = 0; i < dt.Columns.Count; i++)
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase(dt.Columns[1].ToString(), new iTextSharp.text.Font(baseFont,
+12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+            cell.Colspan = 1;
+
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase(dt.Columns[2].ToString(), new iTextSharp.text.Font(baseFont,
+12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+            cell.Colspan = 1;
+
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            table.AddCell(cell);
+
+            colWidth[0] = 5f;
+            colWidth[1] = 5f;
+            colWidth[2] = 5f;
+
+            //заголовки и ширина
+            for (int i = index1; i < index2; i++)
             {
 
-                PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
+                cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
                 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
                 cell.HorizontalAlignment = Element.ALIGN_CENTER;
                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
-
+                //if (i > 2)
+                //{
+                //    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                
+                //    //cell.VerticalAlignment = Element.ALIGN_LEFT;
+                //}
 
                 cell.MinimumHeight = 20;
                 if (i > 2)
                 {
+
                     cell.Rotation = 90;
-                    colWidth[i] = 1f;
-                } 
+                    //cell.MinimumHeight = 100;
+                    colWidth[i - index1 + 3] = 1.5f;
+                }
                 table.AddCell(cell);
             }
 
-            table.TotalWidth = (float)(dt.Columns.Count * 20) + 200;
+            table.TotalWidth = (float)(((index2 - index1) + 3) * 20) + 250;
             table.LockedWidth = true;
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                for (int j = 0; j < dt.Columns.Count; j++)
+                cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][0]), new iTextSharp.text.Font(baseFont, 12,
+ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+                cell.Colspan = 1;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_CENTER;
+                cell.MinimumHeight = 20;
+                table.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][1]), new iTextSharp.text.Font(baseFont, 12,
+iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+                cell.Colspan = 1;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_CENTER;
+                cell.MinimumHeight = 20;
+                table.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][2]), new iTextSharp.text.Font(baseFont, 12,
+iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+                cell.Colspan = 1;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_CENTER;
+                cell.MinimumHeight = 20;
+                table.AddCell(cell);
+
+                for (int j = index1; j < index2; j++)
                 {
 
-                    PdfPCell cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
+                    cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
                      iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                     cell.Colspan = 1;
                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
                     cell.VerticalAlignment = Element.ALIGN_CENTER;
                     cell.MinimumHeight = 20;
-
-                    if (j<3) { 
-                        cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                    }
 
                     table.AddCell(cell);
                 }
@@ -224,6 +293,64 @@ namespace KPO_System
             table.SetWidths(colWidth);
             return table;
         }
+
+        //PdfPTable createTableRepClass(DataTable dt, BaseFont baseFont)
+        //{
+        //    PdfPTable table = new PdfPTable(dt.Columns.Count);
+        //    table.HorizontalAlignment = Element.ALIGN_LEFT;
+        //    //table.WidthPercentage = 100;
+        //    float[] colWidth = new float[dt.Columns.Count];
+
+        //    colWidth[0] = 4f;
+        //    colWidth[1] = 4f;
+        //    colWidth[2] = 4f;
+
+        //    for (int i = 0; i < dt.Columns.Count; i++)
+        //    {
+
+        //        PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
+        //        12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+        //        cell.Colspan = 1;
+        //        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //        cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+
+
+
+        //        cell.MinimumHeight = 20;
+        //        if (i > 2)
+        //        {
+        //            cell.Rotation = 90;
+        //            colWidth[i] = 1f;
+        //        } 
+        //        table.AddCell(cell);
+        //    }
+
+        //    table.TotalWidth = (float)(dt.Columns.Count * 20) + 200;
+        //    table.LockedWidth = true;
+
+        //    for (int i = 0; i < dt.Rows.Count; i++)
+        //    {
+        //        for (int j = 0; j < dt.Columns.Count; j++)
+        //        {
+
+        //            PdfPCell cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
+        //             iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+        //            cell.Colspan = 1;
+        //            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+        //            cell.VerticalAlignment = Element.ALIGN_CENTER;
+        //            cell.MinimumHeight = 20;
+
+        //            if (j<3) { 
+        //                cell.HorizontalAlignment = Element.ALIGN_LEFT;
+        //            }
+
+        //            table.AddCell(cell);
+        //        }
+        //    }
+
+        //    table.SetWidths(colWidth);
+        //    return table;
+        //}
 
         public void createReportSchool(DataTable dt, DateTime dateBy, DateTime dateTo)
         {
@@ -260,6 +387,36 @@ namespace KPO_System
             a.SpacingAfter = 5;
             doc.Add(a);
 
+
+
+
+
+            if (dt.Columns.Count < 15)
+            {
+                doc.Add(createTableSchool(dt, baseFont));
+        }
+            else
+            {
+                int index = 1;
+        int index2 = dt.Columns.Count;
+
+                while ((index2 - index) >= 15)
+                {
+                    doc.Add(createTable(dt, baseFont, index, index + 15));
+                    index += 15;
+                }
+
+                     doc.Add(createTable(dt, baseFont, index, index + (index2 - index)));
+            }
+
+
+doc.Close();
+        }
+
+        
+
+        PdfPTable createTableSchool(DataTable dt, BaseFont baseFont)
+        {
             PdfPTable table = new PdfPTable(dt.Columns.Count);
             table.HorizontalAlignment = Element.ALIGN_LEFT;
             //table.WidthPercentage = 100;
@@ -284,8 +441,8 @@ namespace KPO_System
                 cell.MinimumHeight = 20;
                 //if (i > 0)
                 //{
-                    cell.Rotation = 90;
-                    colWidth[i] = 1f;
+                cell.Rotation = 90;
+                colWidth[i] = 1f;
                 //}
                 table.AddCell(cell);
             }
@@ -310,11 +467,7 @@ namespace KPO_System
             }
 
             table.SetWidths(colWidth);
-
-            doc.Add(table);
-
-
-            doc.Close();
+            return table;
         }
 
         //посещаемость
@@ -436,22 +589,6 @@ namespace KPO_System
             a.SpacingAfter = 5;
             doc.Add(a);
 
-            //if (flag == "Класс")
-            //{
-            //    p = new Phrase("Класс: " + cl,
-            //        new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
-            //}
-            //else if(flag == "Дисциплина")
-            //{            
-            //    p = new Phrase("Дисциплина: " + cl,
-            //        new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
-            //}
-            //else if (flag == "Ученик")
-            //{
-            //    p = new Phrase("Ученик: " + cl,
-            //        new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
-            //}
-
             p = new Phrase(flag + ": " + cl,
                 new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
 
@@ -471,57 +608,59 @@ namespace KPO_System
 
             if ((dateTo - dateBy).Days <= 20)
             {
-                PdfPTable table = new PdfPTable(dt.Columns.Count);
-                table.HorizontalAlignment = Element.ALIGN_LEFT;
-                //table.WidthPercentage = 100;
-                float[] colWidth = new float[dt.Columns.Count];
+                //PdfPTable table = new PdfPTable(dt.Columns.Count);
+                //table.HorizontalAlignment = Element.ALIGN_LEFT;
+                ////table.WidthPercentage = 100;
+                //float[] colWidth = new float[dt.Columns.Count];
 
-                colWidth[0] = 5f;
-                for (int i = 0; i < dt.Columns.Count; i++)
-                {
+                //colWidth[0] = 5f;
+                //for (int i = 0; i < dt.Columns.Count; i++)
+                //{
 
-                    PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
-                    12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
-                    cell.Colspan = 1;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                //    PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
+                //    12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+                //    cell.Colspan = 1;
+                //    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                //    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
-                    if (i > 0)
-                    {
-                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                        cell.VerticalAlignment = Element.ALIGN_LEFT;
-                    }
+                //    if (i > 0)
+                //    {
+                //        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                //        cell.VerticalAlignment = Element.ALIGN_LEFT;
+                //    }
 
-                    cell.MinimumHeight = 20;
-                    if (i > 0)
-                    {
-                        cell.Rotation = 90;
-                        colWidth[i] = 1f;
-                    }
-                    table.AddCell(cell);
-                }
+                //    cell.MinimumHeight = 20;
+                //    if (i > 0)
+                //    {
+                //        cell.Rotation = 90;
+                //        colWidth[i] = 1f;
+                //    }
+                //    table.AddCell(cell);
+                //}
 
-                table.TotalWidth = (float)(dt.Columns.Count * 20) + 100;
-                table.LockedWidth = true;
+                //table.TotalWidth = (float)(dt.Columns.Count * 20) + 100;
+                //table.LockedWidth = true;
 
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    for (int j = 0; j < dt.Columns.Count; j++)
-                    {
+                //for (int i = 0; i < dt.Rows.Count; i++)
+                //{
+                //    for (int j = 0; j < dt.Columns.Count; j++)
+                //    {
 
-                        PdfPCell cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
-                         iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
-                        cell.Colspan = 1;
-                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                        cell.VerticalAlignment = Element.ALIGN_CENTER;
-                        cell.MinimumHeight = 20;
+                //        PdfPCell cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
+                //         iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+                //        cell.Colspan = 1;
+                //        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                //        cell.VerticalAlignment = Element.ALIGN_CENTER;
+                //        cell.MinimumHeight = 20;
 
-                        table.AddCell(cell);
-                    }
-                }
+                //        table.AddCell(cell);
+                //    }
+                //}
 
-                table.SetWidths(colWidth);
-                doc.Add(table);
+                //table.SetWidths(colWidth);
+                //doc.Add(table);
+
+                doc.Add(createTable(dt, baseFont, 0, dt.Columns.Count));
             }
             else
             {
