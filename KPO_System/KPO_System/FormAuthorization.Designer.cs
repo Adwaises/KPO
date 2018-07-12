@@ -48,10 +48,13 @@
             // 
             // TBlogin
             // 
+            this.TBlogin.AllowDrop = true;
+            this.TBlogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TBlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TBlogin.Location = new System.Drawing.Point(86, 10);
             this.TBlogin.Name = "TBlogin";
-            this.TBlogin.Size = new System.Drawing.Size(153, 22);
+            this.TBlogin.Size = new System.Drawing.Size(155, 22);
             this.TBlogin.TabIndex = 1;
             // 
             // labelPassword
@@ -66,16 +69,21 @@
             // 
             // TBPassword
             // 
+            this.TBPassword.AllowDrop = true;
+            this.TBPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TBPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TBPassword.Location = new System.Drawing.Point(86, 38);
             this.TBPassword.Name = "TBPassword";
-            this.TBPassword.Size = new System.Drawing.Size(153, 22);
+            this.TBPassword.Size = new System.Drawing.Size(155, 22);
             this.TBPassword.TabIndex = 2;
             // 
             // ButLogIn
             // 
+            this.ButLogIn.AllowDrop = true;
+            this.ButLogIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButLogIn.Location = new System.Drawing.Point(139, 75);
+            this.ButLogIn.Location = new System.Drawing.Point(141, 72);
             this.ButLogIn.Name = "ButLogIn";
             this.ButLogIn.Size = new System.Drawing.Size(100, 34);
             this.ButLogIn.TabIndex = 3;
@@ -85,8 +93,10 @@
             // 
             // button1
             // 
+            this.button1.AllowDrop = true;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(16, 75);
+            this.button1.Location = new System.Drawing.Point(16, 72);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 34);
             this.button1.TabIndex = 3;
@@ -98,13 +108,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(262, 124);
+            this.ClientSize = new System.Drawing.Size(254, 121);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ButLogIn);
             this.Controls.Add(this.TBPassword);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.TBlogin);
             this.Controls.Add(this.labelLogin);
+            this.MaximumSize = new System.Drawing.Size(350, 160);
+            this.MinimumSize = new System.Drawing.Size(270, 160);
             this.Name = "FormAuthorization";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormAuthorization_Load);
