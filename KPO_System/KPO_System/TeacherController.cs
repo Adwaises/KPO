@@ -399,7 +399,7 @@ namespace KPO_System
                 }
 
                 //деление
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for (int i = 0; i < dtFinal.Rows.Count; i++)
                 {
                     if (mnozh[i] != 0)
                     {
@@ -590,7 +590,7 @@ namespace KPO_System
                 }
 
                 //деление
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for (int i = 0; i < dtFinal.Rows.Count; i++)
                 {
                     if (mnozh[i] != 0)
                     {
