@@ -404,7 +404,8 @@ namespace KPO_System
                     if (mnozh[i] != 0)
                     {
                         string keyDisc = listDisc[j];
-                        string keyFIO = dt.Rows[i][0].ToString() + dt.Rows[i][1].ToString() + dt.Rows[i][2].ToString();
+                        string keyFIO = dtFinal.Rows[i][0].ToString() + dtFinal.Rows[i][1].ToString() + dtFinal.Rows[i][2].ToString();
+
                         dtFinal.Rows[dictFIO[keyFIO]][dictDisc[keyDisc] + 3] =
                             Convert.ToDouble(dtFinal.Rows[dictFIO[keyFIO]][dictDisc[keyDisc] + 3]) / mnozh[i];
                     }
@@ -595,7 +596,8 @@ namespace KPO_System
                     if (mnozh[i] != 0)
                     {
                         string keyDisc = listDisc[j];
-                        string keyFIO = dt.Rows[i][0].ToString() + dt.Rows[i][1].ToString();
+                        //string keyFIO = dt.Rows[i][0].ToString() + dt.Rows[i][1].ToString();
+                        string keyFIO = dtFinal.Rows[i][0].ToString();
                         dtFinal.Rows[dictCl[keyFIO]][dictDisc[keyDisc] + 1] =
                             Convert.ToDouble(dtFinal.Rows[dictCl[keyFIO]][dictDisc[keyDisc] + 1]) / mnozh[i];
                     }
