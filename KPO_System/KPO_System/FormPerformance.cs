@@ -165,7 +165,7 @@ namespace KPO_System
                     e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
                     e.Graphics.ResetTransform();
                     e.Handled = true;
-                    dataGridView1.ColumnHeadersHeight = 70;
+                    dataGridView1.ColumnHeadersHeight = 80;
                     //dataGridView1.RowHeadersWidth = 20;
                     if (e.ColumnIndex > 0)
                     {
