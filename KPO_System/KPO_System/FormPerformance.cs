@@ -191,7 +191,7 @@ namespace KPO_System
                     if (e.ColumnIndex > 2)
                     {
                         DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
-                        column.Width = 30;
+                        column.Width = 35;
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
 
@@ -212,7 +212,7 @@ namespace KPO_System
                     {
                         DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                        column.Width = 30;
+                        column.Width = 35;
                     }
 
                 }

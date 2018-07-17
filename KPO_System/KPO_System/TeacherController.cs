@@ -406,8 +406,16 @@ namespace KPO_System
                         string keyDisc = listDisc[j];
                         string keyFIO = dtFinal.Rows[i][0].ToString() + dtFinal.Rows[i][1].ToString() + dtFinal.Rows[i][2].ToString();
 
-                        dtFinal.Rows[dictFIO[keyFIO]][dictDisc[keyDisc] + 3] =
-                            Convert.ToDouble(dtFinal.Rows[dictFIO[keyFIO]][dictDisc[keyDisc] + 3]) / mnozh[i];
+                        string s = String.Format("{0:f2}", Convert.ToDouble(dtFinal.Rows[dictFIO[keyFIO]][dictDisc[keyDisc] + 3]) / mnozh[i]);
+                        if(s[2] == '0' && s[3] == '0')
+                        {
+                            dtFinal.Rows[dictFIO[keyFIO]][dictDisc[keyDisc] + 3] = Convert.ToInt32(Convert.ToDouble(s));
+                        } else
+                        {
+                            dtFinal.Rows[dictFIO[keyFIO]][dictDisc[keyDisc] + 3] = s;
+                        }
+
+                        
                     }
 
                 }
@@ -598,8 +606,19 @@ namespace KPO_System
                         string keyDisc = listDisc[j];
                         //string keyFIO = dt.Rows[i][0].ToString() + dt.Rows[i][1].ToString();
                         string keyFIO = dtFinal.Rows[i][0].ToString();
-                        dtFinal.Rows[dictCl[keyFIO]][dictDisc[keyDisc] + 1] =
-                            Convert.ToDouble(dtFinal.Rows[dictCl[keyFIO]][dictDisc[keyDisc] + 1]) / mnozh[i];
+
+                        string s = String.Format("{0:f2}", Convert.ToDouble(dtFinal.Rows[dictCl[keyFIO]][dictDisc[keyDisc] + 1]) / mnozh[i]);
+                        if (s[2] == '0' && s[3] == '0')
+                        {
+                            dtFinal.Rows[dictCl[keyFIO]][dictDisc[keyDisc] + 1] = Convert.ToInt32(Convert.ToDouble(s));
+                        }
+                        else
+                        {
+                            dtFinal.Rows[dictCl[keyFIO]][dictDisc[keyDisc] + 1] = s;
+                        }
+
+                        //dtFinal.Rows[dictCl[keyFIO]][dictDisc[keyDisc] + 1] = String.Format("{0:f2}", 
+                        //Convert.ToDouble(dtFinal.Rows[dictCl[keyFIO]][dictDisc[keyDisc] + 1]) / mnozh[i]);
                     }
 
                 }
