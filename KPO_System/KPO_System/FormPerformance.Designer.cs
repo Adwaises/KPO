@@ -179,6 +179,7 @@
             this.cbFamil.Name = "cbFamil";
             this.cbFamil.Size = new System.Drawing.Size(176, 24);
             this.cbFamil.TabIndex = 9;
+            this.cbFamil.SelectedIndexChanged += new System.EventHandler(this.cbFamil_SelectedIndexChanged);
             // 
             // label3
             // 

@@ -59,6 +59,7 @@ namespace KPO_System
         private void button1_Click(object sender, EventArgs e)
         {
             butGet();
+            isNotChange = true;
         }
 
         private void noSort()
@@ -112,13 +113,14 @@ namespace KPO_System
                 отчётыДляВсегоКлассаToolStripMenuItem.Visible = false;
             }
 
-
+            isNotChange = false;
 
 
         }
 
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isNotChange = false;
             CBLetter.Items.Clear();
             try {
 
@@ -138,10 +140,13 @@ namespace KPO_System
             {
                 MessageBox.Show("Не удалось получить список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
 
         private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isNotChange = false;
             cbFamil.Items.Clear();
             try { 
             List<string> list = new List<string>();
@@ -231,6 +236,8 @@ namespace KPO_System
 
         }
 
+        bool isNotChange = false;
+
         Reports report = new Reports();
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -240,7 +247,13 @@ namespace KPO_System
                 return;
             }
 
-            butGet();
+           // butGet();
+
+            if(!isNotChange)
+            {
+                MessageBox.Show("Получите актуальные данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             try
             {
@@ -311,6 +324,11 @@ namespace KPO_System
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cbFamil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            isNotChange = false;
         }
     }
 }

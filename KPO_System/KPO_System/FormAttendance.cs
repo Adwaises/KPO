@@ -58,6 +58,7 @@ namespace KPO_System
         private void button1_Click(object sender, EventArgs e)
         {
             butGet();
+            isNotChange = true;
         }
 
         private void noSort()
@@ -92,6 +93,7 @@ namespace KPO_System
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isNotChange = false;
             if (comboBox2.Text == "Дисциплина")
             {
                 try
@@ -152,6 +154,7 @@ namespace KPO_System
 
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isNotChange = false;
             CBLetter.Items.Clear();
             try
             {
@@ -173,9 +176,16 @@ namespace KPO_System
         }
 
         Reports report = new Reports();
+        bool isNotChange = false;
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            butGet();
+            if(!isNotChange)
+            {
+                MessageBox.Show("Получите актуальные данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            //butGet();
             //report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
             //MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             try
@@ -200,12 +210,12 @@ namespace KPO_System
 
         private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            isNotChange = false;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            isNotChange = false;
         }
     }
 }
