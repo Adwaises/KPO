@@ -30,7 +30,7 @@ namespace KPO_System
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void butGet()
         {
             try
             {
@@ -53,6 +53,11 @@ namespace KPO_System
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            butGet();
         }
 
         private void noSort()
@@ -170,6 +175,7 @@ namespace KPO_System
         Reports report = new Reports();
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            butGet();
             //report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
             //MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             try
@@ -178,12 +184,12 @@ namespace KPO_System
                 if (comboBox2.Text == "Дисциплина")
                 {
                     report.createJournal(dt, comboBox1.Text, dateTimePicker1.Value, dateTimePicker2.Value, "Дисциплина");
-                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     report.createJournal(dt, CBClass.Text + CBLetter.Text, dateTimePicker1.Value, dateTimePicker2.Value, "Класс");
-                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

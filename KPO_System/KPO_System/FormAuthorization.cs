@@ -157,7 +157,7 @@ namespace KPO_System
                 }
             }catch(Exception ex)
             {
-                MessageBox.Show("Произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Произошла ошибка\r\n" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

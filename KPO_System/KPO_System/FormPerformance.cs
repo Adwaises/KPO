@@ -22,7 +22,7 @@ namespace KPO_System
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void butGet()
         {
             try
             {
@@ -49,10 +49,16 @@ namespace KPO_System
                 }
                 dataGridView1.DataSource = dt;
                 noSort();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            butGet();
         }
 
         private void noSort()
@@ -228,10 +234,13 @@ namespace KPO_System
         Reports report = new Reports();
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.DataSource == null)
+            if (dataGridView1.DataSource == null)
             {
                 MessageBox.Show("Получите данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            butGet();
 
             try
             {
@@ -244,7 +253,7 @@ namespace KPO_System
                     //dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
 
                     report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
-                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (comboBox1.Text == "Класс")
                 {
@@ -255,7 +264,7 @@ namespace KPO_System
                     //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
 
                     report.createReportClass(dt, CBClass.Text + CBLetter.Text, dTPickerFrom.Value, dTPickerBy.Value);
-                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (comboBox1.Text == "Школа")
                 {
@@ -263,7 +272,7 @@ namespace KPO_System
                     //dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
 
                     report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
-                    MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             } catch (Exception ex)
             {
@@ -277,6 +286,7 @@ namespace KPO_System
             if (dataGridView1.DataSource == null)
             {
                 MessageBox.Show("Получите данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             try
@@ -295,7 +305,7 @@ namespace KPO_System
                 dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
                        dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
 
-                MessageBox.Show("Отчёты сформированы", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Отчёты сформированы и помещены в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             } catch(Exception ex)
             {

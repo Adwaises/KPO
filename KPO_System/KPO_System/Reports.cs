@@ -124,12 +124,14 @@ namespace KPO_System
 
         }
 
+        string md = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\";
+
         public void createReportClass(DataTable dt, string nClass, DateTime dateBy, DateTime dateTo)
         {
             var doc = new Document();
             doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             string nameFile = "Отчёт_об_успеваемости_" + nClass.ToString() + "_с_" + dateBy.ToString("dd.MM.yyy") + "_по_" + dateTo.ToString("dd.MM.yyy") + ".pdf";
-            PdfWriter.GetInstance(doc, new FileStream(@nameFile, FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream(md + @nameFile, FileMode.Create));
             doc.Open();
 
             BaseFont baseFont = BaseFont.CreateFont(@"ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
@@ -357,7 +359,7 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
             var doc = new Document();
             doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             string nameFile = "Отчёт_об_успеваемости_Школа_с_" + dateBy.ToString("dd.MM.yyy") + "_по_" + dateTo.ToString("dd.MM.yyy") + ".pdf";
-            PdfWriter.GetInstance(doc, new FileStream(@nameFile, FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream(md + @nameFile, FileMode.Create));
             doc.Open();
 
 
@@ -567,7 +569,7 @@ doc.Close();
             }
 
 
-            PdfWriter.GetInstance(doc, new FileStream(@nameFile, FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream(md + @nameFile, FileMode.Create));
             doc.Open();
             BaseFont baseFont = BaseFont.CreateFont(@"ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
