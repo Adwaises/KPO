@@ -113,6 +113,13 @@ namespace KPO_System
             Program.date = dateTimePicker1.Value;
             if (TBMark.Text.Contains('(') || TBMark.Text.Contains(')') || TBMark.Text.Contains(';') || TBMark.Text.Length > 1)
             {
+                MessageBox.Show("SQL", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(dt.Rows[dataGridView1.CurrentRow.Index][3].ToString() == "" && TBMark.Text == "")
+            {
+                MessageBox.Show("Введите оценку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
