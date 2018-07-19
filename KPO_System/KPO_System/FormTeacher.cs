@@ -51,13 +51,13 @@ namespace KPO_System
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormPerformance fp = new FormPerformance(mdb);
+            FormPerformance fp = new FormPerformance(tc);
             fp.ShowDialog();
         }
 
         private void посещаемостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAttendance fa = new FormAttendance(mdb);
+            FormAttendance fa = new FormAttendance(tc);
             fa.ShowDialog();
         }
 

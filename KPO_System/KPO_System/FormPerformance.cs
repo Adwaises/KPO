@@ -15,9 +15,9 @@ namespace KPO_System
     {
         TeacherController tc;
         DataTable dt = new DataTable();
-        public FormPerformance(ManagerBD mbd)
+        public FormPerformance(TeacherController _tc)
         {
-            tc = new TeacherController(mbd);
+            tc = _tc;
             InitializeComponent();
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;

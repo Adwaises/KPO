@@ -14,9 +14,9 @@ namespace KPO_System
     {
         TeacherController tc;
         DataTable dt = new DataTable();
-        public FormAttendance(ManagerBD mbd)
+        public FormAttendance(TeacherController _tc)
         {
-            tc = new TeacherController(mbd);
+            tc = _tc;
             InitializeComponent();
             // dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
         }
