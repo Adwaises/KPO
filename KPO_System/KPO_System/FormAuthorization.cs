@@ -18,7 +18,7 @@ namespace KPO_System
         string sql = "select id_teacher from teacher where famil = ";
 
         bool authorization = false;
-        ManagerBD mBD = new ManagerBD();
+        public ManagerBD mBD = new ManagerBD();
         FileManager fm = new FileManager();
         public FormAuthorization()
         {
@@ -137,7 +137,7 @@ namespace KPO_System
                 //открытие формы
                 if (login.ToLower() == "admin" && TBPassword.Text.ToLower() == "admin")
                 {
-                    FormAdmin fa = new FormAdmin();
+                    FormAdmin fa = new FormAdmin(mBD);
                     fa.ShowDialog();
                 }
                 else if (login == "")
@@ -148,7 +148,7 @@ namespace KPO_System
                 {
                     authorization = false;
                     Program.login = login;
-                    FormTeacher ft = new FormTeacher();
+                    FormTeacher ft = new FormTeacher(mBD);
                     ft.ShowDialog();
                 }
                 else

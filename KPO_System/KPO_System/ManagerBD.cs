@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KPO_System
 {
-    class ManagerBD
+    public class ManagerBD
     {
         
         NpgsqlDataAdapter da;

@@ -12,10 +12,11 @@ namespace KPO_System
 {
     public partial class FormAttendance : Form
     {
-        TeacherController tc = new TeacherController();
+        TeacherController tc;
         DataTable dt = new DataTable();
-        public FormAttendance()
+        public FormAttendance(ManagerBD mbd)
         {
+            tc = new TeacherController(mbd);
             InitializeComponent();
             // dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
         }

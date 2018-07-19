@@ -9,7 +9,7 @@ namespace KPO_System
 {
     public class TeacherController
     {
-        ManagerBD mdb = new ManagerBD();
+        ManagerBD mdb;
         FileManager fm = new FileManager();
         DataTable dt = new DataTable();
         DataTable dtMarks = new DataTable();
@@ -22,8 +22,9 @@ namespace KPO_System
         int idDiscipline = 0;
 
 
-        public TeacherController()
+        public TeacherController(ManagerBD mbd)
         {
+            mdb = mbd;
             //using (FileStream fstream = File.OpenRead(@"ConnectParam.txt"))
             //{
             //    // преобразуем строку в байты
@@ -33,9 +34,9 @@ namespace KPO_System
             //    // декодируем байты в строку
             //    string textFromFile = System.Text.Encoding.Default.GetString(array);
             //    //Console.WriteLine("Текст из файла: {0}", textFromFile);
-            
-            string[] param = fm.getParam();
-            mdb.init(param[0], param[1], param[2], param[3], param[4]);
+
+       //string[] param = fm.getParam();
+       //mdb.init(param[0], param[1], param[2], param[3], param[4]);
 
             //if (mdb.conn == null)
             //{

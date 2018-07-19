@@ -14,9 +14,10 @@ namespace KPO_System
     {
 
         DataTable dt = new DataTable();
-        AdminController ac = new AdminController();
-        public FormAdmin()
+        AdminController ac;
+        public FormAdmin(ManagerBD mbd)
         {
+            ac = new AdminController(mbd);
             InitializeComponent();
         }
 

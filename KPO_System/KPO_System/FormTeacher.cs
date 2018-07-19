@@ -15,13 +15,16 @@ namespace KPO_System
     {
         DataTable dt = new DataTable();
         FileManager fm = new FileManager();
-        TeacherController tc = new TeacherController();
+        TeacherController tc;
+        ManagerBD mdb;
        
         //string login = "";
 
         
-        public FormTeacher()
+        public FormTeacher(ManagerBD mbd)
         {
+            mdb = mbd;
+            tc = new TeacherController(mbd);
             InitializeComponent();
             //login = _login;
             Text += " - "+ Program.login;
@@ -30,6 +33,7 @@ namespace KPO_System
 
         private void FormTeacher_Load(object sender, EventArgs e)
         {
+            
             //запрос к бд и заполнение ComboBox
 
             List<string> list = tc.getListNumClass();
@@ -47,13 +51,13 @@ namespace KPO_System
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormPerformance fp = new FormPerformance();
+            FormPerformance fp = new FormPerformance(mdb);
             fp.ShowDialog();
         }
 
         private void посещаемостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAttendance fa = new FormAttendance();
+            FormAttendance fa = new FormAttendance(mdb);
             fa.ShowDialog();
         }
 

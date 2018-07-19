@@ -9,19 +9,19 @@ namespace KPO_System
 {
     class AdminController
     {
-        ManagerBD mdb = new ManagerBD();
+        ManagerBD mdb;
         FileManager fm = new FileManager();
         DataTable dt = new DataTable();
 
         List<int> listID = new List<int>();
 
 
-        public AdminController()
+        public AdminController(ManagerBD mbd)
         {
+            mdb = mbd;
 
-
-            string[] param = fm.getParam();
-            mdb.init(param[0], param[1], param[2], param[3], param[4]);
+            //string[] param = fm.getParam();
+            //mdb.init(param[0], param[1], param[2], param[3], param[4]);
 
         }
 

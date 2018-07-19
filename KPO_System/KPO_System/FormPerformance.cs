@@ -13,10 +13,11 @@ namespace KPO_System
     //успеваемость
     public partial class FormPerformance : Form
     {
-        TeacherController tc = new TeacherController();
+        TeacherController tc;
         DataTable dt = new DataTable();
-        public FormPerformance()
+        public FormPerformance(ManagerBD mbd)
         {
+            tc = new TeacherController(mbd);
             InitializeComponent();
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
