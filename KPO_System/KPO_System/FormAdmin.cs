@@ -33,6 +33,8 @@ namespace KPO_System
             }
         }
 
+        bool isNotChange = false;
+
         private void FormAdmin_Load(object sender, EventArgs e)
         {
             //TeacherController tc = new TeacherController();
@@ -81,6 +83,7 @@ namespace KPO_System
                 updateCBClass();
 
             }
+            isNotChange = false;
         }
 
 
@@ -107,6 +110,8 @@ namespace KPO_System
 
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isNotChange = false;
+
             CBLetter.Items.Clear();
 
             try { 
@@ -130,6 +135,7 @@ namespace KPO_System
         private void ButGet_Click(object sender, EventArgs e)
         {
               getList();
+            isNotChange = true;
 
         }
 
@@ -178,7 +184,20 @@ namespace KPO_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getList();
+            if (dataGridView1.DataSource == null)
+            {
+                MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+                //getList();
+            }
+
+            if (!isNotChange)
+            {
+                MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //getList();
 
             //FormAdd fa = new FormAdd(comboBoxVariants.Text);
             //fa.buttonOK.Click += (senderSlave, eSlave) =>
@@ -361,8 +380,12 @@ namespace KPO_System
                 return;
                 //getList();
             }
-            
 
+            if (!isNotChange)
+            {
+                MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             //dataGridView1.CurrentRow.Index
 
@@ -392,6 +415,12 @@ namespace KPO_System
                 MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
                 //getList();
+            }
+
+            if (!isNotChange)
+            {
+                MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
 
@@ -569,5 +598,9 @@ namespace KPO_System
             return true;
         }
 
+        private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            isNotChange = false;
+        }
     }
 }

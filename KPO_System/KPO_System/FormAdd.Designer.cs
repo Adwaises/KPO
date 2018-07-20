@@ -54,9 +54,9 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(95, 11);
+            this.textBox1.Location = new System.Drawing.Point(119, 11);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(99, 22);
+            this.textBox1.Size = new System.Drawing.Size(137, 22);
             this.textBox1.TabIndex = 1;
             // 
             // label2
@@ -75,9 +75,9 @@
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(95, 37);
+            this.textBox2.Location = new System.Drawing.Point(119, 37);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(99, 22);
+            this.textBox2.Size = new System.Drawing.Size(137, 22);
             this.textBox2.TabIndex = 1;
             // 
             // label3
@@ -96,9 +96,9 @@
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(95, 64);
+            this.textBox3.Location = new System.Drawing.Point(119, 64);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(99, 22);
+            this.textBox3.Size = new System.Drawing.Size(137, 22);
             this.textBox3.TabIndex = 1;
             // 
             // buttonOK
@@ -106,7 +106,7 @@
             this.buttonOK.AllowDrop = true;
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonOK.Location = new System.Drawing.Point(111, 99);
+            this.buttonOK.Location = new System.Drawing.Point(173, 99);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(83, 35);
             this.buttonOK.TabIndex = 2;
@@ -121,16 +121,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(95, 37);
+            this.comboBox1.Location = new System.Drawing.Point(119, 37);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(99, 24);
+            this.comboBox1.Size = new System.Drawing.Size(137, 24);
             this.comboBox1.TabIndex = 3;
             // 
             // FormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(204, 146);
+            this.ClientSize = new System.Drawing.Size(266, 146);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.textBox3);

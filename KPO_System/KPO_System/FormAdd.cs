@@ -108,7 +108,7 @@ namespace KPO_System
                 label3.Text = "Руководитель";
 
                 textBox3.Visible = false;
-                comboBox1.Location = new Point( 95,80);
+                comboBox1.Location = new Point( 119,64);
             }
             else if (variant == "Класс")
             {

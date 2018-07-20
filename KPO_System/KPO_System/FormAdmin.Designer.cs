@@ -171,6 +171,7 @@
             this.CBLetter.Name = "CBLetter";
             this.CBLetter.Size = new System.Drawing.Size(82, 24);
             this.CBLetter.TabIndex = 8;
+            this.CBLetter.SelectedIndexChanged += new System.EventHandler(this.CBLetter_SelectedIndexChanged);
             // 
             // CBClass
             // 
