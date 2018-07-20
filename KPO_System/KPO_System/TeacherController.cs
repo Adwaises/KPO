@@ -186,7 +186,7 @@ namespace KPO_System
             DataTable dtFinal = new DataTable();
 
             dtFinal.Columns.Add("Дисциплина");
-            string sql = "select discipline.name from discipline;";
+            string sql = "select discipline.name from discipline order by discipline.name;";
             dt = mdb.selectionQuery(sql);
 
             Dictionary<string, int> dictDisc = new Dictionary<string, int>();
@@ -345,7 +345,7 @@ namespace KPO_System
 
             sql = String.Format( "select famil, name, otchestvo from pupil "+
                     "join class on class.id_class = pupil.id_class "+
-                    "where class.number = '{0}' and class.letter = '{1}' ;", number, letter);
+                    "where class.number = '{0}' and class.letter = '{1}' order by famil, name, otchestvo;", number, letter);
             dt = mdb.selectionQuery(sql);
 
             int fio = 0;
@@ -545,7 +545,7 @@ namespace KPO_System
 
             //заполняем классы
 
-            sql = String.Format("select number, letter from class;");
+            sql = String.Format("select number, letter from class order by number,letter;");
             dt = mdb.selectionQuery(sql);
 
             int cl = 0;
@@ -766,7 +766,7 @@ namespace KPO_System
         {
             DataTable dtFinal = new DataTable();
             dtFinal.Columns.Add("Класс");
-            string sql = "select number, letter from class;";
+            string sql = "select number, letter from class order by number,letter;";
 
             dt = mdb.selectionQuery(sql);
 
@@ -835,7 +835,7 @@ namespace KPO_System
         {
             DataTable dtFinal = new DataTable();
             dtFinal.Columns.Add("Дисциплина");
-            string sql = "select discipline.name from discipline;";
+            string sql = "select discipline.name from discipline order by discipline.name;";
             dt = mdb.selectionQuery(sql);
 
             Dictionary<string, int> dictDisc = new Dictionary<string, int>();

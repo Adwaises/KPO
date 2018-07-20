@@ -17,10 +17,11 @@ namespace KPO_System
         FileManager fm = new FileManager();
         TeacherController tc;
         ManagerBD mdb;
-       
+        bool isNotChange = false;
+
         //string login = "";
 
-        
+
         public FormTeacher(ManagerBD mbd)
         {
             mdb = mbd;
@@ -44,9 +45,6 @@ namespace KPO_System
             
 
             CBClass.SelectedIndex = 0;
-
-            
-
         }
 
         private void успеваемостьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,6 +61,7 @@ namespace KPO_System
 
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
         {
+            isNotChange = false;
             CBLetter.Items.Clear();
 
             List<string> list = new List<string>();
@@ -83,8 +82,6 @@ namespace KPO_System
             CBLetter.SelectedIndex = 0;
         }
 
-
-
         private void ButGet_Click(object sender, EventArgs e)
         {
             try
@@ -99,11 +96,13 @@ namespace KPO_System
             dataGridView1.DataSource = dt;
             TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
             noSort();
+            isNotChange = true;
         }
+
 
         private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            isNotChange = false;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -114,6 +113,18 @@ namespace KPO_System
 
         private void ButPost_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.DataSource == null)
+            {
+                MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (!isNotChange)
+            {
+                MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Program.date = dateTimePicker1.Value;
             if (TBMark.Text.Contains('(') || TBMark.Text.Contains(')') || TBMark.Text.Contains(';') || TBMark.Text.Length > 1)
             {
@@ -150,26 +161,25 @@ namespace KPO_System
             TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
 
         }
-
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             Program.date = dateTimePicker1.Value;
 
+            isNotChange = false;
+            //try
+            //{
+            //    dt = tc.getList(CBClass.Text, CBLetter.Text);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
-            try
-            {
-                dt = tc.getList(CBClass.Text, CBLetter.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-          
 
-            dataGridView1.DataSource = dt;
-            TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
-            noSort();
+            //dataGridView1.DataSource = dt;
+            //TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
+            //noSort();
         }
 
 

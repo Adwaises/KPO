@@ -15,6 +15,9 @@ namespace KPO_System
     {
         TeacherController tc;
         DataTable dt = new DataTable();
+        bool isNotChange = false;
+        Reports report = new Reports();
+
         public FormPerformance(TeacherController _tc)
         {
             tc = _tc;
@@ -237,9 +240,6 @@ namespace KPO_System
 
         }
 
-        bool isNotChange = false;
-
-        Reports report = new Reports();
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dataGridView1.DataSource == null)

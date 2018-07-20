@@ -14,6 +14,9 @@ namespace KPO_System
     {
         TeacherController tc;
         DataTable dt = new DataTable();
+        Reports report = new Reports();
+        bool isNotChange = false;
+
         public FormAttendance(TeacherController _tc)
         {
             tc = _tc;
@@ -176,8 +179,6 @@ namespace KPO_System
             }
         }
 
-        Reports report = new Reports();
-        bool isNotChange = false;
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(!isNotChange)

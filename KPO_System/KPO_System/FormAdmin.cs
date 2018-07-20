@@ -12,9 +12,10 @@ namespace KPO_System
 {
     public partial class FormAdmin : Form
     {
-
         DataTable dt = new DataTable();
         AdminController ac;
+        bool isNotChange = false;
+
         public FormAdmin(ManagerBD mbd)
         {
             ac = new AdminController(mbd);
@@ -33,7 +34,6 @@ namespace KPO_System
             }
         }
 
-        bool isNotChange = false;
 
         private void FormAdmin_Load(object sender, EventArgs e)
         {

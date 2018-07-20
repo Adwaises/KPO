@@ -80,7 +80,7 @@ namespace KPO_System
 
             string sql = String.Format(" select id_pupil, famil as Фамилия, pupil.name as Имя, otchestvo as Отчество from pupil " +
 "join class on class.id_class = pupil.id_class " +
-"where number = {0} and letter = '{1}'; ", Convert.ToInt32(nClass), letter);
+"where number = {0} and letter = '{1}' order by famil,name,otchestvo; ", Convert.ToInt32(nClass), letter);
 
 
 
@@ -103,7 +103,7 @@ namespace KPO_System
             listID.Clear();
             //получили список класса
 
-            string sql = String.Format(" select id_teacher, famil as Фамилия, name as Имя, otchestvo as Отчество from teacher;");
+            string sql = String.Format(" select id_teacher, famil as Фамилия, name as Имя, otchestvo as Отчество from teacher order by famil,name,otchestvo;");
 
 
 
@@ -126,7 +126,7 @@ namespace KPO_System
             //получили список класса
 
             string sql = String.Format(" select id_class, number as Номер, letter as Буква, famil as Руководитель from class "+
-                            "join teacher on class.id_teacher = teacher.id_teacher ;");
+                            "join teacher on class.id_teacher = teacher.id_teacher order by number,letter;");
 
 
 
@@ -150,7 +150,7 @@ namespace KPO_System
             //получили список класса
 
             string sql = String.Format(" select id_discipline, discipline.name as Дисциплина, famil as Руководитель from discipline "+
-                                            "join teacher on discipline.id_teacher = teacher.id_teacher ; ");
+                                            "join teacher on discipline.id_teacher = teacher.id_teacher order by discipline.name; ");
 
 
 
