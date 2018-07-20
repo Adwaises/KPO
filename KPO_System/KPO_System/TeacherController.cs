@@ -723,7 +723,7 @@ namespace KPO_System
         {
             List<string> list = new List<string>();
             string sql = String.Format("select id_pupil,famil, pupil.name from pupil join class on " +
-                "class.id_class = pupil.id_class where number = {0} and letter = '{1}';", nClass, letter);
+                "class.id_class = pupil.id_class where number = {0} and letter = '{1}' order by famil, pupil.name;", nClass, letter);
             dt = mdb.selectionQuery(sql);
 
 
@@ -750,7 +750,7 @@ namespace KPO_System
         public List<string> getListDisc()
         {
             List<string> list = new List<string>();
-            string sql =" select name from discipline;";
+            string sql = " select name from discipline order by name;";
 
             dt = mdb.selectionQuery(sql);
 
