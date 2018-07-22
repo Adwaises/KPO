@@ -22,7 +22,6 @@ namespace KPO_System
 
             //string[] param = fm.getParam();
             //mdb.init(param[0], param[1], param[2], param[3], param[4]);
-
         }
 
         public int getIdDisc(int index)
@@ -35,8 +34,6 @@ namespace KPO_System
             return listID[index];
         }
 
-
-        //кажется это 2 разные функции, разобраться
         public List<string> getNumbersClass()
         {
             //запрос номеров классов
@@ -105,8 +102,6 @@ namespace KPO_System
 
             string sql = String.Format(" select id_teacher, famil as Фамилия, name as Имя, otchestvo as Отчество from teacher order by famil,name,otchestvo;");
 
-
-
             dt = mdb.selectionQuery(sql);
 
             //сохраняем порядок id и удаляем столбец
@@ -127,7 +122,6 @@ namespace KPO_System
 
             string sql = String.Format(" select id_class, number as Номер, letter as Буква, famil as Руководитель from class "+
                             "join teacher on class.id_teacher = teacher.id_teacher order by number,letter;");
-
 
 
             dt = mdb.selectionQuery(sql);
@@ -152,8 +146,6 @@ namespace KPO_System
             string sql = String.Format(" select id_discipline, discipline.name as Дисциплина, famil as Руководитель from discipline "+
                                             "join teacher on discipline.id_teacher = teacher.id_teacher order by discipline.name; ");
 
-
-
             dt = mdb.selectionQuery(sql);
 
             //сохраняем порядок id и удаляем столбец
@@ -161,7 +153,6 @@ namespace KPO_System
             {
                 listID.Add(Convert.ToInt32(dt.Rows[i][0]));
             }
-
             dt.Columns.RemoveAt(0);
 
             return dt;
@@ -192,7 +183,6 @@ namespace KPO_System
 
         public void insertPupil(string f, string n, string o,string number, string letter)
         {
-            //mBD.controlquery("INSERT INTO Pupil(id_class, Famil, name, otchestvo) VALUES(1, 'Андреев', 'Вячеслав', 'Сергеевич');");
             mdb.controlQuery(String.Format("INSERT INTO Pupil(id_class, Famil, name, otchestvo) VALUES({0}, '{1}', '{2}', '{3}');", getIdClass(number,letter), f, n, o));
         }
 

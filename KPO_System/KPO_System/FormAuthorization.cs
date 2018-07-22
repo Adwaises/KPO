@@ -25,9 +25,6 @@ namespace KPO_System
             InitializeComponent();
             TBlogin.Text = "Паршина";
             TBPassword.Text = "1";
-
-
-
         }
 
         private void ButLogIn_Click(object sender, EventArgs e)
@@ -130,12 +127,10 @@ namespace KPO_System
                     }
                 }
 
-                //dt = mBD.selectionquery("select * from teacher;");
-                //dataGridView1.DataSource = dt;
+                string pAdm = fm.getPasswd();
 
-                //TBPassword.Text = result;
                 //открытие формы
-                if (login.ToLower() == "admin" && TBPassword.Text.ToLower() == "admin")
+                if (login.ToLower() == "admin" && TBPassword.Text.ToLower() == pAdm)
                 {
                     FormAdmin fa = new FormAdmin(mBD);
                     fa.ShowDialog();

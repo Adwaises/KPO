@@ -150,10 +150,7 @@ namespace KPO_System
                 CBLetter.Visible = true;
                 label5.Visible = false;
                 comboBox1.Visible = false;
-
             }
-
-
         }
 
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
@@ -188,8 +185,7 @@ namespace KPO_System
             }
             
             //butGet();
-            //report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
-            //MessageBox.Show("Отчёт сформирован", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             try
             {
 

@@ -33,22 +33,15 @@ namespace KPO_System
                 dataGridView1.DataSource = null;
                 if (comboBox1.Text == "Ученик")
                 {
-                    //dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
-                    //    dTPickerFrom.Value,dTPickerBy.Value);
-
                     dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
                 }
                 else if (comboBox1.Text == "Класс")
                 {
-                    //dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
-                    //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-
                     dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
                         dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
                 }
                 else if (comboBox1.Text == "Школа")
                 {
-                    //dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
                     dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
                 }
                 dataGridView1.DataSource = dt;
@@ -145,7 +138,6 @@ namespace KPO_System
                 MessageBox.Show("Не удалось получить список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
         }
 
         private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
@@ -229,15 +221,8 @@ namespace KPO_System
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                         column.Width = 35;
                     }
-
                 }
-                //else if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex == 0)
-                //{
-                //    DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
-                //    column.Width = 50;
-                //}
             }
-
         }
 
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
@@ -261,30 +246,16 @@ namespace KPO_System
 
                 if (comboBox1.Text == "Ученик")
                 {
-                    //dataGridView1.DataSource = tc.getPerformancePupil(cbFamil.SelectedIndex,
-                    //    dTPickerFrom.Value, dTPickerBy.Value);
-
-                    //dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
-
                     report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
                     MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (comboBox1.Text == "Класс")
                 {
-                    //dataGridView1.DataSource = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
-                    //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-
-                    //dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
-                    //    dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-
                     report.createReportClass(dt, CBClass.Text + CBLetter.Text, dTPickerFrom.Value, dTPickerBy.Value);
                     MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (comboBox1.Text == "Школа")
                 {
-                    //dataGridView1.DataSource = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-                    //dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
-
                     report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
                     MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -305,10 +276,6 @@ namespace KPO_System
 
             try
             {
-                //report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
-
-                //dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
-
                 List<string> list = tc.getFamilPupils(CBClass.Text, CBLetter.Text);
                 for (int i = 0; i < list.Count; i++)
                 {

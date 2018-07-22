@@ -35,7 +35,6 @@ namespace KPO_System
                     {
                         cmd.Connection = conn;
                         cmd.CommandText = сq;
-                        //cmd.Parameters.AddWithValue("p", "Hello world");
                         cmd.ExecuteNonQuery();
                     }
                     t.Commit();

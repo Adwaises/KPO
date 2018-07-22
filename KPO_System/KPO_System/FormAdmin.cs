@@ -37,8 +37,6 @@ namespace KPO_System
 
         private void FormAdmin_Load(object sender, EventArgs e)
         {
-            //TeacherController tc = new TeacherController();
-
             comboBoxVariants.Items.Add("Учителя");
             comboBoxVariants.Items.Add("Предметы");
             comboBoxVariants.Items.Add("Классы");
@@ -188,7 +186,6 @@ namespace KPO_System
             {
                 MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-                //getList();
             }
 
             if (!isNotChange)
@@ -197,17 +194,6 @@ namespace KPO_System
                 return;
             }
 
-            //getList();
-
-            //FormAdd fa = new FormAdd(comboBoxVariants.Text);
-            //fa.buttonOK.Click += (senderSlave, eSlave) =>
-            //{
-            //};
-            //fa.ShowDialog();
-
-
-            //this.label1.Text = fa.textBox1.Text;
-
             if (comboBoxVariants.Text == "Учителя")
             {
                 FormAdd fa = new FormAdd(comboBoxVariants.Text);
@@ -215,7 +201,6 @@ namespace KPO_System
                 {
 
                     //валидация
-
                     if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
                     {
                         MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -223,8 +208,6 @@ namespace KPO_System
                     }
 
                     //insert
-
-                    //mBD.controlquery("INSERT INTO Teacher(famil, name, otchestvo) VALUES('Паршина', 'Людмила', 'Николаевна');");
                     try
                     {
                         ac.insertTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text);
@@ -241,17 +224,11 @@ namespace KPO_System
             }
             else if (comboBoxVariants.Text == "Предметы")
             {
-                //mBD.controlquery("INSERT INTO Discipline(name, id_teacher) VALUES('Русский язык', 1);");
 
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers());
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     //валидация
-
-                    //if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';') || fa.textBox1.Text.Length > 20 || fa.textBox1.Text.Length ==0)
-                    //{
-                    //    return;
-                    //}
 
                     if (!validate(fa.textBox1.Text))
                     {
@@ -261,7 +238,6 @@ namespace KPO_System
 
                     try
                     {
-                        //ac.insertTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text);
                         ac.insertDiscipline(fa.textBox1.Text, fa.comboBox1.SelectedIndex);
                         MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -278,23 +254,11 @@ namespace KPO_System
             }
             else if (comboBoxVariants.Text == "Классы")
             {
-                //mBD.controlquery("INSERT INTO Class(number, letter, id_teacher) VALUES(5, 'А', 1);");
 
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers());
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     //валидация
-
-                    //if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';') || fa.textBox1.Text.Length > 20 || fa.textBox1.Text.Length ==0)
-                    //{
-                    //    return;
-                    //}
-
-                    //if (fa.textBox2.Text.Contains('(') || fa.textBox2.Text.Contains(')') || fa.textBox2.Text.Contains(';') || fa.textBox2.Text.Length > 20 || fa.textBox2.Text.Length == 0)
-                    //{
-                    //    return;
-                    //}
-
                     if (!validate(fa.textBox1.Text, fa.textBox2.Text))
                     {
                         MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -303,7 +267,6 @@ namespace KPO_System
 
                     try
                     {
-                        //ac.insertTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text);
                         ac.insertClass(fa.textBox1.Text, fa.textBox2.Text, fa.comboBox1.SelectedIndex);
                         MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -320,30 +283,11 @@ namespace KPO_System
             }
             else if (comboBoxVariants.Text == "Класс")
             {
-                //mBD.controlquery("INSERT INTO Pupil(id_class, Famil, name, otchestvo) VALUES(1, 'Андреев', 'Вячеслав', 'Сергеевич');");
-
+                
                 FormAdd fa = new FormAdd(comboBoxVariants.Text);
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     //валидация
-
-                    //if (fa.textBox1.Text.Contains('(') || fa.textBox1.Text.Contains(')') || fa.textBox1.Text.Contains(';')
-                    //|| fa.textBox1.Text.Length > 20 || fa.textBox1.Text.Length == 0)
-                    //{
-                    //    return;
-                    //}
-
-                    //if (fa.textBox2.Text.Contains('(') || fa.textBox2.Text.Contains(')') || fa.textBox2.Text.Contains(';')
-                    //|| fa.textBox2.Text.Length > 20 || fa.textBox2.Text.Length == 0)
-                    //{
-                    //    return;
-                    //}
-
-                    //if (fa.textBox3.Text.Contains('(') || fa.textBox3.Text.Contains(')') || fa.textBox3.Text.Contains(';')
-                    //|| fa.textBox3.Text.Length > 20 || fa.textBox3.Text.Length == 0)
-                    //{
-                    //    return;
-                    //}
 
                     if(!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
                     {
@@ -378,7 +322,6 @@ namespace KPO_System
             {
                 MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-                //getList();
             }
 
             if (!isNotChange)
@@ -386,9 +329,7 @@ namespace KPO_System
                 MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            //dataGridView1.CurrentRow.Index
-
+            
             DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить запись? \r\nБудут удалены все связные записи, \r\nв том числе оценки!"
                 , "Удалить", MessageBoxButtons.OKCancel);
             if (dialogResult == DialogResult.OK)
@@ -414,7 +355,6 @@ namespace KPO_System
             {
                 MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-                //getList();
             }
 
             if (!isNotChange)
@@ -469,7 +409,6 @@ namespace KPO_System
 
                     try
                     {
-                        //ac.insertDiscipline(fa.textBox1.Text, fa.comboBox1.SelectedIndex);
                         ac.updateDiscipline(fa.textBox1.Text, fa.comboBox1.SelectedIndex,idDisc);
                         MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -505,7 +444,6 @@ namespace KPO_System
 
                     try
                     {
-                        //ac.updateDiscipline(fa.textBox1.Text, fa.comboBox1.SelectedIndex, idClass);
                         ac.updateClass(fa.textBox1.Text, fa.textBox2.Text, fa.comboBox1.SelectedIndex, idClass);
                         MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

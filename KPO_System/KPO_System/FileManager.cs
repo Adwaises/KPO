@@ -9,12 +9,9 @@ namespace KPO_System
 {
     public class FileManager
     {
-
         public void createFileParam()
         {
-            using (FileStream fstream = File.Create(@"ConnectParam.txt"))
-            {
-            }
+            using (FileStream fstream = File.Create(@"ConnectParam.txt")) { }
 
         }
 
@@ -59,7 +56,6 @@ namespace KPO_System
                 fstream.Read(array, 0, array.Length);
                 // декодируем байты в строку
                 string textFromFile = System.Text.Encoding.Default.GetString(array);
-                //Console.WriteLine("Текст из файла: {0}", textFromFile);
                 textFromFile = textFromFile.Replace("\r", string.Empty);
                 param = textFromFile.Split('\n');
                // mdb.init(param[0], param[1], param[2], param[3], param[4]);
@@ -82,8 +78,32 @@ namespace KPO_System
                 byte[] array = System.Text.Encoding.Default.GetBytes(text);
                 // запись массива байтов в файл
                 fstream.Write(array, 0, array.Length);
-                //Console.WriteLine("Текст записан в файл");
             }
         }
+
+        public string getPasswd()
+        {
+            if (File.Exists(@"Admin.txt"))
+            {
+                using (FileStream fstream = File.OpenRead(@"Admin.txt"))
+                {
+                    byte[] array = new byte[fstream.Length];
+                    fstream.Read(array, 0, array.Length);
+                    string textFromFile = System.Text.Encoding.Default.GetString(array);
+                    return textFromFile;
+                }
+                } else
+            {
+                using (FileStream fstream = File.Create(@"Admin.txt")) { }
+                using (FileStream fstream = new FileStream(@"Admin.txt", FileMode.OpenOrCreate))
+                {
+                    byte[] array = System.Text.Encoding.Default.GetBytes("admin");
+                    fstream.Write(array, 0, array.Length);
+                    return "admin";
+                }
+            }
+
+        }
+
     }
 }
