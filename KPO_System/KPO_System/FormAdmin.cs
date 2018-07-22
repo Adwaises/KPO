@@ -580,10 +580,15 @@ namespace KPO_System
                     MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                FileManager fm = new FileManager();
-                fm.setPasswd(fa.textBox1.Text);
-                MessageBox.Show("Пароль изменён", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                try
+                {
+                    FileManager fm = new FileManager();
+                    fm.setPasswd(fa.textBox1.Text);
+                    MessageBox.Show("Пароль изменён", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             };
             fa.ShowDialog();
         }
