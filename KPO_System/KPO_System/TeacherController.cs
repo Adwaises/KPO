@@ -18,7 +18,7 @@ namespace KPO_System
         //DateTime date = DateTime.Now;
 
 
-        string discipline = "";
+        public string discipline = "";
         int idDiscipline = 0;
 
 
@@ -98,8 +98,23 @@ namespace KPO_System
 
             dt = mdb.selectionQuery(sql);
 
-            discipline = dt.Rows[0][0].ToString();
-            idDiscipline = Convert.ToInt32(dt.Rows[0][1]);
+            if (dt.Rows.Count > 1)
+            {
+                FormAdd fa = new FormAdd("Логин", dt);
+                fa.buttonOK.Click += (senderSlave, eSlave) =>
+                {
+                    discipline = dt.Rows[fa.comboBox1.SelectedIndex][0].ToString();
+                    idDiscipline = Convert.ToInt32(dt.Rows[fa.comboBox1.SelectedIndex][1]);
+
+                };
+                fa.ShowDialog();
+            }
+            else
+            {
+
+                discipline = dt.Rows[0][0].ToString();
+                idDiscipline = Convert.ToInt32(dt.Rows[0][1]);
+            }
         }
 
         public List<string> getListLetters(string nClass)

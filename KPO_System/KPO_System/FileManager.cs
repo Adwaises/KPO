@@ -39,7 +39,7 @@ namespace KPO_System
                 fstream.Read(array, 0, array.Length);
                 // декодируем байты в строку
                 textFromFile = System.Text.Encoding.Default.GetString(array);
-                
+
             }
             string[] param = textFromFile.Split('\n');
             return param.Length;
@@ -58,7 +58,7 @@ namespace KPO_System
                 string textFromFile = System.Text.Encoding.Default.GetString(array);
                 textFromFile = textFromFile.Replace("\r", string.Empty);
                 param = textFromFile.Split('\n');
-               // mdb.init(param[0], param[1], param[2], param[3], param[4]);
+                // mdb.init(param[0], param[1], param[2], param[3], param[4]);
 
                 //if (mdb.conn == null)
                 //{
@@ -81,6 +81,18 @@ namespace KPO_System
             }
         }
 
+        //admin
+
+        private void createFileAdm()
+        {
+            using (FileStream fstream = File.Create(@"Admin.txt")) { }
+            using (FileStream fstream = new FileStream(@"Admin.txt", FileMode.OpenOrCreate))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes("admin");
+                fstream.Write(array, 0, array.Length);
+
+            }
+        }
         public string getPasswd()
         {
             if (File.Exists(@"Admin.txt"))
@@ -92,17 +104,22 @@ namespace KPO_System
                     string textFromFile = System.Text.Encoding.Default.GetString(array);
                     return textFromFile;
                 }
-                } else
+            }
+            else
             {
-                using (FileStream fstream = File.Create(@"Admin.txt")) { }
-                using (FileStream fstream = new FileStream(@"Admin.txt", FileMode.OpenOrCreate))
-                {
-                    byte[] array = System.Text.Encoding.Default.GetBytes("admin");
-                    fstream.Write(array, 0, array.Length);
-                    return "admin";
-                }
+                createFileAdm();
+                return "admin";
             }
 
+        }
+        public void setPasswd(string paswd)
+        {
+            using (FileStream fstream = new FileStream(@"Admin.txt", FileMode.OpenOrCreate))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes(paswd);
+                fstream.Write(array, 0, array.Length);
+
+            }
         }
 
     }

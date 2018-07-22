@@ -32,6 +32,19 @@ namespace KPO_System
         }
 
 
+        public FormAdd(string inVariant, string famil, string name, string otchestvo,string password)
+        {
+            InitializeComponent();
+            variant = inVariant;
+
+            textBox1.Text = famil;
+            textBox2.Text = name;
+            textBox3.Text = otchestvo;
+            textBox4.Text = password;
+
+            buttonOK.Text = "Обновить";
+        }
+
         public FormAdd(string inVariant, string famil, string name, string otchestvo)
         {
             InitializeComponent();
@@ -86,6 +99,7 @@ namespace KPO_System
                 label1.Text = "Фамилия";
                 label2.Text = "Имя";
                 label3.Text = "Отчество";
+                label4.Text = "Пароль";
                 comboBox1.Visible = false;
             }
             else if (variant == "Предметы")
@@ -97,8 +111,9 @@ namespace KPO_System
                 textBox2.Visible = false;
                 label3.Visible = false;
                 textBox3.Visible = false;
+                label4.Visible = false;
+                textBox4.Visible = false;
 
-                
             }
             else if (variant == "Классы")
             {
@@ -109,6 +124,9 @@ namespace KPO_System
 
                 textBox3.Visible = false;
                 comboBox1.Location = new Point( 119,64);
+
+                label4.Visible = false;
+                textBox4.Visible = false;
             }
             else if (variant == "Класс")
             {
@@ -117,6 +135,46 @@ namespace KPO_System
                 label2.Text = "Имя";
                 label3.Text = "Отчество";
                 comboBox1.Visible = false;
+
+                label4.Visible = false;
+                textBox4.Visible = false;
+            } else if(variant == "Пароль")
+            {
+                label1.Text = "Пароль";
+
+                comboBox1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                textBox2.Visible = false;
+                textBox3.Visible = false;
+                buttonOK.Text = "Изменить";
+
+                label4.Visible = false;
+                textBox4.Visible = false;
+
+                MinimumSize = new Size(300,130);
+                Size = new Size(300, 130);
+            }
+            else if (variant == "Логин")
+            {
+                label1.Text = "Дисциплина";
+
+                
+                label2.Visible = false;
+                label3.Visible = false;
+                textBox1.Visible = false;
+                textBox2.Visible = false;
+                textBox3.Visible = false;
+                label4.Visible = false;
+                textBox4.Visible = false;
+                buttonOK.Text = "Выбрать";
+
+                label4.Visible = false;
+                textBox4.Visible = false;
+
+                comboBox1.Location = new Point(119, 11);
+                MinimumSize = new Size(300, 130);
+                Size = new Size(300, 130);
             }
 
 

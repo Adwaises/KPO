@@ -36,6 +36,8 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -106,7 +108,7 @@
             this.buttonOK.AllowDrop = true;
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonOK.Location = new System.Drawing.Point(173, 99);
+            this.buttonOK.Location = new System.Drawing.Point(173, 124);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(83, 35);
             this.buttonOK.TabIndex = 2;
@@ -126,20 +128,43 @@
             this.comboBox1.Size = new System.Drawing.Size(137, 24);
             this.comboBox1.TabIndex = 3;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(13, 95);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 16);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "label1";
+            // 
+            // textBox4
+            // 
+            this.textBox4.AllowDrop = true;
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox4.Location = new System.Drawing.Point(119, 92);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(137, 22);
+            this.textBox4.TabIndex = 1;
+            // 
             // FormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 146);
+            this.ClientSize = new System.Drawing.Size(266, 171);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonOK);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(300, 185);
+            this.MaximumSize = new System.Drawing.Size(300, 210);
             this.MinimumSize = new System.Drawing.Size(220, 185);
             this.Name = "FormAdd";
             this.Text = "FormAdd";
@@ -159,5 +184,7 @@
         public System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.Button buttonOK;
         public System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox textBox4;
     }
 }

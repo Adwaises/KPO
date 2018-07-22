@@ -43,6 +43,7 @@ namespace KPO_System
             }
             catch (Exception ex)
             {
+                conn.Close();
                 throw ex;
             }
         }

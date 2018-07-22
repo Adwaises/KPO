@@ -45,6 +45,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.парольToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.задатьПарольToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -53,7 +55,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.менюToolStripMenuItem});
+            this.менюToolStripMenuItem,
+            this.парольToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(559, 25);
@@ -236,6 +239,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Выберите класс";
             // 
+            // парольToolStripMenuItem
+            // 
+            this.парольToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.задатьПарольToolStripMenuItem});
+            this.парольToolStripMenuItem.Name = "парольToolStripMenuItem";
+            this.парольToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
+            this.парольToolStripMenuItem.Text = "Пароль";
+            // 
+            // задатьПарольToolStripMenuItem
+            // 
+            this.задатьПарольToolStripMenuItem.Name = "задатьПарольToolStripMenuItem";
+            this.задатьПарольToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.задатьПарольToolStripMenuItem.Text = "Задать пароль";
+            this.задатьПарольToolStripMenuItem.Click += new System.EventHandler(this.задатьПарольToolStripMenuItem_Click);
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,5 +298,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ToolStripMenuItem парольToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem задатьПарольToolStripMenuItem;
     }
 }

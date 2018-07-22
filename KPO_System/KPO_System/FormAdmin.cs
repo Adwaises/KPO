@@ -201,7 +201,7 @@ namespace KPO_System
                 {
 
                     //валидация
-                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
+                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text))
                     {
                         MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -210,7 +210,7 @@ namespace KPO_System
                     //insert
                     try
                     {
-                        ac.insertTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text);
+                        ac.insertTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text);
                         MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
@@ -244,7 +244,7 @@ namespace KPO_System
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("У одного учителя может быть только одна дисциплина\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 };
@@ -367,18 +367,18 @@ namespace KPO_System
             if (comboBoxVariants.Text == "Учителя")
             {
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView1.CurrentRow.Index][0].ToString(),
-                    dt.Rows[dataGridView1.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][2].ToString());
+                    dt.Rows[dataGridView1.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][2].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][3].ToString());
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
 
-                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
+                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text))
                     {
                         MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
                     try { 
-                    ac.updateTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text,dataGridView1.CurrentRow.Index);
+                    ac.updateTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text, dataGridView1.CurrentRow.Index);
                     MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -486,6 +486,33 @@ namespace KPO_System
 
         }
 
+        private bool validate(string s1, string s2, string s3, string s4)
+        {
+            if (s1.Contains('(') || s1.Contains(')') || s1.Contains(';')
+|| s1.Length > 20 || s1.Length == 0)
+            {
+                return false;
+            }
+
+            if (s2.Contains('(') || s2.Contains(')') || s2.Contains(';')
+            || s2.Length > 20 || s2.Length == 0)
+            {
+                return false;
+            }
+
+            if (s3.Contains('(') || s3.Contains(')') || s3.Contains(';')
+            || s3.Length > 20 || s3.Length == 0)
+            {
+                return false;
+            }
+
+            if (s4.Contains('(') || s4.Contains(')') || s4.Contains(';')
+|| s4.Length > 20 || s4.Length == 0)
+            {
+                return false;
+            }
+            return true;
+        }
         private bool validate(string s1,string s2, string s3)
         {
             if (s1.Contains('(') || s1.Contains(')') || s1.Contains(';')
@@ -539,6 +566,25 @@ namespace KPO_System
         private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
         {
             isNotChange = false;
+        }
+
+        private void задатьПарольToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAdd fa = new FormAdd("Пароль");
+            fa.buttonOK.Click += (senderSlave, eSlave) =>
+            {
+
+                //валидация
+                if (validate(fa.textBox1.Text))
+                {
+                    MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                FileManager fm = new FileManager();
+                fm.setPasswd(fa.textBox1.Text);
+
+            };
+            fa.ShowDialog();
         }
     }
 }

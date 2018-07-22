@@ -28,7 +28,7 @@ namespace KPO_System
             tc = new TeacherController(mbd);
             InitializeComponent();
             //login = _login;
-            Text += " - "+ Program.login;
+            Text += " - "+ Program.login+ " - " + tc.discipline;
             //mBD.init();
         }
 

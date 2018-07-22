@@ -100,7 +100,7 @@ namespace KPO_System
             listID.Clear();
             //получили список класса
 
-            string sql = String.Format(" select id_teacher, famil as Фамилия, name as Имя, otchestvo as Отчество from teacher order by famil,name,otchestvo;");
+            string sql = String.Format(" select id_teacher, famil as Фамилия, name as Имя, otchestvo as Отчество, password as Пароль from teacher order by famil,name,otchestvo;");
 
             dt = mdb.selectionQuery(sql);
 
@@ -159,9 +159,9 @@ namespace KPO_System
         }
 
         //добавление
-        public void insertTeacher(string f, string n, string o)
+        public void insertTeacher(string f, string n, string o, string p)
         {
-            mdb.controlQuery( String.Format( "INSERT INTO Teacher(famil, name, otchestvo) VALUES('{0}', '{1}', '{2}');",f,n,o));
+            mdb.controlQuery( String.Format("INSERT INTO Teacher(famil, name, otchestvo,password) VALUES('{0}', '{1}', '{2}', '{3}');", f,n,o,p));
         }
 
         public void insertDiscipline(string name, int index)
@@ -209,11 +209,12 @@ namespace KPO_System
             }
         }
 
-        public void updateTeacher(string famil, string name, string otchestvo, int index)
+        public void updateTeacher(string famil, string name, string otchestvo,string pswd, int index)
         {
             mdb.controlQuery(String.Format("update Teacher set famil = '{0}' where id_teacher = {1}",famil, listID[index]));
             mdb.controlQuery(String.Format("update Teacher set name = '{0}' where id_teacher = {1}", name, listID[index]));
             mdb.controlQuery(String.Format("update Teacher set otchestvo = '{0}' where id_teacher = {1}", otchestvo, listID[index]));
+            mdb.controlQuery(String.Format("update Teacher set password = '{0}' where id_teacher = {1}", pswd, listID[index]));
         }
 
         public void updatePupil(string famil, string name, string otchestvo, int index)

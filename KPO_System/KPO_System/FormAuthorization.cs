@@ -15,7 +15,7 @@ namespace KPO_System
     public partial class FormAuthorization : Form
     {
         string login = "";
-        string sql = "select id_teacher from teacher where famil = ";
+        string sql = "select password from teacher where famil = ";
 
         bool authorization = false;
         public ManagerBD mBD = new ManagerBD();
@@ -24,7 +24,7 @@ namespace KPO_System
         {
             InitializeComponent();
             TBlogin.Text = "Паршина";
-            TBPassword.Text = "1";
+            TBPassword.Text = "Паршина1";
         }
 
         private void ButLogIn_Click(object sender, EventArgs e)
