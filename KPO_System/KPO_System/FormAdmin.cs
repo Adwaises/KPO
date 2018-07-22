@@ -582,6 +582,7 @@ namespace KPO_System
                 }
                 FileManager fm = new FileManager();
                 fm.setPasswd(fa.textBox1.Text);
+                MessageBox.Show("Пароль изменён", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             };
             fa.ShowDialog();
