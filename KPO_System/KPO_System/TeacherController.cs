@@ -98,6 +98,11 @@ namespace KPO_System
 
             dt = mdb.selectionQuery(sql);
 
+            if(dt.Rows.Count == 0)
+            {
+                throw new Exception("Дисциплина не найдена");
+            }
+
             if (dt.Rows.Count > 1)
             {
                 FormAdd fa = new FormAdd("Логин", dt);
@@ -219,8 +224,28 @@ namespace KPO_System
                 dtFinal.Rows[dictDisc[keyDisc]][dictDate[keyDate] + 1] = dt.Rows[i][2];
             }
 
+            dtFinal.Columns.Add("Среднее");
+            for(int i = 0; i < dtFinal.Rows.Count; i++)
+            {
+                double sum = 0;
+                int n = 0;
+                for(int j = 1; j < dtFinal.Columns.Count; j++)
+                {
+                    if(dtFinal.Rows[i][j].ToString() != "" && dtFinal.Rows[i][j].ToString() != "Н")
+                    {
+                        sum += Convert.ToDouble(dtFinal.Rows[i][j]);
+                        n++;
+                    }
+                }
 
-            dt = mdb.selectionQuery(sql);
+                if(n > 0)
+                {
+                    dtFinal.Rows[i][dtFinal.Columns.Count - 1] = String.Format("{0:f2}",sum / n);
+                }
+            }
+
+
+            //dt = mdb.selectionQuery(sql);
 
             return dtFinal;
         }

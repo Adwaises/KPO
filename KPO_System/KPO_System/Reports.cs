@@ -230,10 +230,10 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
 
                 while ((index2 - index) >= 15)
                 {
-                    doc.Add(createTable(dt, baseFont, index, index + 15));
+                    doc.Add(createTable(dt, baseFont, index, index + 15,""));
                     index += 15;
                 }
-                doc.Add(createTable(dt, baseFont, index, index + (index2 - index)));
+                doc.Add(createTable(dt, baseFont, index, index + (index2 - index),""));
             }
 
             doc.Close();
@@ -293,7 +293,7 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
 
         //посещаемость
 
-        private PdfPTable createTable(DataTable dt, BaseFont baseFont, int index1, int index2)
+        private PdfPTable createTable(DataTable dt, BaseFont baseFont, int index1, int index2, string flag)
         {
             PdfPTable table = new PdfPTable((index2 - index1) + 1);
             table.SpacingBefore = 10;
@@ -328,7 +328,8 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 if (i > 0)
                 {
                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_LEFT;
+                    //cell.VerticalAlignment = Element.ALIGN_LEFT;
+                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 }
 
                 cell.MinimumHeight = 20;
@@ -365,6 +366,11 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
 
                     table.AddCell(cell);
                 }
+            }
+
+            if(index2 == dt.Columns.Count && flag == "Ученик")
+            {
+                colWidth[colWidth.Length-1] = 1.5f;
             }
 
             table.SetWidths(colWidth);
@@ -427,19 +433,35 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
 
             if ((dateTo - dateBy).Days <= 20)
             {
-                doc.Add(createTable(dt, baseFont, 0, dt.Columns.Count));
+                if (flag == "Ученик")
+                {
+                    doc.Add(createTable(dt, baseFont, 0, dt.Columns.Count, flag));
+                } else
+                {
+                    doc.Add(createTable(dt, baseFont, 0, dt.Columns.Count, ""));
+                }
             }
             else
             {
                 int index = 1;
                 while ((dateTo - dateBy).Days > 20)
                 {
-                    doc.Add(createTable(dt, baseFont, index, index + 20));
+                    doc.Add(createTable(dt, baseFont, index, index + 20,""));
                     index += 20;
                     dateBy = dateBy.AddDays(20);
                 }
                 //конец
-                doc.Add(createTable(dt, baseFont, index, index + 1 + (dateTo - dateBy).Days));
+
+               // doc.Add(createTable(dt, baseFont, index, index + 1 + (dateTo - dateBy).Days));
+
+                if(flag == "Ученик")
+                {
+                    doc.Add(createTable(dt, baseFont, index, index + 2 + (dateTo - dateBy).Days,flag));
+                } else
+                {
+                    doc.Add(createTable(dt, baseFont, index, index + 1 + (dateTo - dateBy).Days,""));
+                }
+
             }
             doc.Close();
         }

@@ -211,7 +211,7 @@ namespace KPO_System
                     try
                     {
                         ac.insertTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text);
-                        MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Добавлено\r\nНе забудьте довабить дисциплину", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                     catch (Exception ex)
