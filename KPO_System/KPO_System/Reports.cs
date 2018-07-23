@@ -335,8 +335,11 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
                 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
+
+                //среднее и все заголовки
                 cell.HorizontalAlignment = Element.ALIGN_LEFT;
                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingLeft = -2;
 
                 //if (i > 0)
                 //{
