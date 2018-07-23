@@ -316,9 +316,10 @@ namespace KPO_System
             }
         }
 
-        private void cbFamil_SelectedIndexChanged(object sender, EventArgs e)
+        private void SelectedIndexChanged(object sender, EventArgs e)
         {
             isNotChange = false;
         }
+
     }
 }

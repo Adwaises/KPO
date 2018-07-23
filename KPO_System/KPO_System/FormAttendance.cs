@@ -206,14 +206,11 @@ namespace KPO_System
             }
         }
 
-        private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
+        private void SelectedIndexChanged(object sender, EventArgs e)
         {
             isNotChange = false;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            isNotChange = false;
-        }
+
     }
 }
