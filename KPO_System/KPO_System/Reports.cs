@@ -94,7 +94,7 @@ namespace KPO_System
 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
             cell.Colspan = 1;
 
-            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             table.AddCell(cell);
 
@@ -102,7 +102,7 @@ namespace KPO_System
 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
             cell.Colspan = 1;
 
-            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             table.AddCell(cell);
 
@@ -110,7 +110,7 @@ namespace KPO_System
 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
             cell.Colspan = 1;
 
-            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             table.AddCell(cell);
 
@@ -149,7 +149,7 @@ namespace KPO_System
                 cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][0]), new iTextSharp.text.Font(baseFont, 12,
  iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
-                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.HorizontalAlignment = Element.ALIGN_LEFT;
                 cell.VerticalAlignment = Element.ALIGN_CENTER;
                 cell.MinimumHeight = 20;
                 table.AddCell(cell);
@@ -157,7 +157,7 @@ namespace KPO_System
                 cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][1]), new iTextSharp.text.Font(baseFont, 12,
 iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
-                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.HorizontalAlignment = Element.ALIGN_LEFT;
                 cell.VerticalAlignment = Element.ALIGN_CENTER;
                 cell.MinimumHeight = 20;
                 table.AddCell(cell);
@@ -165,7 +165,7 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][2]), new iTextSharp.text.Font(baseFont, 12,
 iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
-                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.HorizontalAlignment = Element.ALIGN_LEFT;
                 cell.VerticalAlignment = Element.ALIGN_CENTER;
                 cell.MinimumHeight = 20;
                 table.AddCell(cell);
