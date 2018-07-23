@@ -178,31 +178,29 @@ namespace KPO_System
                     {
                         DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                        column.Width = 20;
+                        column.Width = 22;
                     }
 
-                    //if(e.ColumnIndex == dataGridView1.Columns.Count-1)
-                    //{
-                    //    DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
-                    //    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    //    column.Width = 40;
-                    //}
-
+                }
+                else if(e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count - 1 && e.ColumnIndex == 0)
+                {
+                    DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 }
 
-                else if (e.RowIndex == -1 && e.ColumnIndex > dataGridView1.Columns.Count-2 && e.ColumnIndex > 0)
+                else if (e.RowIndex == -1 && e.ColumnIndex > dataGridView1.Columns.Count - 2 && e.ColumnIndex > 0)
                 {
                     e.PaintBackground(e.CellBounds, true);
                     e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
                     e.Graphics.RotateTransform(270);
-                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 10);
                     e.Graphics.ResetTransform();
                     e.Handled = true;
                     dataGridView1.ColumnHeadersHeight = 80;
 
                     DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
-                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                        column.Width = 40;
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    column.Width = 40;
                 }
 
             } else if(comboBox1.Text == "Класс")
@@ -212,7 +210,7 @@ namespace KPO_System
                     e.PaintBackground(e.CellBounds, true);
                     e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
                     e.Graphics.RotateTransform(270);
-                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 7);
                     e.Graphics.ResetTransform();
                     e.Handled = true;
                     dataGridView1.ColumnHeadersHeight = 100;
@@ -224,6 +222,13 @@ namespace KPO_System
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
 
+                }  else if(e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex <= 2)
+                {
+                    DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                    DataGridViewCellStyle style =        dataGridView1.ColumnHeadersDefaultCellStyle;
+                    style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 }
             } else
             {
@@ -232,7 +237,7 @@ namespace KPO_System
                     e.PaintBackground(e.CellBounds, true);
                     e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
                     e.Graphics.RotateTransform(270);
-                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 7);
                     e.Graphics.ResetTransform();
                     e.Handled = true;
                     dataGridView1.ColumnHeadersHeight = 100;
@@ -243,6 +248,10 @@ namespace KPO_System
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                         column.Width = 35;
                     }
+                } else if(e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex == 0)
+                {
+                    DataGridViewCellStyle style = dataGridView1.ColumnHeadersDefaultCellStyle;
+                    style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
             }
         }

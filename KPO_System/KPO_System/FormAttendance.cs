@@ -75,23 +75,53 @@ namespace KPO_System
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 0)
+            if(comboBox2.Text == "Дисциплина")
             {
-                e.PaintBackground(e.CellBounds, true);
-                e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
-                e.Graphics.RotateTransform(270);
-                e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
-                e.Graphics.ResetTransform();
-                e.Handled = true;
-                dataGridView1.ColumnHeadersHeight = 80;
-            }
+                if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 0)
+                {
+                    e.PaintBackground(e.CellBounds, true);
+                    e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
+                    e.Graphics.RotateTransform(270);
+                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                    e.Graphics.ResetTransform();
+                    e.Handled = true;
+                    dataGridView1.ColumnHeadersHeight = 80;
 
-            if (e.ColumnIndex > 0)
-            {
-                DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
-                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                column.Width = 20;
+
+                }
+
+                if (e.ColumnIndex > 0)
+                {
+                    DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                    //column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    column.Width = 20;
+                }
             }
+            else
+            {
+                if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 0)
+                {
+                    e.PaintBackground(e.CellBounds, true);
+                    e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
+                    e.Graphics.RotateTransform(270);
+                    e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                    e.Graphics.ResetTransform();
+                    e.Handled = true;
+                    dataGridView1.ColumnHeadersHeight = 80;
+                }
+
+                if (e.ColumnIndex > 0)
+                {
+                    DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                    //column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    column.Width = 20;
+                } else
+                {
+                    DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                }
+            }
+           
 
         }
 

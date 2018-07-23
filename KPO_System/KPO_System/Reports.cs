@@ -128,11 +128,13 @@ namespace KPO_System
                 cell.HorizontalAlignment = Element.ALIGN_CENTER;
                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
-                cell.MinimumHeight = 20;
+                cell.MinimumHeight = 80;
                 if (i > 2)
                 {
 
                     cell.Rotation = 90;
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                     //cell.MinimumHeight = 100;
                     colWidth[i - index1 + 3] = 1.5f;
                 }
@@ -253,13 +255,23 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
             //colWidth[1] = 5f;
             //colWidth[2] = 5f;
 
-            for (int i = 0; i < dt.Columns.Count; i++)
+            PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[0].ToString(), new iTextSharp.text.Font(baseFont,
+               12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+            cell.Colspan = 1;
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.MinimumHeight = 20;
+            //cell.Rotation = 90;
+            colWidth[0] = 1f;
+            table.AddCell(cell);
+
+            for (int i = 1; i < dt.Columns.Count; i++)
             {
 
-                PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
+                cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
                 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
-                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.HorizontalAlignment = Element.ALIGN_LEFT;
                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cell.MinimumHeight = 20;
                 cell.Rotation = 90;
@@ -275,7 +287,7 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 for (int j = 0; j < dt.Columns.Count; j++)
                 {
 
-                    PdfPCell cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
+                    cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
                      iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                     cell.Colspan = 1;
                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -307,6 +319,7 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
             cell.Colspan = 1;
 
+            //дисц
             cell.HorizontalAlignment = Element.ALIGN_CENTER;
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
@@ -322,15 +335,15 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
                 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
-                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.HorizontalAlignment = Element.ALIGN_LEFT;
                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
-                if (i > 0)
-                {
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    //cell.VerticalAlignment = Element.ALIGN_LEFT;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                }
+                //if (i > 0)
+                //{
+                //    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                //    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                //    //cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                //}
 
                 cell.MinimumHeight = 20;
                 if (i > 0)
@@ -349,8 +362,18 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][0]), new iTextSharp.text.Font(baseFont, 12,
  iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
-                cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                cell.VerticalAlignment = Element.ALIGN_CENTER;
+                if(flag == "Ученик" || flag == "Класс")
+                {
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.VerticalAlignment = Element.ALIGN_CENTER;
+                }
+                else
+                {
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    cell.VerticalAlignment = Element.ALIGN_CENTER;
+                }
+
+
                 cell.MinimumHeight = 20;
                 table.AddCell(cell);
 
@@ -416,7 +439,7 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
             doc.Add(a);
 
             p = new Phrase(flag + ": " + cl,
-                new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
+                new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black)));
 
             a = new Paragraph(p);
             a.Alignment = Element.ALIGN_LEFT;
@@ -431,12 +454,13 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
             a.SpacingAfter = 5;
             doc.Add(a);
 
-            if ((dateTo - dateBy).Days <= 20)
+            if ((dateTo - dateBy).Days <= 19)
             {
-                if (flag == "Ученик")
+                if (flag == "Ученик" || flag == "Класс")
                 {
                     doc.Add(createTable(dt, baseFont, 0, dt.Columns.Count, flag));
-                } else
+                } 
+                else
                 {
                     doc.Add(createTable(dt, baseFont, 0, dt.Columns.Count, ""));
                 }
@@ -446,7 +470,7 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 int index = 1;
                 while ((dateTo - dateBy).Days > 20)
                 {
-                    doc.Add(createTable(dt, baseFont, index, index + 20,""));
+                    doc.Add(createTable(dt, baseFont, index, index + 20,flag));
                     index += 20;
                     dateBy = dateBy.AddDays(20);
                 }
@@ -457,7 +481,12 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 if(flag == "Ученик")
                 {
                     doc.Add(createTable(dt, baseFont, index, index + 2 + (dateTo - dateBy).Days,flag));
-                } else
+                }
+                else if(flag == "Класс")
+                {
+                    doc.Add(createTable(dt, baseFont, index, index + 1 + (dateTo - dateBy).Days, flag));
+                }
+                else
                 {
                     doc.Add(createTable(dt, baseFont, index, index + 1 + (dateTo - dateBy).Days,""));
                 }
