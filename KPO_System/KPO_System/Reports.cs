@@ -90,29 +90,41 @@ namespace KPO_System
             //table.WidthPercentage = 100;
             float[] colWidth = new float[(index2 - index1) + 3];
 
-            PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[0].ToString(), new iTextSharp.text.Font(baseFont,
-12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
-            cell.Colspan = 1;
+//            PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[0].ToString(), new iTextSharp.text.Font(baseFont,
+//12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+//            cell.Colspan = 1;
 
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            table.AddCell(cell);
+//            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+//            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+//            table.AddCell(cell);
 
-            cell = new PdfPCell(new Phrase(dt.Columns[1].ToString(), new iTextSharp.text.Font(baseFont,
-12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
-            cell.Colspan = 1;
+//            cell = new PdfPCell(new Phrase(dt.Columns[1].ToString(), new iTextSharp.text.Font(baseFont,
+//12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+//            cell.Colspan = 1;
 
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            table.AddCell(cell);
+//            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+//            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+//            table.AddCell(cell);
 
-            cell = new PdfPCell(new Phrase(dt.Columns[2].ToString(), new iTextSharp.text.Font(baseFont,
-12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
-            cell.Colspan = 1;
+//            cell = new PdfPCell(new Phrase(dt.Columns[2].ToString(), new iTextSharp.text.Font(baseFont,
+//12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+//            cell.Colspan = 1;
 
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            table.AddCell(cell);
+//            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+//            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+//            table.AddCell(cell);
+
+            for(int i=0;i<3;i++)
+            {
+                PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
+    12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+                cell.Colspan = 1;
+
+                cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+              
+                table.AddCell(cell);
+            }
 
             colWidth[0] = 5f;
             colWidth[1] = 5f;
@@ -122,12 +134,12 @@ namespace KPO_System
             for (int i = index1; i < index2; i++)
             {
 
-                cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
+                PdfPCell cell = new PdfPCell(new Phrase(dt.Columns[i].ToString(), new iTextSharp.text.Font(baseFont,
                 12, iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
                 cell.HorizontalAlignment = Element.ALIGN_CENTER;
                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-
+                cell.PaddingLeft = -2;
                 cell.MinimumHeight = 80;
                 if (i > 2)
                 {
@@ -146,34 +158,45 @@ namespace KPO_System
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][0]), new iTextSharp.text.Font(baseFont, 12,
- iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
-                cell.Colspan = 1;
-                cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                cell.VerticalAlignment = Element.ALIGN_CENTER;
-                cell.MinimumHeight = 20;
-                table.AddCell(cell);
+//                PdfPCell cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][0]), new iTextSharp.text.Font(baseFont, 12,
+// iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+//                cell.Colspan = 1;
+//                cell.HorizontalAlignment = Element.ALIGN_LEFT;
+//                cell.VerticalAlignment = Element.ALIGN_CENTER;
+//                cell.MinimumHeight = 20;
+//                table.AddCell(cell);
 
-                cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][1]), new iTextSharp.text.Font(baseFont, 12,
-iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
-                cell.Colspan = 1;
-                cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                cell.VerticalAlignment = Element.ALIGN_CENTER;
-                cell.MinimumHeight = 20;
-                table.AddCell(cell);
+//                cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][1]), new iTextSharp.text.Font(baseFont, 12,
+//iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+//                cell.Colspan = 1;
+//                cell.HorizontalAlignment = Element.ALIGN_LEFT;
+//                cell.VerticalAlignment = Element.ALIGN_CENTER;
+//                cell.MinimumHeight = 20;
+//                table.AddCell(cell);
 
-                cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][2]), new iTextSharp.text.Font(baseFont, 12,
+//                cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][2]), new iTextSharp.text.Font(baseFont, 12,
+//iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
+//                cell.Colspan = 1;
+//                cell.HorizontalAlignment = Element.ALIGN_LEFT;
+//                cell.VerticalAlignment = Element.ALIGN_CENTER;
+//                cell.MinimumHeight = 20;
+//                table.AddCell(cell);
+
+                for(int j=0; j<3;j++)
+                {
+                    PdfPCell cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
 iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
-                cell.Colspan = 1;
-                cell.HorizontalAlignment = Element.ALIGN_LEFT;
-                cell.VerticalAlignment = Element.ALIGN_CENTER;
-                cell.MinimumHeight = 20;
-                table.AddCell(cell);
+                    cell.Colspan = 1;
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.VerticalAlignment = Element.ALIGN_CENTER;
+                    cell.MinimumHeight = 20;
+                    table.AddCell(cell);
+                }
 
                 for (int j = index1; j < index2; j++)
                 {
 
-                    cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
+                    PdfPCell cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][j]), new iTextSharp.text.Font(baseFont, 12,
                      iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                     cell.Colspan = 1;
                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -273,7 +296,9 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
                 cell.HorizontalAlignment = Element.ALIGN_LEFT;
                 cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                cell.MinimumHeight = 20;
+                cell.PaddingLeft = -2;
+
+                cell.MinimumHeight = 80;
                 cell.Rotation = 90;
                 colWidth[i] = 1f;
                 table.AddCell(cell);
