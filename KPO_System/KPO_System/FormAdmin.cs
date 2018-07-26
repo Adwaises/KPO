@@ -575,7 +575,7 @@ namespace KPO_System
             {
 
                 //валидация
-                if (validate(fa.textBox1.Text))
+                if (!validate(fa.textBox1.Text))
                 {
                     MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
