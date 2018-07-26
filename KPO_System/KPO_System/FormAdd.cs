@@ -57,6 +57,14 @@ namespace KPO_System
             buttonOK.Text = "Обновить";
         }
 
+        public FormAdd(string inVariant, string passw)
+        {
+            InitializeComponent();
+            variant = inVariant;
+            textBox1.Text = passw;
+
+        }
+
         public FormAdd(string inVariant, DataTable dt, string disc, string clRuk)
         {
             InitializeComponent();
@@ -148,6 +156,7 @@ namespace KPO_System
                 textBox2.Visible = false;
                 textBox3.Visible = false;
                 buttonOK.Text = "Изменить";
+
 
                 label4.Visible = false;
                 textBox4.Visible = false;

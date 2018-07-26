@@ -74,6 +74,7 @@ namespace KPO_System
         {
             using (FileStream fstream = new FileStream(@"ConnectParam.txt", FileMode.OpenOrCreate))
             {
+                fstream.SetLength(0);
                 // преобразуем строку в байты
                 byte[] array = System.Text.Encoding.Default.GetBytes(text);
                 // запись массива байтов в файл
@@ -116,6 +117,7 @@ namespace KPO_System
         {
             using (FileStream fstream = new FileStream(@"Admin.txt", FileMode.OpenOrCreate))
             {
+                fstream.SetLength(0);
                 byte[] array = System.Text.Encoding.Default.GetBytes(paswd);
                 fstream.Write(array, 0, array.Length);
 

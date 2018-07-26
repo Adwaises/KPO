@@ -570,7 +570,8 @@ namespace KPO_System
 
         private void задатьПарольToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAdd fa = new FormAdd("Пароль");
+            FileManager fm = new FileManager();
+            FormAdd fa = new FormAdd("Пароль", fm.getPasswd());
             fa.buttonOK.Click += (senderSlave, eSlave) =>
             {
 
@@ -582,7 +583,7 @@ namespace KPO_System
                 }
                 try
                 {
-                    FileManager fm = new FileManager();
+                    
                     fm.setPasswd(fa.textBox1.Text);
                     MessageBox.Show("Пароль изменён", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }catch(Exception ex)
