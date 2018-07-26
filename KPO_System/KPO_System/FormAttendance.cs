@@ -75,8 +75,8 @@ namespace KPO_System
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (isNotChange)
-            {
+         //   if (isNotChange)
+          //  {
 
 
                 if (comboBox2.Text == "Дисциплина")
@@ -126,7 +126,7 @@ namespace KPO_System
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     }
                 }
-            }
+           // }
 
         }
 

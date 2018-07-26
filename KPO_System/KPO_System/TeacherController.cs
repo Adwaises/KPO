@@ -139,6 +139,13 @@ namespace KPO_System
 
         public void postMark(string mark, int index)
         {
+            string[] marks = new string[] {"2","3","4","5","н","Н",""};
+
+            if(!marks.Contains(mark))
+            {
+                throw new Exception("Неверная оценка");
+            }
+
             if (mark == "н")
                 mark = mark.ToUpper();
 

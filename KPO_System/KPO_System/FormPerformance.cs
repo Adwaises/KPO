@@ -162,8 +162,8 @@ namespace KPO_System
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (isNotChange)
-            {
+         //   if (isNotChange)
+          //  {
                 if (comboBox1.Text == "Ученик")
                 {
                     if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count - 1 && e.ColumnIndex > 0)
@@ -260,7 +260,7 @@ namespace KPO_System
                         style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
                 }
-            }
+       //     }
         }
 
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
