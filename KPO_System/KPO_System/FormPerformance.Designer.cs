@@ -95,7 +95,7 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 20;
-            this.dataGridView1.Size = new System.Drawing.Size(494, 215);
+            this.dataGridView1.Size = new System.Drawing.Size(494, 205);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
@@ -104,7 +104,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(107, 125);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 35);
+            this.button1.Size = new System.Drawing.Size(92, 25);
             this.button1.TabIndex = 5;
             this.button1.Text = "Получить";
             this.button1.UseVisualStyleBackColor = true;
@@ -266,7 +266,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 413);
+            this.ClientSize = new System.Drawing.Size(519, 403);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

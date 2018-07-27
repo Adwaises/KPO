@@ -35,7 +35,7 @@ namespace KPO_System
             //получили список класса
             string sql = String.Format(" select id_pupil, famil as Фамилия, pupil.name as Имя, otchestvo as Отчество from pupil " +
 "join class on class.id_class = pupil.id_class " +
-"where number = {0} and letter = '{1}'; ", Convert.ToInt32(nClass), letter);
+"where number = {0} and letter = '{1}' order by famil; ", Convert.ToInt32(nClass), letter);
 
             dt = mdb.selectionQuery(sql);
             dt.Columns.Add("Оценка");
@@ -165,8 +165,8 @@ namespace KPO_System
             }
             else if (mark.Length == 0)
             {
-                sql = String.Format("delete from performance where id_pupil = {0} and id_discipline = {1};",
-                    listID[index], idDiscipline);
+                sql = String.Format("delete from performance where id_pupil = {0} and id_discipline = {1} and Date_letter = '{2}';",
+                    listID[index], idDiscipline, Program.date.ToString("yyyy-MM-dd"));
             } else
             {
                 throw new Exception("Неверная оценка");
@@ -250,9 +250,6 @@ namespace KPO_System
                     dtFinal.Rows[i][dtFinal.Columns.Count - 1] = String.Format("{0:f2}",sum / n);
                 }
             }
-
-
-            //dt = mdb.selectionQuery(sql);
 
             return dtFinal;
         }

@@ -58,13 +58,6 @@ namespace KPO_System
                 string textFromFile = System.Text.Encoding.Default.GetString(array);
                 textFromFile = textFromFile.Replace("\r", string.Empty);
                 param = textFromFile.Split('\n');
-                // mdb.init(param[0], param[1], param[2], param[3], param[4]);
-
-                //if (mdb.conn == null)
-                //{
-                //    FormConnect fc = new FormConnect();
-                //    fc.ShowDialog();
-                //}
             }
 
             return param;

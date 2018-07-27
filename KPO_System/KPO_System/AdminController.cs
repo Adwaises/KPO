@@ -211,38 +211,22 @@ namespace KPO_System
 
         public void updateTeacher(string famil, string name, string otchestvo,string pswd, int index)
         {
-            //mdb.controlQuery(String.Format("update Teacher set famil = '{0}' where id_teacher = {1}",famil, listID[index]));
-            //mdb.controlQuery(String.Format("update Teacher set name = '{0}' where id_teacher = {1}", name, listID[index]));
-            //mdb.controlQuery(String.Format("update Teacher set otchestvo = '{0}' where id_teacher = {1}", otchestvo, listID[index]));
-            //mdb.controlQuery(String.Format("update Teacher set password = '{0}' where id_teacher = {1}", pswd, listID[index]));
-
             mdb.controlQuery(String.Format("update Teacher set famil = '{0}', name = '{1}',otchestvo = '{2}',password = '{3}' where id_teacher = {4}",
                 famil, name, otchestvo, pswd, listID[index]));
         }
 
         public void updatePupil(string famil, string name, string otchestvo, int index)
         {
-            //mdb.controlQuery(String.Format("update pupil set famil = '{0}' where id_pupil = {1}", famil, listID[index]));
-            //mdb.controlQuery(String.Format("update pupil set name = '{0}' where id_pupil = {1}", name, listID[index]));
-            //mdb.controlQuery(String.Format("update pupil set otchestvo = '{0}' where id_pupil = {1}", otchestvo, listID[index]));
-
             mdb.controlQuery(String.Format("update pupil set famil = '{0}',name = '{1}', otchestvo = '{2}' where id_pupil = {3}", famil, name, otchestvo, listID[index]));
         }
 
         public void updateDiscipline(string name, int indexTeacher, int idDisc)
         {
-            //mdb.controlQuery(String.Format("update discipline set name = '{0}' where id_discipline= {1}", name, idDisc));
-            //mdb.controlQuery(String.Format("update discipline set id_teacher = {0} where id_discipline = {1}", listID[indexTeacher], idDisc));
-
             mdb.controlQuery(String.Format("update discipline set name = '{0}',id_teacher = {1}  where id_discipline= {2}", name, listID[indexTeacher], idDisc));
         }
 
         public void updateClass(string number, string letter, int indexTeacher, int idDClass)
         {
-            //mdb.controlQuery(String.Format("update class set number = {0} where id_class= {1}", number, idDClass));
-            //mdb.controlQuery(String.Format("update class set letter = '{0}' where id_class= {1}", letter, idDClass));
-            //mdb.controlQuery(String.Format("update class set id_teacher = {0} where id_class = {1}", listID[indexTeacher], idDClass));
-
             mdb.controlQuery(String.Format("update class set number = {0},letter = '{1}',id_teacher = {2}  where id_class= {3}", number, letter, listID[indexTeacher], idDClass));
         }
 
