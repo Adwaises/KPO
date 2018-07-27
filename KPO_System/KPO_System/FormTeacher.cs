@@ -30,6 +30,8 @@ namespace KPO_System
             //login = _login;
             Text += " - "+ Program.login+ " - " + tc.discipline;
             //mBD.init();
+
+
         }
 
         private void FormTeacher_Load(object sender, EventArgs e)
@@ -128,7 +130,7 @@ namespace KPO_System
             Program.date = dateTimePicker1.Value;
             if (TBMark.Text.Contains('(') || TBMark.Text.Contains(')') || TBMark.Text.Contains(';') || TBMark.Text.Length > 1)
             {
-                MessageBox.Show("SQL", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите оценку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -138,7 +140,7 @@ namespace KPO_System
                 return;
             }
 
-            int indexRow = dataGridView1.CurrentRow.Index;
+            int indexRow = dataGridView1.CurrentRow.Index+1; // перепрыгивает на след строку
 
             try
             {
@@ -172,20 +174,6 @@ namespace KPO_System
             Program.date = dateTimePicker1.Value;
 
             isNotChange = false;
-            //try
-            //{
-            //    dt = tc.getList(CBClass.Text, CBLetter.Text);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
-
-
-            //dataGridView1.DataSource = dt;
-            //TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
-            //noSort();
         }
 
 
@@ -213,8 +201,54 @@ namespace KPO_System
 
         }
 
+        private void TBMark_KeyDown(object sender, KeyEventArgs e)
+        {
+            //после ввода в текстбокс
+            if (e.KeyCode == Keys.Enter)
+            {
+                ButPost.PerformClick();
+            }
+        }
 
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if(e.KeyCode == Keys.D2)
+            //{
+            //    TBMark.Text = "2";
+            //}
+            //if (e.KeyCode == Keys.D3)
+            //{
+            //    TBMark.Text = "3";
+            //}
+            //if (e.KeyCode == Keys.D4)
+            //{
+            //    TBMark.Text = "4";
+            //}
+            //if (e.KeyCode == Keys.D5)
+            //{
+            //    TBMark.Text = "5";
+            //}
 
+        }
 
+        private void FormTeacher_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D2)
+            {
+                TBMark.Text = "2";
+            }
+            if (e.KeyCode == Keys.D3)
+            {
+                TBMark.Text = "3";
+            }
+            if (e.KeyCode == Keys.D4)
+            {
+                TBMark.Text = "4";
+            }
+            if (e.KeyCode == Keys.D5)
+            {
+                TBMark.Text = "5";
+            }
+        }
     }
 }

@@ -334,6 +334,8 @@ iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell = new PdfPCell(new Phrase(Convert.ToString(dt.Rows[i][0]), new iTextSharp.text.Font(baseFont, 12,
  iTextSharp.text.Font.NORMAL, new BaseColor(Color.Black))));
                 cell.Colspan = 1;
+
+                //дисциплины в 1 колонке
                 if(flag == "Ученик" || flag == "Класс")
                 {
                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
