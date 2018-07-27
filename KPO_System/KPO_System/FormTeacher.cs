@@ -138,6 +138,8 @@ namespace KPO_System
                 return;
             }
 
+            int indexRow = dataGridView1.CurrentRow.Index;
+
             try
             {
                 tc.postMark(TBMark.Text, dataGridView1.CurrentRow.Index);
@@ -158,6 +160,10 @@ namespace KPO_System
             
 
             dataGridView1.DataSource = dt;
+
+            dataGridView1.Rows[indexRow].Selected = true;
+            dataGridView1.CurrentCell = dataGridView1[0, indexRow];
+
             TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
 
         }

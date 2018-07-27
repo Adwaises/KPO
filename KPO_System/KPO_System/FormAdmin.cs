@@ -16,6 +16,7 @@ namespace KPO_System
         AdminController ac;
         bool isNotChange = false;
 
+        int indexRow = 0;
         public FormAdmin(ManagerBD mbd)
         {
             ac = new AdminController(mbd);
@@ -132,7 +133,8 @@ namespace KPO_System
 
         private void ButGet_Click(object sender, EventArgs e)
         {
-              getList();
+            indexRow = 0;
+            getList();
             isNotChange = true;
 
         }
@@ -162,6 +164,10 @@ namespace KPO_System
                     dt = ac.getList(CBClass.Text, CBLetter.Text);
                 }
                 dataGridView1.DataSource = dt;
+
+                dataGridView1.Rows[indexRow].Selected = true;
+                dataGridView1.CurrentCell = dataGridView1[0, indexRow];
+
                 noSort();
             }
             catch (Exception ex)
@@ -363,6 +369,7 @@ namespace KPO_System
                 return;
             }
 
+            indexRow = dataGridView1.CurrentRow.Index;
 
             if (comboBoxVariants.Text == "Учителя")
             {
