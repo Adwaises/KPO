@@ -216,20 +216,24 @@ namespace KPO_System
             if(e.KeyCode == Keys.D2)
             {
                 TBMark.Text = "2";
+                TBMark.Focus();
             }
             if (e.KeyCode == Keys.D3)
             {
                 TBMark.Text = "3";
+                TBMark.Focus();
             }
             if (e.KeyCode == Keys.D4)
             {
                 TBMark.Text = "4";
+                TBMark.Focus();
             }
             if (e.KeyCode == Keys.D5)
             {
                 TBMark.Text = "5";
+                TBMark.Focus();
             }
-
+           
         }
     }
 }
