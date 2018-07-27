@@ -99,6 +99,7 @@ namespace KPO_System
             TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
             noSort();
             isNotChange = true;
+            dataGridView1.Focus();
         }
 
 
@@ -140,7 +141,7 @@ namespace KPO_System
                 return;
             }
 
-            int indexRow = dataGridView1.CurrentRow.Index+1; // перепрыгивает на след строку
+            int indexRow = dataGridView1.CurrentRow.Index; // при нажатии enter перепрыгивает на след строку
 
             try
             {
@@ -167,7 +168,7 @@ namespace KPO_System
             dataGridView1.CurrentCell = dataGridView1[0, indexRow];
 
             TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
-
+            dataGridView1.Focus();
         }
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
@@ -212,28 +213,7 @@ namespace KPO_System
 
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
-            //if(e.KeyCode == Keys.D2)
-            //{
-            //    TBMark.Text = "2";
-            //}
-            //if (e.KeyCode == Keys.D3)
-            //{
-            //    TBMark.Text = "3";
-            //}
-            //if (e.KeyCode == Keys.D4)
-            //{
-            //    TBMark.Text = "4";
-            //}
-            //if (e.KeyCode == Keys.D5)
-            //{
-            //    TBMark.Text = "5";
-            //}
-
-        }
-
-        private void FormTeacher_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.D2)
+            if(e.KeyCode == Keys.D2)
             {
                 TBMark.Text = "2";
             }
@@ -249,6 +229,7 @@ namespace KPO_System
             {
                 TBMark.Text = "5";
             }
+
         }
     }
 }
