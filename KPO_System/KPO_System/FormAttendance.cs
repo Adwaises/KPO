@@ -16,6 +16,7 @@ namespace KPO_System
         DataTable dt = new DataTable();
         Reports report = new Reports();
         bool isNotChange = false;
+        string paint = "";
 
         public FormAttendance(TeacherController _tc)
         {
@@ -49,6 +50,7 @@ namespace KPO_System
                     dt = tc.getAttendanceOnClass(dateTimePicker1.Value, dateTimePicker2.Value,
                         CBClass.SelectedItem.ToString(), CBLetter.SelectedItem.ToString());
                 }
+                paint = comboBox2.Text;
                 dataGridView1.DataSource = dt;
 
                 noSort();
@@ -79,7 +81,7 @@ namespace KPO_System
           //  {
 
 
-                if (comboBox2.Text == "Дисциплина")
+                if (paint == "Дисциплина")
                 {
                     if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 0)
                     {

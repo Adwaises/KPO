@@ -18,6 +18,8 @@ namespace KPO_System
         bool isNotChange = false;
         Reports report = new Reports();
 
+        string paint = "";
+
         public FormPerformance(TeacherController _tc)
         {
             tc = _tc;
@@ -44,6 +46,9 @@ namespace KPO_System
                 {
                     dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
                 }
+
+                paint = comboBox1.Text;
+
                 dataGridView1.DataSource = dt;
                 noSort();
             }
@@ -164,7 +169,7 @@ namespace KPO_System
         {
          //   if (isNotChange)
           //  {
-                if (comboBox1.Text == "Ученик")
+                if (paint == "Ученик")
                 {
                     if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count - 1 && e.ColumnIndex > 0)
                     {
@@ -206,7 +211,7 @@ namespace KPO_System
                     }
 
                 }
-                else if (comboBox1.Text == "Класс")
+                else if (paint == "Класс")
                 {
                     if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 2)
                     {
