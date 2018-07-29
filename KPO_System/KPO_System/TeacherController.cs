@@ -642,7 +642,13 @@ namespace KPO_System
 
         public void connect()
         {
-            if (fm.getLengthFile() == 0 || fm.getLinesFile() != 5)
+            if (!fm.exists("ConnectParam.txt"))
+            {
+                fm.createFileParam();
+                FormConnect fc = new FormConnect(true);
+                fc.ShowDialog();
+            }
+            else if (fm.getLengthFile() == 0 || fm.getLinesFile() != 5)
             {
                 fm.createFileParam();
                 FormConnect fc = new FormConnect(true);
