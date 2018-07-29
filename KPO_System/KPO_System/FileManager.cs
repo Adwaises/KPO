@@ -15,6 +15,17 @@ namespace KPO_System
 
         }
 
+        public bool exists(string name)
+        {
+            if (File.Exists(name))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
         public int getLengthFile()
         {
             string textFromFile;

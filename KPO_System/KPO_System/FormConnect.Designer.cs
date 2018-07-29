@@ -180,6 +180,7 @@
             this.Name = "FormConnect";
             this.Text = "FormConnect";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormConnect_FormClosing);
+            this.Load += new System.EventHandler(this.FormConnect_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

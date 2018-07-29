@@ -103,5 +103,10 @@ namespace KPO_System
         private void FormConnect_FormClosing(object sender, FormClosingEventArgs e)
         {
         }
+
+        private void FormConnect_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

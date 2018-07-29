@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
-using System.IO;
+
 
 namespace KPO_System
 {
@@ -46,7 +46,15 @@ namespace KPO_System
 
             try
             {
-                if(fm.getLengthFile() == 0 || fm.getLinesFile() != 5)
+                if(!fm.exists("ConnectParam.txt"))
+                {
+                    MessageBox.Show("Файл параметров не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    fm.createFileParam();
+                    FormConnect fc = new FormConnect(true);
+                    fc.ShowDialog();
+                    return;
+                }
+                else if(fm.getLengthFile() == 0 || fm.getLinesFile() != 5)
                 {
                     MessageBox.Show("Файл параметров повреждён", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     fm.createFileParam();
@@ -62,11 +70,12 @@ namespace KPO_System
                     MessageBox.Show("Не удалось подключиться", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     FormConnect fc = new FormConnect(false);
                     fc.ShowDialog();
+                    return;
                     //Close();
                 }
 
-                param = fm.getParam();
-                mBD.init(param[0], param[1], param[2], param[3], param[4]);
+                //param = fm.getParam();
+                //mBD.init(param[0], param[1], param[2], param[3], param[4]);
 
 
                 //запрос к БД
