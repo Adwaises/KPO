@@ -102,12 +102,23 @@ namespace KPO_System
         {
             if (File.Exists(@"Admin.txt"))
             {
+                string textFromFile;
                 using (FileStream fstream = File.OpenRead(@"Admin.txt"))
                 {
                     byte[] array = new byte[fstream.Length];
                     fstream.Read(array, 0, array.Length);
-                    string textFromFile = System.Text.Encoding.Default.GetString(array);
+                    textFromFile = System.Text.Encoding.Default.GetString(array);
+                }
+
+                string[] lenght = textFromFile.Split('\n');
+                if (lenght.Length == 1)
+                {
                     return textFromFile;
+                }
+                else
+                {
+                    createFileAdm();
+                    return "admin";
                 }
             }
             else

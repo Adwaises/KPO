@@ -98,7 +98,7 @@ namespace KPO_System
                 string pAdm = fm.getPasswd();
 
                 //открытие формы
-                if (login.ToLower() == "admin" && TBPassword.Text.ToLower() == pAdm)
+                if (login.ToLower() == "admin" && TBPassword.Text == pAdm)
                 {
                     FormAdmin fa = new FormAdmin(mBD);
                     fa.ShowDialog();
