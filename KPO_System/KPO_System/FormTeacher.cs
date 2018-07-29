@@ -141,6 +141,12 @@ namespace KPO_System
                 return;
             }
 
+            if (dt.Rows[dataGridView1.CurrentRow.Index][3].ToString() == TBMark.Text )
+            {
+                MessageBox.Show("Введите другую оценку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             int indexRow = dataGridView1.CurrentRow.Index; // при нажатии enter перепрыгивает на след строку
 
             try
@@ -158,7 +164,7 @@ namespace KPO_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не получен список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Список не получен\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
 
