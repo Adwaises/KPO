@@ -239,7 +239,7 @@ namespace KPO_System
                 FormConnect fc = new FormConnect(true);
                 fc.ShowDialog();
             }
-            else if(fm.getLengthFile() == 0 || fm.getLinesFile() != 5)
+            else if(fm.getLengthFile() == 0 || fm.getLinesFile("ConnectParam.txt") != 5)
             {
                 fm.createFileParam();
                 FormConnect fc = new FormConnect(true);

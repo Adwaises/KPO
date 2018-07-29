@@ -54,7 +54,7 @@ namespace KPO_System
                     fc.ShowDialog();
                     return;
                 }
-                else if(fm.getLengthFile() == 0 || fm.getLinesFile() != 5)
+                else if(fm.getLengthFile() == 0 || fm.getLinesFile("ConnectParam.txt") != 5)
                 {
                     MessageBox.Show("Файл параметров повреждён", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     fm.createFileParam();
@@ -63,9 +63,10 @@ namespace KPO_System
                     return;
                 }
                 string[] param = fm.getParam();
+
                 mBD.init(param[0], param[1], param[2], param[3], param[4]);
 
-                if (!mBD.isConnect())
+                if (!mBD.isConnect() || param[4] == "")
                 {
                     MessageBox.Show("Не удалось подключиться", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     FormConnect fc = new FormConnect(false);
@@ -95,7 +96,22 @@ namespace KPO_System
                     }
                 }
 
-                string pAdm = fm.getPasswd();
+
+                string pAdm = "" ;
+
+                if (!fm.exists("Admin.txt"))
+                {
+                    fm.createFileAdm();
+                    MessageBox.Show("Файл не найден\r\nСоздание нового, пароль стандартный", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                } else if(fm.getLinesFile("Admin.txt") != 1)
+                {
+                    fm.createFileAdm();
+                    MessageBox.Show("Файл повреждён\r\nСоздание нового, пароль стандартный", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                } else   {
+                    pAdm = fm.getPasswd();
+                }
 
                 //открытие формы
                 if (login.ToLower() == "admin" && TBPassword.Text == pAdm)
@@ -132,7 +148,7 @@ namespace KPO_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (fm.getLengthFile() == 0 || fm.getLinesFile() != 5)
+            if (fm.getLengthFile() == 0 || fm.getLinesFile("ConnectParam.txt") != 5)
             {
                 fm.createFileParam();
                 FormConnect fc = new FormConnect(true);

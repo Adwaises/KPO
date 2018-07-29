@@ -40,10 +40,10 @@ namespace KPO_System
             return textFromFile.Length;
         }
 
-        public int getLinesFile()
+        public int getLinesFile(string name)
         {
             string textFromFile;
-            using (FileStream fstream = File.OpenRead(@"ConnectParam.txt"))
+            using (FileStream fstream = File.OpenRead(name))
             {
                 byte[] array = new byte[fstream.Length];
                 // считываем данные
@@ -88,7 +88,7 @@ namespace KPO_System
 
         //admin
 
-        private void createFileAdm()
+        public void createFileAdm()
         {
             using (FileStream fstream = File.Create(@"Admin.txt")) { }
             using (FileStream fstream = new FileStream(@"Admin.txt", FileMode.OpenOrCreate))
@@ -100,33 +100,14 @@ namespace KPO_System
         }
         public string getPasswd()
         {
-            if (File.Exists(@"Admin.txt"))
+            using (FileStream fstream = File.OpenRead(@"Admin.txt"))
             {
-                string textFromFile;
-                using (FileStream fstream = File.OpenRead(@"Admin.txt"))
-                {
-                    byte[] array = new byte[fstream.Length];
-                    fstream.Read(array, 0, array.Length);
-                    textFromFile = System.Text.Encoding.Default.GetString(array);
-                }
+                byte[] array = new byte[fstream.Length];
+                fstream.Read(array, 0, array.Length);
+                string textFromFile = System.Text.Encoding.Default.GetString(array);
 
-                string[] lenght = textFromFile.Split('\n');
-                if (lenght.Length == 1)
-                {
-                    return textFromFile;
-                }
-                else
-                {
-                    createFileAdm();
-                    return "admin";
-                }
+                return textFromFile;
             }
-            else
-            {
-                createFileAdm();
-                return "admin";
-            }
-
         }
         public void setPasswd(string paswd)
         {
