@@ -34,22 +34,22 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подключениеКБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ButGet = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBoxVariants = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CBLetter = new System.Windows.Forms.ComboBox();
-            this.CBClass = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.парольToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.задатьПарольToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ButGet = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.comboBoxVariants = new System.Windows.Forms.ComboBox();
+            this.labelLetter = new System.Windows.Forms.Label();
+            this.labelClass = new System.Windows.Forms.Label();
+            this.CBLetter = new System.Windows.Forms.ComboBox();
+            this.CBClass = new System.Windows.Forms.ComboBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonChange = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.groupBox = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -79,6 +79,21 @@
             this.подключениеКБДToolStripMenuItem.Text = "Подключение к БД";
             this.подключениеКБДToolStripMenuItem.Click += new System.EventHandler(this.подключениеКБДToolStripMenuItem_Click);
             // 
+            // парольToolStripMenuItem
+            // 
+            this.парольToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.задатьПарольToolStripMenuItem});
+            this.парольToolStripMenuItem.Name = "парольToolStripMenuItem";
+            this.парольToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
+            this.парольToolStripMenuItem.Text = "Пароль";
+            // 
+            // задатьПарольToolStripMenuItem
+            // 
+            this.задатьПарольToolStripMenuItem.Name = "задатьПарольToolStripMenuItem";
+            this.задатьПарольToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.задатьПарольToolStripMenuItem.Text = "Задать пароль";
+            this.задатьПарольToolStripMenuItem.Click += new System.EventHandler(this.задатьПарольToolStripMenuItem_Click);
+            // 
             // ButGet
             // 
             this.ButGet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -90,18 +105,18 @@
             this.ButGet.UseVisualStyleBackColor = true;
             this.ButGet.Click += new System.EventHandler(this.ButGet_Click);
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.AllowDrop = true;
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridView.AllowDrop = true;
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -109,8 +124,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -118,10 +133,10 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 134);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView.Location = new System.Drawing.Point(13, 134);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -129,12 +144,12 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(535, 260);
-            this.dataGridView1.TabIndex = 4;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(535, 260);
+            this.dataGridView.TabIndex = 4;
             // 
             // comboBoxVariants
             // 
@@ -146,25 +161,25 @@
             this.comboBoxVariants.TabIndex = 6;
             this.comboBoxVariants.SelectedIndexChanged += new System.EventHandler(this.comboBoxVariants_SelectedIndexChanged);
             // 
-            // label2
+            // labelLetter
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(15, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 16);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Буква";
+            this.labelLetter.AutoSize = true;
+            this.labelLetter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelLetter.Location = new System.Drawing.Point(15, 54);
+            this.labelLetter.Name = "labelLetter";
+            this.labelLetter.Size = new System.Drawing.Size(48, 16);
+            this.labelLetter.TabIndex = 9;
+            this.labelLetter.Text = "Буква";
             // 
-            // label1
+            // labelClass
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(14, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 16);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Класс";
+            this.labelClass.AutoSize = true;
+            this.labelClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelClass.Location = new System.Drawing.Point(14, 27);
+            this.labelClass.Name = "labelClass";
+            this.labelClass.Size = new System.Drawing.Size(46, 16);
+            this.labelClass.TabIndex = 10;
+            this.labelClass.Text = "Класс";
             // 
             // CBLetter
             // 
@@ -186,86 +201,71 @@
             this.CBClass.TabIndex = 7;
             this.CBClass.SelectedIndexChanged += new System.EventHandler(this.CBClass_SelectedIndexChanged);
             // 
-            // button1
+            // buttonAdd
             // 
-            this.button1.AllowDrop = true;
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(13, 409);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 32);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAdd.AllowDrop = true;
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonAdd.Location = new System.Drawing.Point(13, 409);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(85, 32);
+            this.buttonAdd.TabIndex = 11;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // buttonChange
             // 
-            this.button2.AllowDrop = true;
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(221, 409);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 32);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Редактировать";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonChange.AllowDrop = true;
+            this.buttonChange.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonChange.Location = new System.Drawing.Point(221, 409);
+            this.buttonChange.Name = "buttonChange";
+            this.buttonChange.Size = new System.Drawing.Size(125, 32);
+            this.buttonChange.TabIndex = 12;
+            this.buttonChange.Text = "Редактировать";
+            this.buttonChange.UseVisualStyleBackColor = true;
+            this.buttonChange.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // buttonRemove
             // 
-            this.button3.AllowDrop = true;
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(465, 409);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 32);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonRemove.AllowDrop = true;
+            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRemove.Location = new System.Drawing.Point(465, 409);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(83, 32);
+            this.buttonRemove.TabIndex = 13;
+            this.buttonRemove.Text = "Удалить";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.button3_Click);
             // 
-            // groupBox1
+            // groupBox
             // 
-            this.groupBox1.Controls.Add(this.CBLetter);
-            this.groupBox1.Controls.Add(this.CBClass);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(253, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(183, 88);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Выберите класс";
-            // 
-            // парольToolStripMenuItem
-            // 
-            this.парольToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.задатьПарольToolStripMenuItem});
-            this.парольToolStripMenuItem.Name = "парольToolStripMenuItem";
-            this.парольToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
-            this.парольToolStripMenuItem.Text = "Пароль";
-            // 
-            // задатьПарольToolStripMenuItem
-            // 
-            this.задатьПарольToolStripMenuItem.Name = "задатьПарольToolStripMenuItem";
-            this.задатьПарольToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.задатьПарольToolStripMenuItem.Text = "Задать пароль";
-            this.задатьПарольToolStripMenuItem.Click += new System.EventHandler(this.задатьПарольToolStripMenuItem_Click);
+            this.groupBox.Controls.Add(this.CBLetter);
+            this.groupBox.Controls.Add(this.CBClass);
+            this.groupBox.Controls.Add(this.labelClass);
+            this.groupBox.Controls.Add(this.labelLetter);
+            this.groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox.Location = new System.Drawing.Point(253, 27);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(183, 88);
+            this.groupBox.TabIndex = 14;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "Выберите класс";
             // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 454);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox);
+            this.Controls.Add(this.buttonRemove);
+            this.Controls.Add(this.buttonChange);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.comboBoxVariants);
             this.Controls.Add(this.ButGet);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(575, 475);
@@ -274,9 +274,9 @@
             this.Load += new System.EventHandler(this.FormAdmin_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,16 +288,16 @@
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem подключениеКБДToolStripMenuItem;
         private System.Windows.Forms.Button ButGet;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.ComboBox comboBoxVariants;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelLetter;
+        private System.Windows.Forms.Label labelClass;
         private System.Windows.Forms.ComboBox CBLetter;
         private System.Windows.Forms.ComboBox CBClass;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonChange;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.ToolStripMenuItem парольToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem задатьПарольToolStripMenuItem;
     }

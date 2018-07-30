@@ -49,35 +49,35 @@ namespace KPO_System
         {
             if (comboBoxVariants.Text == "Учителя")
             {
-                label1.Visible = false;
-                label2.Visible = false;
+                labelClass.Visible = false;
+                labelLetter.Visible = false;
                 CBClass.Visible = false;
                 CBLetter.Visible = false;
-                groupBox1.Visible = false;
+                groupBox.Visible = false;
             }
             else if (comboBoxVariants.Text == "Предметы")
             {
-                label1.Visible = false;
-                label2.Visible = false;
+                labelClass.Visible = false;
+                labelLetter.Visible = false;
                 CBClass.Visible = false;
                 CBLetter.Visible = false;
-                groupBox1.Visible = false;
+                groupBox.Visible = false;
             }
             else if (comboBoxVariants.Text == "Классы")
             {
-                label1.Visible = false;
-                label2.Visible = false;
+                labelClass.Visible = false;
+                labelLetter.Visible = false;
                 CBClass.Visible = false;
                 CBLetter.Visible = false;
-                groupBox1.Visible = false;
+                groupBox.Visible = false;
             }
             else if (comboBoxVariants.Text == "Класс")
             {
-                label1.Visible = true;
-                label2.Visible = true;
+                labelClass.Visible = true;
+                labelLetter.Visible = true;
                 CBClass.Visible = true;
                 CBLetter.Visible = true;
-                groupBox1.Visible = true;
+                groupBox.Visible = true;
 
                 updateCBClass();
 
@@ -142,7 +142,7 @@ namespace KPO_System
         private void getList()
         {
             dt = null;
-            dataGridView1.DataSource = null;
+            dataGridView.DataSource = null;
 
 
             try
@@ -163,10 +163,10 @@ namespace KPO_System
                 {
                     dt = ac.getList(CBClass.Text, CBLetter.Text);
                 }
-                dataGridView1.DataSource = dt;
+                dataGridView.DataSource = dt;
 
-                dataGridView1.Rows[indexRow].Selected = true;
-                dataGridView1.CurrentCell = dataGridView1[0, indexRow];
+                dataGridView.Rows[indexRow].Selected = true;
+                dataGridView.CurrentCell = dataGridView[0, indexRow];
 
                 noSort();
             }
@@ -180,7 +180,7 @@ namespace KPO_System
 
         private void noSort()
         {
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            foreach (DataGridViewColumn column in dataGridView.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
@@ -188,7 +188,7 @@ namespace KPO_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.DataSource == null)
+            if (dataGridView.DataSource == null)
             {
                 MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -324,7 +324,7 @@ namespace KPO_System
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.DataSource == null)
+            if(dataGridView.DataSource == null)
             {
                 MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -342,7 +342,7 @@ namespace KPO_System
             {
                 try
                 {
-                    ac.delete(dataGridView1.CurrentRow.Index, comboBoxVariants.Text);
+                    ac.delete(dataGridView.CurrentRow.Index, comboBoxVariants.Text);
                     MessageBox.Show("Удалено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -357,7 +357,7 @@ namespace KPO_System
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.DataSource == null)
+            if (dataGridView.DataSource == null)
             {
                 MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -369,12 +369,12 @@ namespace KPO_System
                 return;
             }
 
-            indexRow = dataGridView1.CurrentRow.Index;
+            indexRow = dataGridView.CurrentRow.Index;
 
             if (comboBoxVariants.Text == "Учителя")
             {
-                FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView1.CurrentRow.Index][0].ToString(),
-                    dt.Rows[dataGridView1.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][2].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][3].ToString());
+                FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView.CurrentRow.Index][0].ToString(),
+                    dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView.CurrentRow.Index][2].ToString(), dt.Rows[dataGridView.CurrentRow.Index][3].ToString());
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
 
@@ -385,7 +385,7 @@ namespace KPO_System
                     }
 
                     try { 
-                    ac.updateTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text, dataGridView1.CurrentRow.Index);
+                    ac.updateTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text, dataGridView.CurrentRow.Index);
                     MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -398,10 +398,10 @@ namespace KPO_System
             else if (comboBoxVariants.Text == "Предметы")
             {
 
-                int idDisc = ac.getIdDisc(dataGridView1.CurrentRow.Index);
+                int idDisc = ac.getIdDisc(dataGridView.CurrentRow.Index);
 
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers(),
-                    dt.Rows[dataGridView1.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][1].ToString()) ;
+                    dt.Rows[dataGridView.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView.CurrentRow.Index][1].ToString()) ;
 
 
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
@@ -432,11 +432,11 @@ namespace KPO_System
             else if (comboBoxVariants.Text == "Классы")
             {
 
-                int idClass = ac.getIdClass(dataGridView1.CurrentRow.Index);
+                int idClass = ac.getIdClass(dataGridView.CurrentRow.Index);
 
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers(),
-                    dt.Rows[dataGridView1.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][1].ToString(), 
-                    dt.Rows[dataGridView1.CurrentRow.Index][2].ToString());
+                    dt.Rows[dataGridView.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), 
+                    dt.Rows[dataGridView.CurrentRow.Index][2].ToString());
 
 
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
@@ -467,8 +467,8 @@ namespace KPO_System
             }
             else if (comboBoxVariants.Text == "Класс")
             {
-                FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView1.CurrentRow.Index][0].ToString(),
-    dt.Rows[dataGridView1.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView1.CurrentRow.Index][2].ToString());
+                FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView.CurrentRow.Index][0].ToString(),
+    dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView.CurrentRow.Index][2].ToString());
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
@@ -477,7 +477,7 @@ namespace KPO_System
                         return;
                     }
                     try { 
-                    ac.updatePupil(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, dataGridView1.CurrentRow.Index);
+                    ac.updatePupil(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, dataGridView.CurrentRow.Index);
                 }
                     catch (Exception ex)
                 {

@@ -28,9 +28,9 @@ namespace KPO_System
         private void FormAttendance_Load(object sender, EventArgs e)
         {
 
-            comboBox2.Items.Add("Дисциплина");
-            comboBox2.Items.Add("Класс");
-            comboBox2.SelectedIndex = 0;
+            cbVariants.Items.Add("Дисциплина");
+            cbVariants.Items.Add("Класс");
+            cbVariants.SelectedIndex = 0;
 
 
         }
@@ -40,17 +40,17 @@ namespace KPO_System
             try
             {
                 dataGridView1.DataSource = null;
-                if (comboBox2.Text == "Дисциплина")
+                if (cbVariants.Text == "Дисциплина")
                 {
 
-                    dt = tc.getAttendanceOnDisc(dateTimePicker1.Value, dateTimePicker2.Value, comboBox1.SelectedItem.ToString());
+                    dt = tc.getAttendanceOnDisc(dateTimePickerFrom.Value, dateTimePickerBy.Value, cbDisc.SelectedItem.ToString());
                 }
                 else
                 {
-                    dt = tc.getAttendanceOnClass(dateTimePicker1.Value, dateTimePicker2.Value,
+                    dt = tc.getAttendanceOnClass(dateTimePickerFrom.Value, dateTimePickerBy.Value,
                         CBClass.SelectedItem.ToString(), CBLetter.SelectedItem.ToString());
                 }
-                paint = comboBox2.Text;
+                paint = cbVariants.Text;
                 dataGridView1.DataSource = dt;
 
                 noSort();
@@ -135,19 +135,19 @@ namespace KPO_System
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             isNotChange = false;
-            if (comboBox2.Text == "Дисциплина")
+            if (cbVariants.Text == "Дисциплина")
             {
                 try
                 {
-                    comboBox1.Items.Clear();
+                    cbDisc.Items.Clear();
                     List<string> list = tc.getListDisc();
                     for (int i = 0; i < list.Count; i++)
                     {
-                        comboBox1.Items.Add(list[i]);
+                        cbDisc.Items.Add(list[i]);
                     }
 
 
-                    comboBox1.SelectedIndex = 0;
+                    cbDisc.SelectedIndex = 0;
 
                 }
                 catch (Exception ex)
@@ -155,12 +155,12 @@ namespace KPO_System
                     MessageBox.Show("Не удалось получить список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                label1.Visible = false;
-                label2.Visible = false;
+                labelClass.Visible = false;
+                labelLetter.Visible = false;
                 CBClass.Visible = false;
                 CBLetter.Visible = false;
-                label5.Visible = true;
-                comboBox1.Visible = true;
+                labelDisc.Visible = true;
+                cbDisc.Visible = true;
             }
             else
             {
@@ -181,12 +181,12 @@ namespace KPO_System
                     MessageBox.Show("Не удалось получить список\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                label1.Visible = true;
-                label2.Visible = true;
+                labelClass.Visible = true;
+                labelLetter.Visible = true;
                 CBClass.Visible = true;
                 CBLetter.Visible = true;
-                label5.Visible = false;
-                comboBox1.Visible = false;
+                labelDisc.Visible = false;
+                cbDisc.Visible = false;
             }
         }
 
@@ -226,14 +226,14 @@ namespace KPO_System
             try
             {
 
-                if (comboBox2.Text == "Дисциплина")
+                if (cbVariants.Text == "Дисциплина")
                 {
-                    report.createJournal(dt, comboBox1.Text, dateTimePicker1.Value, dateTimePicker2.Value, "Дисциплина");
+                    report.createJournal(dt, cbDisc.Text, dateTimePickerFrom.Value, dateTimePickerBy.Value, "Дисциплина");
                     MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    report.createJournal(dt, CBClass.Text + CBLetter.Text, dateTimePicker1.Value, dateTimePicker2.Value, "Класс");
+                    report.createJournal(dt, CBClass.Text + CBLetter.Text, dateTimePickerFrom.Value, dateTimePickerBy.Value, "Класс");
                     MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

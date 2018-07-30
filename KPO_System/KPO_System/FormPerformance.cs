@@ -24,49 +24,46 @@ namespace KPO_System
         {
             tc = _tc;
             InitializeComponent();
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
         }
 
-        private void butGet()
+
+        private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                dataGridView1.DataSource = null;
-                if (comboBox1.Text == "Ученик")
+                dataGridView.DataSource = null;
+                if (cbVariant.Text == "Ученик")
                 {
                     dt = tc.getPerformancePupil(cbFamil.SelectedIndex, dTPickerFrom.Value, dTPickerBy.Value);
                 }
-                else if (comboBox1.Text == "Класс")
+                else if (cbVariant.Text == "Класс")
                 {
                     dt = tc.getPerformanceClass(CBClass.Text, CBLetter.Text,
                         dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
                 }
-                else if (comboBox1.Text == "Школа")
+                else if (cbVariant.Text == "Школа")
                 {
                     dt = tc.getPerformanceSchool(dTPickerFrom.Value.ToString("yyyy-MM-dd"), dTPickerBy.Value.ToString("yyyy-MM-dd"));
                 }
 
-                paint = comboBox1.Text;
+                paint = cbVariant.Text;
 
-                dataGridView1.DataSource = dt;
+                dataGridView.DataSource = dt;
                 noSort();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            butGet();
             isNotChange = true;
         }
 
         private void noSort()
         {
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            foreach (DataGridViewColumn column in dataGridView.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
@@ -75,21 +72,21 @@ namespace KPO_System
 
         private void FormPerformance_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.Add("Ученик");
-            comboBox1.Items.Add("Класс");
-            comboBox1.Items.Add("Школа");
-            comboBox1.SelectedIndex = 0;
+            cbVariant.Items.Add("Ученик");
+            cbVariant.Items.Add("Класс");
+            cbVariant.Items.Add("Школа");
+            cbVariant.SelectedIndex = 0;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox1.Text == "Ученик")
+            if(cbVariant.Text == "Ученик")
             {
                 отчётыДляВсегоКлассаToolStripMenuItem.Visible = false;
-                groupBox1.Visible = true;
-                label5.Visible = true;
+                groupBox.Visible = true;
+                labelPupil.Visible = true;
                 cbFamil.Visible = true;
-                groupBox1.Height = 90;
+                groupBox.Height = 90;
 
                 CBClass.Items.Clear();
 
@@ -99,19 +96,19 @@ namespace KPO_System
                     CBClass.Items.Add(list[i]);
                 }
                 CBClass.SelectedIndex = 0;
-            } else if(comboBox1.Text == "Класс")
+            } else if(cbVariant.Text == "Класс")
             {
-                groupBox1.Visible = true;
+                groupBox.Visible = true;
 
-                label5.Visible = false;
+                labelPupil.Visible = false;
                 cbFamil.Visible = false;
-                groupBox1.Height = 60;
+                groupBox.Height = 60;
                 отчётыДляВсегоКлассаToolStripMenuItem.Visible = true;
 
             }
-            else if (comboBox1.Text == "Школа")
+            else if (cbVariant.Text == "Школа")
             {
-                groupBox1.Visible = false;
+                groupBox.Visible = false;
                 отчётыДляВсегоКлассаToolStripMenuItem.Visible = false;
             }
 
@@ -171,7 +168,7 @@ namespace KPO_System
           //  {
                 if (paint == "Ученик")
                 {
-                    if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count - 1 && e.ColumnIndex > 0)
+                    if (e.RowIndex == -1 && e.ColumnIndex < dataGridView.Columns.Count - 1 && e.ColumnIndex > 0)
                     {
                         e.PaintBackground(e.CellBounds, true);
                         e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
@@ -179,23 +176,23 @@ namespace KPO_System
                         e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
                         e.Graphics.ResetTransform();
                         e.Handled = true;
-                        dataGridView1.ColumnHeadersHeight = 80;
+                        dataGridView.ColumnHeadersHeight = 80;
                         //dataGridView1.RowHeadersWidth = 20;
                         if (e.ColumnIndex > 0)
                         {
-                            DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                            DataGridViewColumn column = dataGridView.Columns[e.ColumnIndex];
                             column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                             column.Width = 22;
                         }
 
                     }
-                    else if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count - 1 && e.ColumnIndex == 0)
+                    else if (e.RowIndex == -1 && e.ColumnIndex < dataGridView.Columns.Count - 1 && e.ColumnIndex == 0)
                     {
-                        DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                        DataGridViewColumn column = dataGridView.Columns[e.ColumnIndex];
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     }
 
-                    else if (e.RowIndex == -1 && e.ColumnIndex > dataGridView1.Columns.Count - 2 && e.ColumnIndex > 0)
+                    else if (e.RowIndex == -1 && e.ColumnIndex > dataGridView.Columns.Count - 2 && e.ColumnIndex > 0)
                     {
                         e.PaintBackground(e.CellBounds, true);
                         e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
@@ -203,9 +200,9 @@ namespace KPO_System
                         e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 10);
                         e.Graphics.ResetTransform();
                         e.Handled = true;
-                        dataGridView1.ColumnHeadersHeight = 80;
+                        dataGridView.ColumnHeadersHeight = 80;
 
-                        DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                        DataGridViewColumn column = dataGridView.Columns[e.ColumnIndex];
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                         column.Width = 40;
                     }
@@ -213,7 +210,7 @@ namespace KPO_System
                 }
                 else if (paint == "Класс")
                 {
-                    if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 2)
+                    if (e.RowIndex == -1 && e.ColumnIndex < dataGridView.Columns.Count && e.ColumnIndex > 2)
                     {
                         e.PaintBackground(e.CellBounds, true);
                         e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
@@ -221,28 +218,28 @@ namespace KPO_System
                         e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 7);
                         e.Graphics.ResetTransform();
                         e.Handled = true;
-                        dataGridView1.ColumnHeadersHeight = 100;
+                        dataGridView.ColumnHeadersHeight = 100;
 
                         if (e.ColumnIndex > 2)
                         {
-                            DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                            DataGridViewColumn column = dataGridView.Columns[e.ColumnIndex];
                             column.Width = 35;
                             column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                         }
 
                     }
-                    else if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex <= 2)
+                    else if (e.RowIndex == -1 && e.ColumnIndex < dataGridView.Columns.Count && e.ColumnIndex <= 2)
                     {
-                        DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                        DataGridViewColumn column = dataGridView.Columns[e.ColumnIndex];
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
-                        DataGridViewCellStyle style = dataGridView1.ColumnHeadersDefaultCellStyle;
+                        DataGridViewCellStyle style = dataGridView.ColumnHeadersDefaultCellStyle;
                         style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     }
                 }
                 else
                 {
-                    if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex > 0)
+                    if (e.RowIndex == -1 && e.ColumnIndex < dataGridView.Columns.Count && e.ColumnIndex > 0)
                     {
                         e.PaintBackground(e.CellBounds, true);
                         e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
@@ -250,18 +247,18 @@ namespace KPO_System
                         e.Graphics.DrawString(e.FormattedValue?.ToString(), e.CellStyle.Font, Brushes.Black, 5, 7);
                         e.Graphics.ResetTransform();
                         e.Handled = true;
-                        dataGridView1.ColumnHeadersHeight = 100;
+                        dataGridView.ColumnHeadersHeight = 100;
 
                         if (e.ColumnIndex > 0)
                         {
-                            DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                            DataGridViewColumn column = dataGridView.Columns[e.ColumnIndex];
                             column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                             column.Width = 35;
                         }
                     }
-                    else if (e.RowIndex == -1 && e.ColumnIndex < dataGridView1.Columns.Count && e.ColumnIndex == 0)
+                    else if (e.RowIndex == -1 && e.ColumnIndex < dataGridView.Columns.Count && e.ColumnIndex == 0)
                     {
-                        DataGridViewCellStyle style = dataGridView1.ColumnHeadersDefaultCellStyle;
+                        DataGridViewCellStyle style = dataGridView.ColumnHeadersDefaultCellStyle;
                         style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
                 }
@@ -270,7 +267,7 @@ namespace KPO_System
 
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.DataSource == null)
+            if (dataGridView.DataSource == null)
             {
                 MessageBox.Show("Получите данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -287,17 +284,17 @@ namespace KPO_System
             try
             {
 
-                if (comboBox1.Text == "Ученик")
+                if (cbVariant.Text == "Ученик")
                 {
                     report.createReportPupil(dt, cbFamil.SelectedItem.ToString(), dTPickerFrom.Value, dTPickerBy.Value);
                     MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (comboBox1.Text == "Класс")
+                else if (cbVariant.Text == "Класс")
                 {
                     report.createReportClass(dt, CBClass.Text + CBLetter.Text, dTPickerFrom.Value, dTPickerBy.Value);
                     MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (comboBox1.Text == "Школа")
+                else if (cbVariant.Text == "Школа")
                 {
                     report.createReportSchool(dt, dTPickerFrom.Value, dTPickerBy.Value);
                     MessageBox.Show("Отчёт сформирован и помещен в \"Документы\"", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -311,7 +308,7 @@ namespace KPO_System
         private void отчётыДляВсегоКлассаToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if (dataGridView1.DataSource == null)
+            if (dataGridView.DataSource == null)
             {
                 MessageBox.Show("Получите данные для отчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

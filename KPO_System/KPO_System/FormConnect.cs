@@ -21,18 +21,18 @@ namespace KPO_System
             if(!empty)
             {
                     string[] param = fm.getParam();
-                    textBox1.Text = param[0];
-                    textBox2.Text = param[1];
-                    textBox3.Text = param[2];
-                    textBox4.Text = param[3];
-                    textBox5.Text = param[4];
+                    tbServer.Text = param[0];
+                    tbPort.Text = param[1];
+                    tbUserId.Text = param[2];
+                    tbPassword.Text = param[3];
+                    tbDataBase.Text = param[4];
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //проверить текстбоксы на sql инъекции
-            if(!validate(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text))
+            if(!validate(tbServer.Text, tbPort.Text, tbUserId.Text, tbPassword.Text, tbDataBase.Text))
             {
                 MessageBox.Show("Валидация не пройдена", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -40,14 +40,14 @@ namespace KPO_System
 
             try{
                 ManagerBD mdb = new ManagerBD();
-                mdb.init(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text);
+                mdb.init(tbServer.Text, tbPort.Text, tbUserId.Text, tbPassword.Text, tbDataBase.Text);
                 if (mdb.isConnect())
                 {
-                    string text = textBox1.Text + "\r\n" +
-                    textBox2.Text + "\r\n" +
-                    textBox3.Text + "\r\n" +
-                    textBox4.Text + "\r\n" +
-                    textBox5.Text;
+                    string text = tbServer.Text + "\r\n" +
+                    tbPort.Text + "\r\n" +
+                    tbUserId.Text + "\r\n" +
+                    tbPassword.Text + "\r\n" +
+                    tbDataBase.Text;
 
                     fm.setParam(text);
                     MessageBox.Show("Подключение стабильно", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);

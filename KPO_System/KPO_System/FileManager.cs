@@ -9,9 +9,9 @@ namespace KPO_System
 {
     public class FileManager
     {
-        public void createFileParam()
+        public void createFile(string name)
         {
-            using (FileStream fstream = File.Create(@"ConnectParam.txt")) { }
+            using (FileStream fstream = File.Create(name)) { }
 
         }
 
@@ -88,19 +88,9 @@ namespace KPO_System
 
         //admin
 
-        public void createFileAdm()
-        {
-            using (FileStream fstream = File.Create(@"Admin.txt")) { }
-            using (FileStream fstream = new FileStream(@"Admin.txt", FileMode.OpenOrCreate))
-            {
-                byte[] array = System.Text.Encoding.Default.GetBytes("admin");
-                fstream.Write(array, 0, array.Length);
-
-            }
-        }
         public string getPasswd()
         {
-            using (FileStream fstream = File.OpenRead(@"Admin.txt"))
+            using (FileStream fstream = File.OpenRead(@"confp"))
             {
                 byte[] array = new byte[fstream.Length];
                 fstream.Read(array, 0, array.Length);
@@ -111,7 +101,7 @@ namespace KPO_System
         }
         public void setPasswd(string paswd)
         {
-            using (FileStream fstream = new FileStream(@"Admin.txt", FileMode.OpenOrCreate))
+            using (FileStream fstream = new FileStream(@"confp", FileMode.OpenOrCreate))
             {
                 fstream.SetLength(0);
                 byte[] array = System.Text.Encoding.Default.GetBytes(paswd);
@@ -120,5 +110,29 @@ namespace KPO_System
             }
         }
 
+        //посл вход
+
+        public string getLast()
+        {
+            using (FileStream fstream = File.OpenRead(@"last.txt"))
+            {
+                byte[] array = new byte[fstream.Length];
+                fstream.Read(array, 0, array.Length);
+                string textFromFile = System.Text.Encoding.Default.GetString(array);
+
+                return textFromFile;
+            }
+        }
+
+        public void setLast(string last)
+        {
+            using (FileStream fstream = new FileStream(@"last.txt", FileMode.OpenOrCreate))
+            {
+                fstream.SetLength(0);
+                byte[] array = System.Text.Encoding.Default.GetBytes(last);
+                fstream.Write(array, 0, array.Length);
+
+            }
+        }
     }
 }

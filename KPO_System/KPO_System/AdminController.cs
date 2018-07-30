@@ -235,13 +235,13 @@ namespace KPO_System
         {
             if (!fm.exists("ConnectParam.txt"))
             {
-                fm.createFileParam();
+                fm.createFile("ConnectParam.txt");
                 FormConnect fc = new FormConnect(true);
                 fc.ShowDialog();
             }
             else if(fm.getLengthFile() == 0 || fm.getLinesFile("ConnectParam.txt") != 5)
             {
-                fm.createFileParam();
+                fm.createFile("ConnectParam.txt");
                 FormConnect fc = new FormConnect(true);
                 fc.ShowDialog();
             }

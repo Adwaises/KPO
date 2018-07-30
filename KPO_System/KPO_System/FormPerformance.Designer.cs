@@ -31,40 +31,40 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.buttonGet = new System.Windows.Forms.Button();
             this.dTPickerBy = new System.Windows.Forms.DateTimePicker();
             this.dTPickerFrom = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cbVariant = new System.Windows.Forms.ComboBox();
+            this.labelLetter = new System.Windows.Forms.Label();
+            this.labelClass = new System.Windows.Forms.Label();
             this.CBLetter = new System.Windows.Forms.ComboBox();
             this.CBClass = new System.Windows.Forms.ComboBox();
             this.cbFamil = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelBy = new System.Windows.Forms.Label();
+            this.labelFrom = new System.Windows.Forms.Label();
+            this.groupBox = new System.Windows.Forms.GroupBox();
+            this.labelPupil = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сформироватьОтчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчётыДляВсегоКлассаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.groupBox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.AllowDrop = true;
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridView.AllowDrop = true;
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -72,8 +72,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeight = 40;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView.ColumnHeadersHeight = 40;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -81,10 +81,10 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 166);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView.Location = new System.Drawing.Point(12, 166);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -92,23 +92,23 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 20;
-            this.dataGridView1.Size = new System.Drawing.Size(494, 205);
-            this.dataGridView1.TabIndex = 6;
-            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowHeadersWidth = 20;
+            this.dataGridView.Size = new System.Drawing.Size(494, 205);
+            this.dataGridView.TabIndex = 6;
+            this.dataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
-            // button1
+            // buttonGet
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(107, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 25);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Получить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonGet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonGet.Location = new System.Drawing.Point(107, 125);
+            this.buttonGet.Name = "buttonGet";
+            this.buttonGet.Size = new System.Drawing.Size(92, 25);
+            this.buttonGet.TabIndex = 5;
+            this.buttonGet.Text = "Получить";
+            this.buttonGet.UseVisualStyleBackColor = true;
+            this.buttonGet.Click += new System.EventHandler(this.button1_Click);
             // 
             // dTPickerBy
             // 
@@ -128,33 +128,33 @@
             this.dTPickerFrom.TabIndex = 4;
             this.dTPickerFrom.ValueChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
-            // comboBox1
+            // cbVariant
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(57, 98);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(142, 24);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbVariant.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbVariant.FormattingEnabled = true;
+            this.cbVariant.Location = new System.Drawing.Point(57, 98);
+            this.cbVariant.Name = "cbVariant";
+            this.cbVariant.Size = new System.Drawing.Size(142, 24);
+            this.cbVariant.TabIndex = 7;
+            this.cbVariant.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // label2
+            // labelLetter
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(142, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 16);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Буква";
+            this.labelLetter.AutoSize = true;
+            this.labelLetter.Location = new System.Drawing.Point(142, 28);
+            this.labelLetter.Name = "labelLetter";
+            this.labelLetter.Size = new System.Drawing.Size(48, 16);
+            this.labelLetter.TabIndex = 10;
+            this.labelLetter.Text = "Буква";
             // 
-            // label1
+            // labelClass
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 16);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Класс";
+            this.labelClass.AutoSize = true;
+            this.labelClass.Location = new System.Drawing.Point(23, 28);
+            this.labelClass.Name = "labelClass";
+            this.labelClass.Size = new System.Drawing.Size(46, 16);
+            this.labelClass.TabIndex = 11;
+            this.labelClass.Text = "Класс";
             // 
             // CBLetter
             // 
@@ -183,50 +183,50 @@
             this.cbFamil.TabIndex = 9;
             this.cbFamil.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
-            // label3
+            // labelBy
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(28, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 16);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "По";
+            this.labelBy.AutoSize = true;
+            this.labelBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBy.Location = new System.Drawing.Point(28, 78);
+            this.labelBy.Name = "labelBy";
+            this.labelBy.Size = new System.Drawing.Size(26, 16);
+            this.labelBy.TabIndex = 11;
+            this.labelBy.Text = "По";
             // 
-            // label4
+            // labelFrom
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(28, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 16);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "С";
+            this.labelFrom.AutoSize = true;
+            this.labelFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFrom.Location = new System.Drawing.Point(28, 52);
+            this.labelFrom.Name = "labelFrom";
+            this.labelFrom.Size = new System.Drawing.Size(17, 16);
+            this.labelFrom.TabIndex = 11;
+            this.labelFrom.Text = "С";
             // 
-            // groupBox1
+            // groupBox
             // 
-            this.groupBox1.Controls.Add(this.CBClass);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cbFamil);
-            this.groupBox1.Controls.Add(this.CBLetter);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(234, 46);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(257, 88);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Выбирете класс";
+            this.groupBox.Controls.Add(this.CBClass);
+            this.groupBox.Controls.Add(this.labelPupil);
+            this.groupBox.Controls.Add(this.labelLetter);
+            this.groupBox.Controls.Add(this.labelClass);
+            this.groupBox.Controls.Add(this.cbFamil);
+            this.groupBox.Controls.Add(this.CBLetter);
+            this.groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox.Location = new System.Drawing.Point(234, 46);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(257, 88);
+            this.groupBox.TabIndex = 12;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "Выбирете класс";
             // 
-            // label5
+            // labelPupil
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 55);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 16);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Ученик";
+            this.labelPupil.AutoSize = true;
+            this.labelPupil.Location = new System.Drawing.Point(13, 55);
+            this.labelPupil.Name = "labelPupil";
+            this.labelPupil.Size = new System.Drawing.Size(56, 16);
+            this.labelPupil.TabIndex = 10;
+            this.labelPupil.Text = "Ученик";
             // 
             // menuStrip1
             // 
@@ -267,12 +267,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(519, 403);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox);
+            this.Controls.Add(this.labelFrom);
+            this.Controls.Add(this.labelBy);
+            this.Controls.Add(this.cbVariant);
+            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.buttonGet);
             this.Controls.Add(this.dTPickerBy);
             this.Controls.Add(this.dTPickerFrom);
             this.Controls.Add(this.menuStrip1);
@@ -281,9 +281,9 @@
             this.Name = "FormPerformance";
             this.Text = "Успеваемость";
             this.Load += new System.EventHandler(this.FormPerformance_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -293,20 +293,20 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button buttonGet;
         private System.Windows.Forms.DateTimePicker dTPickerBy;
         private System.Windows.Forms.DateTimePicker dTPickerFrom;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbVariant;
+        private System.Windows.Forms.Label labelLetter;
+        private System.Windows.Forms.Label labelClass;
         private System.Windows.Forms.ComboBox CBLetter;
         private System.Windows.Forms.ComboBox CBClass;
         private System.Windows.Forms.ComboBox cbFamil;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelBy;
+        private System.Windows.Forms.Label labelFrom;
+        private System.Windows.Forms.GroupBox groupBox;
+        private System.Windows.Forms.Label labelPupil;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сформироватьОтчётToolStripMenuItem;

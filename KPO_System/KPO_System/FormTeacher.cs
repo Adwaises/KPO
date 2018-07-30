@@ -95,11 +95,11 @@ namespace KPO_System
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            dataGridView1.DataSource = dt;
-            TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
+            dataGridView.DataSource = dt;
+            TBMark.Text = dt.Rows[dataGridView.CurrentRow.Index][3].ToString();
             noSort();
             isNotChange = true;
-            dataGridView1.Focus();
+            dataGridView.Focus();
         }
 
 
@@ -110,13 +110,13 @@ namespace KPO_System
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
+            TBMark.Text = dt.Rows[dataGridView.CurrentRow.Index][3].ToString();
 
         }
 
         private void ButPost_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.DataSource == null)
+            if (dataGridView.DataSource == null)
             {
                 MessageBox.Show("Список не получен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -128,30 +128,30 @@ namespace KPO_System
                 return;
             }
 
-            Program.date = dateTimePicker1.Value;
+            Program.date = dateTimePicker.Value;
             if (TBMark.Text.Contains('(') || TBMark.Text.Contains(')') || TBMark.Text.Contains(';') || TBMark.Text.Length > 1)
             {
                 MessageBox.Show("Введите оценку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if(dt.Rows[dataGridView1.CurrentRow.Index][3].ToString() == "" && TBMark.Text == "")
+            if(dt.Rows[dataGridView.CurrentRow.Index][3].ToString() == "" && TBMark.Text == "")
             {
                 MessageBox.Show("Введите оценку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (dt.Rows[dataGridView1.CurrentRow.Index][3].ToString() == TBMark.Text )
+            if (dt.Rows[dataGridView.CurrentRow.Index][3].ToString() == TBMark.Text )
             {
                 MessageBox.Show("Введите другую оценку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            int indexRow = dataGridView1.CurrentRow.Index; // при нажатии enter перепрыгивает на след строку
+            int indexRow = dataGridView.CurrentRow.Index; // при нажатии enter перепрыгивает на след строку
 
             try
             {
-                tc.postMark(TBMark.Text, dataGridView1.CurrentRow.Index);
+                tc.postMark(TBMark.Text, dataGridView.CurrentRow.Index);
                 MessageBox.Show("Оценка выставлена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } catch(Exception ex)
             {
@@ -168,17 +168,17 @@ namespace KPO_System
             }
             
 
-            dataGridView1.DataSource = dt;
+            dataGridView.DataSource = dt;
 
-            dataGridView1.Rows[indexRow].Selected = true;
-            dataGridView1.CurrentCell = dataGridView1[0, indexRow];
+            dataGridView.Rows[indexRow].Selected = true;
+            dataGridView.CurrentCell = dataGridView[0, indexRow];
 
-            TBMark.Text = dt.Rows[dataGridView1.CurrentRow.Index][3].ToString();
-            dataGridView1.Focus();
+            TBMark.Text = dt.Rows[dataGridView.CurrentRow.Index][3].ToString();
+            dataGridView.Focus();
         }
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            Program.date = dateTimePicker1.Value;
+            Program.date = dateTimePicker.Value;
 
             isNotChange = false;
         }
@@ -186,7 +186,7 @@ namespace KPO_System
 
         private void noSort()
         {
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            foreach (DataGridViewColumn column in dataGridView.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }

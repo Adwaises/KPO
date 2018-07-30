@@ -23,8 +23,14 @@ namespace KPO_System
         public FormAuthorization()
         {
             InitializeComponent();
-            TBlogin.Text = "Паршина";
-            TBPassword.Text = "Паршина1";
+
+            if(fm.exists("last.txt"))
+            {
+                TBlogin.Text = fm.getLast();
+            }
+
+           // TBlogin.Text = "Паршина";
+           // TBPassword.Text = "Паршина1";
         }
 
         private void ButLogIn_Click(object sender, EventArgs e)
@@ -36,11 +42,13 @@ namespace KPO_System
 
             if (TBlogin.Text.Contains('(') || TBlogin.Text.Contains(')') || TBlogin.Text.Contains(';') || TBlogin.Text.Length > 20)
             {
+                MessageBox.Show("Возврат", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (TBPassword.Text.Contains('(') || TBPassword.Text.Contains(')') || TBPassword.Text.Contains(';') || TBPassword.Text.Length > 20)
             {
+                MessageBox.Show("Возврат", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -49,7 +57,7 @@ namespace KPO_System
                 if(!fm.exists("ConnectParam.txt"))
                 {
                     MessageBox.Show("Файл параметров не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    fm.createFileParam();
+                    fm.createFile("ConnectParam.txt");
                     FormConnect fc = new FormConnect(true);
                     fc.ShowDialog();
                     return;
@@ -57,7 +65,7 @@ namespace KPO_System
                 else if(fm.getLengthFile() == 0 || fm.getLinesFile("ConnectParam.txt") != 5)
                 {
                     MessageBox.Show("Файл параметров повреждён", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    fm.createFileParam();
+                    fm.createFile("ConnectParam.txt");
                     FormConnect fc = new FormConnect(true);
                     fc.ShowDialog();
                     return;
@@ -97,24 +105,34 @@ namespace KPO_System
                 }
 
 
-                string pAdm = "" ;
+                string pAdm = "";
+                if (login == "admin") {
+                   
+                    if (!fm.exists("confp"))
+                    {
+                        MessageBox.Show("Пароль не найден\r\nПароль сброшен до стандартного", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        fm.createFile("confp");
+                        fm.setPasswd("admschp");
+                        //setP();
+                        return;
+                    } else if (fm.getLinesFile("confp") != 1)
+                    {
 
-                if (!fm.exists("Admin.txt"))
-                {
-                    fm.createFileAdm();
-                    MessageBox.Show("Файл не найден\r\nСоздание нового, пароль стандартный", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                } else if(fm.getLinesFile("Admin.txt") != 1)
-                {
-                    fm.createFileAdm();
-                    MessageBox.Show("Файл повреждён\r\nСоздание нового, пароль стандартный", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                } else   {
-                    pAdm = fm.getPasswd();
+                        MessageBox.Show("Пароль повреждён\r\nПароль сброшен до стандартного", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        fm.createFile("confp");
+                        fm.setPasswd("admschp");
+                        //setP();
+                        return;
+                    } else {
+                        pAdm = fm.getPasswd();
+                    }
                 }
 
+                fm.createFile("last.txt");
+                fm.setLast(TBlogin.Text);
+
                 //открытие формы
-                if (login.ToLower() == "admin" && TBPassword.Text == pAdm)
+                if (login == "admin" && TBPassword.Text == pAdm)
                 {
                     FormAdmin fa = new FormAdmin(mBD);
                     fa.ShowDialog();
@@ -141,6 +159,43 @@ namespace KPO_System
 
         }
 
+        //private void setP()
+        //{
+        //    FormAdd fa = new FormAdd("Пароль", fm.getPasswd());
+        //    fa.buttonOK.Click += (senderSlave, eSlave) =>
+        //    {
+
+        //        //валидация
+        //        if (!validate(fa.textBox1.Text))
+        //        {
+        //            MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
+        //        try
+        //        {
+
+        //            fm.setPasswd(fa.textBox1.Text);
+        //            MessageBox.Show("Пароль изменён", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    };
+        //    fa.ShowDialog();
+        //}
+
+        private bool validate(string s1)
+        {
+            if (s1.Contains('(') || s1.Contains(')') || s1.Contains(';')
+|| s1.Length > 20 || s1.Length == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private void FormAuthorization_Load(object sender, EventArgs e)
         {
 
@@ -148,9 +203,15 @@ namespace KPO_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (fm.getLengthFile() == 0 || fm.getLinesFile("ConnectParam.txt") != 5)
+            if (!fm.exists("ConnectParam.txt"))
             {
-                fm.createFileParam();
+                fm.createFile("ConnectParam.txt");
+                FormConnect fc = new FormConnect(true);
+                fc.ShowDialog();
+            }
+            else if (fm.getLengthFile() == 0 || fm.getLinesFile("ConnectParam.txt") != 5)
+            {
+                fm.createFile("ConnectParam.txt");
                 FormConnect fc = new FormConnect(true);
                 fc.ShowDialog();
             }
@@ -158,6 +219,14 @@ namespace KPO_System
             {
                 FormConnect fc = new FormConnect(false);
                 fc.ShowDialog();
+            }
+        }
+
+        private void TBPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ButLogIn.PerformClick();
             }
         }
     }

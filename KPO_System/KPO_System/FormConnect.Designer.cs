@@ -28,153 +28,153 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.labelServ = new System.Windows.Forms.Label();
+            this.tbServer = new System.Windows.Forms.TextBox();
+            this.labelPort = new System.Windows.Forms.Label();
+            this.tbPort = new System.Windows.Forms.TextBox();
+            this.labelUserId = new System.Windows.Forms.Label();
+            this.tbUserId = new System.Windows.Forms.TextBox();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.labelDatabase = new System.Windows.Forms.Label();
+            this.tbDataBase = new System.Windows.Forms.TextBox();
+            this.buttonConnect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // labelServ
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(34, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Server";
+            this.labelServ.AutoSize = true;
+            this.labelServ.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelServ.Location = new System.Drawing.Point(34, 13);
+            this.labelServ.Name = "labelServ";
+            this.labelServ.Size = new System.Drawing.Size(48, 16);
+            this.labelServ.TabIndex = 0;
+            this.labelServ.Text = "Server";
             // 
-            // textBox1
+            // tbServer
             // 
-            this.textBox1.AllowDrop = true;
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbServer.AllowDrop = true;
+            this.tbServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(92, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(114, 22);
-            this.textBox1.TabIndex = 1;
+            this.tbServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbServer.Location = new System.Drawing.Point(92, 10);
+            this.tbServer.Name = "tbServer";
+            this.tbServer.Size = new System.Drawing.Size(114, 22);
+            this.tbServer.TabIndex = 1;
             // 
-            // label2
+            // labelPort
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(50, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Port";
+            this.labelPort.AutoSize = true;
+            this.labelPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPort.Location = new System.Drawing.Point(50, 39);
+            this.labelPort.Name = "labelPort";
+            this.labelPort.Size = new System.Drawing.Size(32, 16);
+            this.labelPort.TabIndex = 0;
+            this.labelPort.Text = "Port";
             // 
-            // textBox2
+            // tbPort
             // 
-            this.textBox2.AllowDrop = true;
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbPort.AllowDrop = true;
+            this.tbPort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(92, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(114, 22);
-            this.textBox2.TabIndex = 1;
+            this.tbPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPort.Location = new System.Drawing.Point(92, 36);
+            this.tbPort.Name = "tbPort";
+            this.tbPort.Size = new System.Drawing.Size(114, 22);
+            this.tbPort.TabIndex = 1;
             // 
-            // label3
+            // labelUserId
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(34, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "UserId";
+            this.labelUserId.AutoSize = true;
+            this.labelUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUserId.Location = new System.Drawing.Point(34, 65);
+            this.labelUserId.Name = "labelUserId";
+            this.labelUserId.Size = new System.Drawing.Size(48, 16);
+            this.labelUserId.TabIndex = 0;
+            this.labelUserId.Text = "UserId";
             // 
-            // textBox3
+            // tbUserId
             // 
-            this.textBox3.AllowDrop = true;
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbUserId.AllowDrop = true;
+            this.tbUserId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(92, 62);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(114, 22);
-            this.textBox3.TabIndex = 1;
+            this.tbUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbUserId.Location = new System.Drawing.Point(92, 62);
+            this.tbUserId.Name = "tbUserId";
+            this.tbUserId.Size = new System.Drawing.Size(114, 22);
+            this.tbUserId.TabIndex = 1;
             // 
-            // label4
+            // labelPassword
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(14, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 16);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Password";
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPassword.Location = new System.Drawing.Point(14, 91);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(68, 16);
+            this.labelPassword.TabIndex = 0;
+            this.labelPassword.Text = "Password";
             // 
-            // textBox4
+            // tbPassword
             // 
-            this.textBox4.AllowDrop = true;
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbPassword.AllowDrop = true;
+            this.tbPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(92, 88);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(114, 22);
-            this.textBox4.TabIndex = 1;
+            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPassword.Location = new System.Drawing.Point(92, 88);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(114, 22);
+            this.tbPassword.TabIndex = 1;
             // 
-            // label5
+            // labelDatabase
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(13, 117);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 16);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "DataBase";
+            this.labelDatabase.AutoSize = true;
+            this.labelDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDatabase.Location = new System.Drawing.Point(13, 117);
+            this.labelDatabase.Name = "labelDatabase";
+            this.labelDatabase.Size = new System.Drawing.Size(69, 16);
+            this.labelDatabase.TabIndex = 0;
+            this.labelDatabase.Text = "DataBase";
             // 
-            // textBox5
+            // tbDataBase
             // 
-            this.textBox5.AllowDrop = true;
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbDataBase.AllowDrop = true;
+            this.tbDataBase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(92, 114);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(114, 22);
-            this.textBox5.TabIndex = 1;
+            this.tbDataBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbDataBase.Location = new System.Drawing.Point(92, 114);
+            this.tbDataBase.Name = "tbDataBase";
+            this.tbDataBase.Size = new System.Drawing.Size(114, 22);
+            this.tbDataBase.TabIndex = 1;
             // 
-            // button1
+            // buttonConnect
             // 
-            this.button1.AllowDrop = true;
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(131, 150);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Connect";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonConnect.AllowDrop = true;
+            this.buttonConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonConnect.Location = new System.Drawing.Point(131, 150);
+            this.buttonConnect.Name = "buttonConnect";
+            this.buttonConnect.Size = new System.Drawing.Size(75, 30);
+            this.buttonConnect.TabIndex = 2;
+            this.buttonConnect.Text = "Connect";
+            this.buttonConnect.UseVisualStyleBackColor = true;
+            this.buttonConnect.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(218, 191);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonConnect);
+            this.Controls.Add(this.tbDataBase);
+            this.Controls.Add(this.labelDatabase);
+            this.Controls.Add(this.tbPassword);
+            this.Controls.Add(this.labelPassword);
+            this.Controls.Add(this.tbUserId);
+            this.Controls.Add(this.labelUserId);
+            this.Controls.Add(this.tbPort);
+            this.Controls.Add(this.labelPort);
+            this.Controls.Add(this.tbServer);
+            this.Controls.Add(this.labelServ);
             this.MaximumSize = new System.Drawing.Size(400, 230);
             this.MinimumSize = new System.Drawing.Size(200, 230);
             this.Name = "FormConnect";
@@ -188,16 +188,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelServ;
+        private System.Windows.Forms.TextBox tbServer;
+        private System.Windows.Forms.Label labelPort;
+        private System.Windows.Forms.TextBox tbPort;
+        private System.Windows.Forms.Label labelUserId;
+        private System.Windows.Forms.TextBox tbUserId;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.Label labelDatabase;
+        private System.Windows.Forms.TextBox tbDataBase;
+        private System.Windows.Forms.Button buttonConnect;
     }
 }
