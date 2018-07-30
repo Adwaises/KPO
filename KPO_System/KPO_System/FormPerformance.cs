@@ -29,7 +29,7 @@ namespace KPO_System
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonGet_Click(object sender, EventArgs e)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace KPO_System
             cbVariant.SelectedIndex = 0;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxVariants_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbVariant.Text == "Ученик")
             {
@@ -162,10 +162,9 @@ namespace KPO_System
 
         }
 
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dataGridView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-         //   if (isNotChange)
-          //  {
+
                 if (paint == "Ученик")
                 {
                     if (e.RowIndex == -1 && e.ColumnIndex < dataGridView.Columns.Count - 1 && e.ColumnIndex > 0)
@@ -262,7 +261,6 @@ namespace KPO_System
                         style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
                 }
-       //     }
         }
 
         private void сформироватьОтчётToolStripMenuItem_Click(object sender, EventArgs e)

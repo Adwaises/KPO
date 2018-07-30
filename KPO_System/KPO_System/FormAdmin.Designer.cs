@@ -212,7 +212,7 @@
             this.buttonAdd.TabIndex = 11;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonChange
             // 
@@ -225,7 +225,7 @@
             this.buttonChange.TabIndex = 12;
             this.buttonChange.Text = "Редактировать";
             this.buttonChange.UseVisualStyleBackColor = true;
-            this.buttonChange.Click += new System.EventHandler(this.button2_Click);
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // buttonRemove
             // 
@@ -238,7 +238,7 @@
             this.buttonRemove.TabIndex = 13;
             this.buttonRemove.Text = "Удалить";
             this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.button3_Click);
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // groupBox
             // 

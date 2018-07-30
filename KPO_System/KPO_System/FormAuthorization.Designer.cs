@@ -104,7 +104,7 @@
             this.buttonSetting.TabIndex = 3;
             this.buttonSetting.Text = "Параметры";
             this.buttonSetting.UseVisualStyleBackColor = true;
-            this.buttonSetting.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSetting.Click += new System.EventHandler(this.buttonParam_Click);
             // 
             // FormAuthorization
             // 

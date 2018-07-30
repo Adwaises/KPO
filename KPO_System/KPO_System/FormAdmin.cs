@@ -186,7 +186,7 @@ namespace KPO_System
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (dataGridView.DataSource == null)
             {
@@ -322,7 +322,7 @@ namespace KPO_System
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonRemove_Click(object sender, EventArgs e)
         {
             if(dataGridView.DataSource == null)
             {
@@ -355,7 +355,7 @@ namespace KPO_System
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonChange_Click(object sender, EventArgs e)
         {
             if (dataGridView.DataSource == null)
             {

@@ -35,8 +35,11 @@ namespace KPO_System
 
         }
 
-        private void butGet()
+
+
+        private void buttonGet_Click(object sender, EventArgs e)
         {
+
             try
             {
                 dataGridView1.DataSource = null;
@@ -59,11 +62,7 @@ namespace KPO_System
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            butGet();
             isNotChange = true;
         }
 
@@ -75,11 +74,8 @@ namespace KPO_System
             }
         }
 
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dataGridView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-         //   if (isNotChange)
-          //  {
-
 
                 if (paint == "Дисциплина")
                 {
@@ -128,11 +124,10 @@ namespace KPO_System
                         column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     }
                 }
-           // }
 
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxVariants_SelectedIndexChanged(object sender, EventArgs e)
         {
             isNotChange = false;
             if (cbVariants.Text == "Дисциплина")

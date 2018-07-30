@@ -176,7 +176,7 @@ namespace KPO_System
             TBMark.Text = dt.Rows[dataGridView.CurrentRow.Index][3].ToString();
             dataGridView.Focus();
         }
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             Program.date = dateTimePicker.Value;
 
@@ -217,7 +217,7 @@ namespace KPO_System
             }
         }
 
-        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        private void dataGridView_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.D2)
             {

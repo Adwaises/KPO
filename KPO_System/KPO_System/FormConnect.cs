@@ -29,7 +29,7 @@ namespace KPO_System
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonConnect_Click(object sender, EventArgs e)
         {
             //проверить текстбоксы на sql инъекции
             if(!validate(tbServer.Text, tbPort.Text, tbUserId.Text, tbPassword.Text, tbDataBase.Text))

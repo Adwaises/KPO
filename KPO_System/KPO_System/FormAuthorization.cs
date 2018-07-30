@@ -201,7 +201,7 @@ namespace KPO_System
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonParam_Click(object sender, EventArgs e)
         {
             if (!fm.exists("ConnectParam.txt"))
             {

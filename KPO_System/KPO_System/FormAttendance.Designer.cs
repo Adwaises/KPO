@@ -78,7 +78,7 @@
             this.buttonGet.TabIndex = 1;
             this.buttonGet.Text = "Получить";
             this.buttonGet.UseVisualStyleBackColor = true;
-            this.buttonGet.Click += new System.EventHandler(this.button1_Click);
+            this.buttonGet.Click += new System.EventHandler(this.buttonGet_Click);
             // 
             // dataGridView1
             // 
@@ -122,7 +122,7 @@
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.Size = new System.Drawing.Size(480, 196);
             this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView_CellPainting);
             // 
             // cbDisc
             // 
@@ -162,7 +162,7 @@
             this.cbVariants.Name = "cbVariants";
             this.cbVariants.Size = new System.Drawing.Size(142, 24);
             this.cbVariants.TabIndex = 3;
-            this.cbVariants.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.cbVariants.SelectedIndexChanged += new System.EventHandler(this.comboBoxVariants_SelectedIndexChanged);
             // 
             // CBClass
             // 
