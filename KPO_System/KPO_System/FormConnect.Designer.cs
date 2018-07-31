@@ -81,7 +81,7 @@
             this.tbPort.Location = new System.Drawing.Point(92, 36);
             this.tbPort.Name = "tbPort";
             this.tbPort.Size = new System.Drawing.Size(114, 22);
-            this.tbPort.TabIndex = 1;
+            this.tbPort.TabIndex = 2;
             // 
             // labelUserId
             // 
@@ -102,7 +102,7 @@
             this.tbUserId.Location = new System.Drawing.Point(92, 62);
             this.tbUserId.Name = "tbUserId";
             this.tbUserId.Size = new System.Drawing.Size(114, 22);
-            this.tbUserId.TabIndex = 1;
+            this.tbUserId.TabIndex = 3;
             // 
             // labelPassword
             // 
@@ -123,7 +123,7 @@
             this.tbPassword.Location = new System.Drawing.Point(92, 88);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(114, 22);
-            this.tbPassword.TabIndex = 1;
+            this.tbPassword.TabIndex = 4;
             // 
             // labelDatabase
             // 
@@ -144,7 +144,7 @@
             this.tbDataBase.Location = new System.Drawing.Point(92, 114);
             this.tbDataBase.Name = "tbDataBase";
             this.tbDataBase.Size = new System.Drawing.Size(114, 22);
-            this.tbDataBase.TabIndex = 1;
+            this.tbDataBase.TabIndex = 5;
             // 
             // buttonConnect
             // 
@@ -154,7 +154,7 @@
             this.buttonConnect.Location = new System.Drawing.Point(131, 150);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(75, 30);
-            this.buttonConnect.TabIndex = 2;
+            this.buttonConnect.TabIndex = 6;
             this.buttonConnect.Text = "Connect";
             this.buttonConnect.UseVisualStyleBackColor = true;
             this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);

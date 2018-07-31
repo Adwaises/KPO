@@ -165,8 +165,12 @@ namespace KPO_System
                 }
                 dataGridView.DataSource = dt;
 
-                dataGridView.Rows[indexRow].Selected = true;
-                dataGridView.CurrentCell = dataGridView[0, indexRow];
+                if(dt.Rows.Count >0)
+                {
+                    dataGridView.Rows[indexRow].Selected = true;
+                    dataGridView.CurrentCell = dataGridView[0, indexRow];
+                }
+
 
                 noSort();
             }

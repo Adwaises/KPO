@@ -80,7 +80,7 @@
             this.textBox2.Location = new System.Drawing.Point(119, 37);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(137, 22);
-            this.textBox2.TabIndex = 1;
+            this.textBox2.TabIndex = 2;
             // 
             // label3
             // 
@@ -101,7 +101,7 @@
             this.textBox3.Location = new System.Drawing.Point(119, 64);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(137, 22);
-            this.textBox3.TabIndex = 1;
+            this.textBox3.TabIndex = 3;
             // 
             // buttonOK
             // 
@@ -111,7 +111,7 @@
             this.buttonOK.Location = new System.Drawing.Point(173, 124);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(83, 35);
-            this.buttonOK.TabIndex = 2;
+            this.buttonOK.TabIndex = 5;
             this.buttonOK.Text = "Добавить";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -126,7 +126,7 @@
             this.comboBox1.Location = new System.Drawing.Point(119, 37);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(137, 24);
-            this.comboBox1.TabIndex = 3;
+            this.comboBox1.TabIndex = 2;
             // 
             // label4
             // 
@@ -147,7 +147,7 @@
             this.textBox4.Location = new System.Drawing.Point(119, 92);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(137, 22);
-            this.textBox4.TabIndex = 1;
+            this.textBox4.TabIndex = 4;
             // 
             // FormAdd
             // 

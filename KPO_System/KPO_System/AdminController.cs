@@ -192,7 +192,13 @@ namespace KPO_System
         {
             if (table == "Учителя")
             {
-                mdb.controlQuery(String.Format( "delete from teacher where id_teacher = {0}",listID[index]));
+                try
+                {
+                    mdb.controlQuery(String.Format("delete from teacher where id_teacher = {0}", listID[index]));
+                } catch(Exception ex)
+                {
+                    throw new Exception("Сначала удалите связные записи \"Класс\" и \"Предмет\"");
+                }
             }
             else if (table == "Предметы")
             {
