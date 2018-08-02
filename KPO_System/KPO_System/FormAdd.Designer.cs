@@ -165,7 +165,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(300, 210);
-            this.MinimumSize = new System.Drawing.Size(220, 185);
+            this.MinimumSize = new System.Drawing.Size(220, 210);
             this.Name = "FormAdd";
             this.Text = "FormAdd";
             this.Load += new System.EventHandler(this.FormAdd_Load);

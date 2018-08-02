@@ -106,12 +106,19 @@ namespace KPO_System
             if (dt.Rows.Count > 1)
             {
                 FormAdd fa = new FormAdd("Логин", dt);
+                fa.Text = "Выбор дисциплины";
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     discipline = dt.Rows[fa.comboBox1.SelectedIndex][0].ToString();
                     idDiscipline = Convert.ToInt32(dt.Rows[fa.comboBox1.SelectedIndex][1]);
-
                 };
+
+                fa.FormClosed += (senderSlave, eSlave) =>
+                {
+                    discipline = dt.Rows[fa.comboBox1.SelectedIndex][0].ToString();
+                    idDiscipline = Convert.ToInt32(dt.Rows[fa.comboBox1.SelectedIndex][1]);
+                };
+
                 fa.ShowDialog();
             }
             else

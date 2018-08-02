@@ -113,7 +113,7 @@ namespace KPO_System
                         MessageBox.Show("Пароль не найден\r\nПароль сброшен до стандартного", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         fm.createFile("confp");
                         fm.setPasswd("admschp");
-                        //setP();
+                        //setP(); //как в изменить пароль
                         return;
                     } else if (fm.getLinesFile("confp") != 1)
                     {
@@ -159,31 +159,6 @@ namespace KPO_System
 
         }
 
-        //private void setP()
-        //{
-        //    FormAdd fa = new FormAdd("Пароль", fm.getPasswd());
-        //    fa.buttonOK.Click += (senderSlave, eSlave) =>
-        //    {
-
-        //        //валидация
-        //        if (!validate(fa.textBox1.Text))
-        //        {
-        //            MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return;
-        //        }
-        //        try
-        //        {
-
-        //            fm.setPasswd(fa.textBox1.Text);
-        //            MessageBox.Show("Пароль изменён", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    };
-        //    fa.ShowDialog();
-        //}
 
         private bool validate(string s1)
         {

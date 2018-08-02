@@ -178,7 +178,7 @@
             this.MaximumSize = new System.Drawing.Size(400, 230);
             this.MinimumSize = new System.Drawing.Size(200, 230);
             this.Name = "FormConnect";
-            this.Text = "FormConnect";
+            this.Text = "Подключение";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormConnect_FormClosing);
             this.Load += new System.EventHandler(this.FormConnect_Load);
             this.ResumeLayout(false);

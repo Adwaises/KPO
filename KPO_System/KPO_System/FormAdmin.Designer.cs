@@ -270,7 +270,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(575, 475);
             this.Name = "FormAdmin";
-            this.Text = "FormAdmin";
+            this.Text = "Администратор";
             this.Load += new System.EventHandler(this.FormAdmin_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

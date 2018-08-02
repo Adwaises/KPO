@@ -257,7 +257,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(575, 440);
             this.Name = "FormTeacher";
-            this.Text = "FormTeacher";
+            this.Text = "Учитель";
             this.Load += new System.EventHandler(this.FormTeacher_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);

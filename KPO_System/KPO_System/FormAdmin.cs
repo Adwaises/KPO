@@ -207,6 +207,7 @@ namespace KPO_System
             if (comboBoxVariants.Text == "Учителя")
             {
                 FormAdd fa = new FormAdd(comboBoxVariants.Text);
+                fa.Text = "Добавить";
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
 
@@ -236,6 +237,7 @@ namespace KPO_System
             {
 
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers());
+                fa.Text = "Добавить";
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     //валидация
@@ -266,6 +268,7 @@ namespace KPO_System
             {
 
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers());
+                fa.Text = "Добавить";
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     //валидация
@@ -295,6 +298,7 @@ namespace KPO_System
             {
                 
                 FormAdd fa = new FormAdd(comboBoxVariants.Text);
+                fa.Text = "Добавить";
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     //валидация
@@ -379,6 +383,7 @@ namespace KPO_System
             {
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView.CurrentRow.Index][0].ToString(),
                     dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView.CurrentRow.Index][2].ToString(), dt.Rows[dataGridView.CurrentRow.Index][3].ToString());
+                fa.Text = "Изменить";
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
 
@@ -406,7 +411,7 @@ namespace KPO_System
 
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers(),
                     dt.Rows[dataGridView.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView.CurrentRow.Index][1].ToString()) ;
-
+                fa.Text = "Изменить";
 
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
@@ -441,7 +446,7 @@ namespace KPO_System
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers(),
                     dt.Rows[dataGridView.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), 
                     dt.Rows[dataGridView.CurrentRow.Index][2].ToString());
-
+                fa.Text = "Изменить";
 
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
@@ -473,6 +478,7 @@ namespace KPO_System
             {
                 FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView.CurrentRow.Index][0].ToString(),
     dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView.CurrentRow.Index][2].ToString());
+                fa.Text = "Изменить";
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
@@ -583,6 +589,7 @@ namespace KPO_System
         {
             FileManager fm = new FileManager();
             FormAdd fa = new FormAdd("Пароль", fm.getPasswd());
+            fa.Text = "Изменить пароль";
             fa.buttonOK.Click += (senderSlave, eSlave) =>
             {
 

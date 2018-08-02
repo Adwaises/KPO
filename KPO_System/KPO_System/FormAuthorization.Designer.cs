@@ -120,7 +120,7 @@
             this.MaximumSize = new System.Drawing.Size(350, 160);
             this.MinimumSize = new System.Drawing.Size(270, 160);
             this.Name = "FormAuthorization";
-            this.Text = "Form1";
+            this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.FormAuthorization_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

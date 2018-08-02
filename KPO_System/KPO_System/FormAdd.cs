@@ -122,6 +122,12 @@ namespace KPO_System
                 label4.Visible = false;
                 textBox4.Visible = false;
 
+
+                MinimumSize = new Size(300, 160);
+                Size = new Size(300, 160);
+
+                comboBox1.SelectionLength = 0;
+
             }
             else if (variant == "Классы")
             {
@@ -135,6 +141,14 @@ namespace KPO_System
 
                 label4.Visible = false;
                 textBox4.Visible = false;
+
+                MinimumSize = new Size(300, 180);
+                Size = new Size(300, 180);
+
+                comboBox1.SelectionLength = 0;
+                textBox2.SelectionLength = 0;
+                textBox2.TabIndex = 2;
+                comboBox1.TabIndex = 3;
             }
             else if (variant == "Класс")
             {
@@ -146,6 +160,9 @@ namespace KPO_System
 
                 label4.Visible = false;
                 textBox4.Visible = false;
+
+                MinimumSize = new Size(300, 180);
+                Size = new Size(300, 180);
             } else if(variant == "Пароль")
             {
                 label1.Text = "Пароль";
