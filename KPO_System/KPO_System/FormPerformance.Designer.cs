@@ -96,7 +96,7 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 20;
             this.dataGridView.Size = new System.Drawing.Size(494, 205);
-            this.dataGridView.TabIndex = 6;
+            this.dataGridView.TabIndex = 0;
             this.dataGridView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView_CellPainting);
             // 
             // buttonGet
@@ -105,7 +105,7 @@
             this.buttonGet.Location = new System.Drawing.Point(107, 125);
             this.buttonGet.Name = "buttonGet";
             this.buttonGet.Size = new System.Drawing.Size(92, 25);
-            this.buttonGet.TabIndex = 5;
+            this.buttonGet.TabIndex = 7;
             this.buttonGet.Text = "Получить";
             this.buttonGet.UseVisualStyleBackColor = true;
             this.buttonGet.Click += new System.EventHandler(this.buttonGet_Click);
@@ -116,7 +116,7 @@
             this.dTPickerBy.Location = new System.Drawing.Point(57, 72);
             this.dTPickerBy.Name = "dTPickerBy";
             this.dTPickerBy.Size = new System.Drawing.Size(142, 22);
-            this.dTPickerBy.TabIndex = 3;
+            this.dTPickerBy.TabIndex = 2;
             this.dTPickerBy.ValueChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // dTPickerFrom
@@ -125,7 +125,7 @@
             this.dTPickerFrom.Location = new System.Drawing.Point(57, 46);
             this.dTPickerFrom.Name = "dTPickerFrom";
             this.dTPickerFrom.Size = new System.Drawing.Size(142, 22);
-            this.dTPickerFrom.TabIndex = 4;
+            this.dTPickerFrom.TabIndex = 1;
             this.dTPickerFrom.ValueChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // cbVariant
@@ -135,7 +135,7 @@
             this.cbVariant.Location = new System.Drawing.Point(57, 98);
             this.cbVariant.Name = "cbVariant";
             this.cbVariant.Size = new System.Drawing.Size(142, 24);
-            this.cbVariant.TabIndex = 7;
+            this.cbVariant.TabIndex = 3;
             this.cbVariant.SelectedIndexChanged += new System.EventHandler(this.comboBoxVariants_SelectedIndexChanged);
             // 
             // labelLetter
@@ -162,7 +162,7 @@
             this.CBLetter.Location = new System.Drawing.Point(196, 25);
             this.CBLetter.Name = "CBLetter";
             this.CBLetter.Size = new System.Drawing.Size(55, 24);
-            this.CBLetter.TabIndex = 9;
+            this.CBLetter.TabIndex = 5;
             this.CBLetter.SelectedIndexChanged += new System.EventHandler(this.CBLetter_SelectedIndexChanged);
             // 
             // CBClass
@@ -171,7 +171,7 @@
             this.CBClass.Location = new System.Drawing.Point(75, 25);
             this.CBClass.Name = "CBClass";
             this.CBClass.Size = new System.Drawing.Size(55, 24);
-            this.CBClass.TabIndex = 8;
+            this.CBClass.TabIndex = 4;
             this.CBClass.SelectedIndexChanged += new System.EventHandler(this.CBClass_SelectedIndexChanged);
             // 
             // cbFamil
@@ -180,7 +180,7 @@
             this.cbFamil.Location = new System.Drawing.Point(75, 52);
             this.cbFamil.Name = "cbFamil";
             this.cbFamil.Size = new System.Drawing.Size(176, 24);
-            this.cbFamil.TabIndex = 9;
+            this.cbFamil.TabIndex = 6;
             this.cbFamil.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // labelBy

@@ -124,7 +124,7 @@
             this.ButGet.Location = new System.Drawing.Point(445, 36);
             this.ButGet.Name = "ButGet";
             this.ButGet.Size = new System.Drawing.Size(88, 24);
-            this.ButGet.TabIndex = 3;
+            this.ButGet.TabIndex = 4;
             this.ButGet.Text = "Получить";
             this.ButGet.UseVisualStyleBackColor = true;
             this.ButGet.Click += new System.EventHandler(this.ButGet_Click);
@@ -235,7 +235,7 @@
             this.dateTimePicker.Location = new System.Drawing.Point(12, 355);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(138, 22);
-            this.dateTimePicker.TabIndex = 9;
+            this.dateTimePicker.TabIndex = 3;
             this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // FormTeacher

@@ -57,7 +57,7 @@
             this.dateTimePickerFrom.Location = new System.Drawing.Point(63, 33);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(142, 22);
-            this.dateTimePickerFrom.TabIndex = 0;
+            this.dateTimePickerFrom.TabIndex = 1;
             this.dateTimePickerFrom.ValueChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // dateTimePickerBy
@@ -66,7 +66,7 @@
             this.dateTimePickerBy.Location = new System.Drawing.Point(63, 59);
             this.dateTimePickerBy.Name = "dateTimePickerBy";
             this.dateTimePickerBy.Size = new System.Drawing.Size(142, 22);
-            this.dateTimePickerBy.TabIndex = 0;
+            this.dateTimePickerBy.TabIndex = 2;
             this.dateTimePickerBy.ValueChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // buttonGet
@@ -75,7 +75,7 @@
             this.buttonGet.Location = new System.Drawing.Point(401, 62);
             this.buttonGet.Name = "buttonGet";
             this.buttonGet.Size = new System.Drawing.Size(91, 25);
-            this.buttonGet.TabIndex = 1;
+            this.buttonGet.TabIndex = 6;
             this.buttonGet.Text = "Получить";
             this.buttonGet.UseVisualStyleBackColor = true;
             this.buttonGet.Click += new System.EventHandler(this.buttonGet_Click);
@@ -121,7 +121,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.Size = new System.Drawing.Size(480, 196);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView_CellPainting);
             // 
             // cbDisc
@@ -131,7 +131,7 @@
             this.cbDisc.Location = new System.Drawing.Point(346, 31);
             this.cbDisc.Name = "cbDisc";
             this.cbDisc.Size = new System.Drawing.Size(146, 24);
-            this.cbDisc.TabIndex = 3;
+            this.cbDisc.TabIndex = 4;
             this.cbDisc.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // labelFrom
@@ -171,7 +171,7 @@
             this.CBClass.Location = new System.Drawing.Point(303, 31);
             this.CBClass.Name = "CBClass";
             this.CBClass.Size = new System.Drawing.Size(55, 24);
-            this.CBClass.TabIndex = 14;
+            this.CBClass.TabIndex = 4;
             this.CBClass.SelectedIndexChanged += new System.EventHandler(this.CBClass_SelectedIndexChanged);
             // 
             // labelLetter
@@ -201,7 +201,7 @@
             this.CBLetter.Location = new System.Drawing.Point(425, 31);
             this.CBLetter.Name = "CBLetter";
             this.CBLetter.Size = new System.Drawing.Size(67, 24);
-            this.CBLetter.TabIndex = 15;
+            this.CBLetter.TabIndex = 5;
             this.CBLetter.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
             // menuStrip1

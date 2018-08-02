@@ -100,7 +100,7 @@
             this.ButGet.Location = new System.Drawing.Point(89, 68);
             this.ButGet.Name = "ButGet";
             this.ButGet.Size = new System.Drawing.Size(83, 34);
-            this.ButGet.TabIndex = 5;
+            this.ButGet.TabIndex = 2;
             this.ButGet.Text = "Получить";
             this.ButGet.UseVisualStyleBackColor = true;
             this.ButGet.Click += new System.EventHandler(this.ButGet_Click);
@@ -149,7 +149,7 @@
             this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(535, 260);
-            this.dataGridView.TabIndex = 4;
+            this.dataGridView.TabIndex = 0;
             // 
             // comboBoxVariants
             // 
@@ -158,7 +158,7 @@
             this.comboBoxVariants.Location = new System.Drawing.Point(51, 36);
             this.comboBoxVariants.Name = "comboBoxVariants";
             this.comboBoxVariants.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxVariants.TabIndex = 6;
+            this.comboBoxVariants.TabIndex = 1;
             this.comboBoxVariants.SelectedIndexChanged += new System.EventHandler(this.comboBoxVariants_SelectedIndexChanged);
             // 
             // labelLetter
@@ -188,7 +188,7 @@
             this.CBLetter.Location = new System.Drawing.Point(78, 51);
             this.CBLetter.Name = "CBLetter";
             this.CBLetter.Size = new System.Drawing.Size(82, 24);
-            this.CBLetter.TabIndex = 8;
+            this.CBLetter.TabIndex = 4;
             this.CBLetter.SelectedIndexChanged += new System.EventHandler(this.CBLetter_SelectedIndexChanged);
             // 
             // CBClass
@@ -198,7 +198,7 @@
             this.CBClass.Location = new System.Drawing.Point(78, 24);
             this.CBClass.Name = "CBClass";
             this.CBClass.Size = new System.Drawing.Size(82, 24);
-            this.CBClass.TabIndex = 7;
+            this.CBClass.TabIndex = 3;
             this.CBClass.SelectedIndexChanged += new System.EventHandler(this.CBClass_SelectedIndexChanged);
             // 
             // buttonAdd
@@ -209,7 +209,7 @@
             this.buttonAdd.Location = new System.Drawing.Point(13, 409);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(85, 32);
-            this.buttonAdd.TabIndex = 11;
+            this.buttonAdd.TabIndex = 5;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -222,7 +222,7 @@
             this.buttonChange.Location = new System.Drawing.Point(221, 409);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(125, 32);
-            this.buttonChange.TabIndex = 12;
+            this.buttonChange.TabIndex = 6;
             this.buttonChange.Text = "Редактировать";
             this.buttonChange.UseVisualStyleBackColor = true;
             this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
@@ -235,7 +235,7 @@
             this.buttonRemove.Location = new System.Drawing.Point(465, 409);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(83, 32);
-            this.buttonRemove.TabIndex = 13;
+            this.buttonRemove.TabIndex = 7;
             this.buttonRemove.Text = "Удалить";
             this.buttonRemove.UseVisualStyleBackColor = true;
             this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
