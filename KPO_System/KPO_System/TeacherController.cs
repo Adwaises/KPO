@@ -107,6 +107,7 @@ namespace KPO_System
             {
                 FormAdd fa = new FormAdd("Логин", dt);
                 fa.Text = "Выбор дисциплины";
+                //fa.ControlBox = false;
                 fa.buttonOK.Click += (senderSlave, eSlave) =>
                 {
                     discipline = dt.Rows[fa.comboBox1.SelectedIndex][0].ToString();
