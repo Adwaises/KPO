@@ -9,6 +9,8 @@ namespace KPO_System
 {
     public class FileManager
     {
+        Crypto crypto = new Crypto();
+
         public void createFile(string name)
         {
             using (FileStream fstream = File.Create(name)) { }
@@ -96,7 +98,7 @@ namespace KPO_System
                 fstream.Read(array, 0, array.Length);
                 string textFromFile = System.Text.Encoding.Default.GetString(array);
 
-                return textFromFile;
+                return crypto.Decrypt(textFromFile);
             }
         }
         public void setPasswd(string paswd)
@@ -104,35 +106,12 @@ namespace KPO_System
             using (FileStream fstream = new FileStream(@"confp", FileMode.OpenOrCreate))
             {
                 fstream.SetLength(0);
-                byte[] array = System.Text.Encoding.Default.GetBytes(paswd);
+                byte[] array = System.Text.Encoding.Default.GetBytes( crypto.Encrypt (paswd));
                 fstream.Write(array, 0, array.Length);
 
             }
         }
 
-        //посл вход
 
-        public string getLast()
-        {
-            using (FileStream fstream = File.OpenRead(@"last.txt"))
-            {
-                byte[] array = new byte[fstream.Length];
-                fstream.Read(array, 0, array.Length);
-                string textFromFile = System.Text.Encoding.Default.GetString(array);
-
-                return textFromFile;
-            }
-        }
-
-        public void setLast(string last)
-        {
-            using (FileStream fstream = new FileStream(@"last.txt", FileMode.OpenOrCreate))
-            {
-                fstream.SetLength(0);
-                byte[] array = System.Text.Encoding.Default.GetBytes(last);
-                fstream.Write(array, 0, array.Length);
-
-            }
-        }
     }
 }

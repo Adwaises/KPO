@@ -24,10 +24,6 @@ namespace KPO_System
         {
             InitializeComponent();
 
-            if(fm.exists("last.txt"))
-            {
-                TBlogin.Text = fm.getLast();
-            }
 
            // TBlogin.Text = "Паршина";
            // TBPassword.Text = "Паршина1";
@@ -128,9 +124,6 @@ namespace KPO_System
                     }
                 }
 
-                fm.createFile("last.txt");
-                fm.setLast(TBlogin.Text);
-
                 //открытие формы
                 if (login == "admin" && TBPassword.Text == pAdm)
                 {
@@ -173,7 +166,7 @@ namespace KPO_System
 
         private void FormAuthorization_Load(object sender, EventArgs e)
         {
-
+            //fm.setPasswd("admin");
         }
 
         private void buttonParam_Click(object sender, EventArgs e)

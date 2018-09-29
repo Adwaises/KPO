@@ -34,7 +34,6 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.CBClass = new System.Windows.Forms.ComboBox();
             this.CBLetter = new System.Windows.Forms.ComboBox();
-            this.ButGet = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.успеваемостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,9 +41,6 @@
             this.подключениеКБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelClass = new System.Windows.Forms.Label();
             this.labelLetter = new System.Windows.Forms.Label();
-            this.TBMark = new System.Windows.Forms.TextBox();
-            this.ButPost = new System.Windows.Forms.Button();
-            this.labelMark = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -93,16 +89,15 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(534, 256);
+            this.dataGridView.Size = new System.Drawing.Size(534, 308);
             this.dataGridView.TabIndex = 0;
-            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyDown);
             // 
             // CBClass
             // 
             this.CBClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CBClass.FormattingEnabled = true;
-            this.CBClass.Location = new System.Drawing.Point(87, 37);
+            this.CBClass.Location = new System.Drawing.Point(84, 36);
             this.CBClass.Name = "CBClass";
             this.CBClass.Size = new System.Drawing.Size(82, 24);
             this.CBClass.TabIndex = 1;
@@ -112,22 +107,11 @@
             // 
             this.CBLetter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CBLetter.FormattingEnabled = true;
-            this.CBLetter.Location = new System.Drawing.Point(273, 37);
+            this.CBLetter.Location = new System.Drawing.Point(250, 37);
             this.CBLetter.Name = "CBLetter";
             this.CBLetter.Size = new System.Drawing.Size(121, 24);
             this.CBLetter.TabIndex = 2;
             this.CBLetter.SelectedIndexChanged += new System.EventHandler(this.CBLetter_SelectedIndexChanged);
-            // 
-            // ButGet
-            // 
-            this.ButGet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButGet.Location = new System.Drawing.Point(445, 36);
-            this.ButGet.Name = "ButGet";
-            this.ButGet.Size = new System.Drawing.Size(88, 24);
-            this.ButGet.TabIndex = 4;
-            this.ButGet.Text = "Получить";
-            this.ButGet.UseVisualStyleBackColor = true;
-            this.ButGet.Click += new System.EventHandler(this.ButGet_Click);
             // 
             // menuStrip1
             // 
@@ -175,7 +159,7 @@
             // 
             this.labelClass.AutoSize = true;
             this.labelClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelClass.Location = new System.Drawing.Point(23, 40);
+            this.labelClass.Location = new System.Drawing.Point(20, 39);
             this.labelClass.Name = "labelClass";
             this.labelClass.Size = new System.Drawing.Size(46, 16);
             this.labelClass.TabIndex = 5;
@@ -185,54 +169,18 @@
             // 
             this.labelLetter.AutoSize = true;
             this.labelLetter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelLetter.Location = new System.Drawing.Point(206, 40);
+            this.labelLetter.Location = new System.Drawing.Point(183, 40);
             this.labelLetter.Name = "labelLetter";
             this.labelLetter.Size = new System.Drawing.Size(48, 16);
             this.labelLetter.TabIndex = 5;
             this.labelLetter.Text = "Буква";
-            // 
-            // TBMark
-            // 
-            this.TBMark.AllowDrop = true;
-            this.TBMark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TBMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TBMark.Location = new System.Drawing.Point(293, 357);
-            this.TBMark.Name = "TBMark";
-            this.TBMark.Size = new System.Drawing.Size(100, 22);
-            this.TBMark.TabIndex = 6;
-            this.TBMark.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBMark_KeyDown);
-            // 
-            // ButPost
-            // 
-            this.ButPost.AllowDrop = true;
-            this.ButPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ButPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButPost.Location = new System.Drawing.Point(445, 357);
-            this.ButPost.Name = "ButPost";
-            this.ButPost.Size = new System.Drawing.Size(101, 22);
-            this.ButPost.TabIndex = 7;
-            this.ButPost.Text = "Поставить";
-            this.ButPost.UseVisualStyleBackColor = true;
-            this.ButPost.Click += new System.EventHandler(this.ButPost_Click);
-            // 
-            // labelMark
-            // 
-            this.labelMark.AllowDrop = true;
-            this.labelMark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMark.AutoSize = true;
-            this.labelMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelMark.Location = new System.Drawing.Point(225, 360);
-            this.labelMark.Name = "labelMark";
-            this.labelMark.Size = new System.Drawing.Size(57, 16);
-            this.labelMark.TabIndex = 8;
-            this.labelMark.Text = "Оценка";
             // 
             // dateTimePicker
             // 
             this.dateTimePicker.AllowDrop = true;
             this.dateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker.Location = new System.Drawing.Point(12, 355);
+            this.dateTimePicker.Location = new System.Drawing.Point(408, 38);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(138, 22);
             this.dateTimePicker.TabIndex = 3;
@@ -244,12 +192,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 401);
             this.Controls.Add(this.dateTimePicker);
-            this.Controls.Add(this.labelMark);
-            this.Controls.Add(this.ButPost);
-            this.Controls.Add(this.TBMark);
             this.Controls.Add(this.labelLetter);
             this.Controls.Add(this.labelClass);
-            this.Controls.Add(this.ButGet);
             this.Controls.Add(this.CBLetter);
             this.Controls.Add(this.CBClass);
             this.Controls.Add(this.dataGridView);
@@ -272,7 +216,6 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.ComboBox CBClass;
         private System.Windows.Forms.ComboBox CBLetter;
-        private System.Windows.Forms.Button ButGet;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem успеваемостьToolStripMenuItem;
@@ -280,9 +223,6 @@
         private System.Windows.Forms.ToolStripMenuItem подключениеКБДToolStripMenuItem;
         private System.Windows.Forms.Label labelClass;
         private System.Windows.Forms.Label labelLetter;
-        private System.Windows.Forms.TextBox TBMark;
-        private System.Windows.Forms.Button ButPost;
-        private System.Windows.Forms.Label labelMark;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }

@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminController.cs" />
+    <Compile Include="Crypto.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="FormAdd.cs">
       <SubType>Form</SubType>

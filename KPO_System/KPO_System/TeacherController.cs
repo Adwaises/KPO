@@ -11,6 +11,9 @@ namespace KPO_System
     {
         ManagerBD mdb;
         FileManager fm = new FileManager();
+
+        DataTable dtForMarks = new DataTable();
+
         DataTable dt = new DataTable();
         DataTable dtMarks = new DataTable();
         List<int> listID = new List<int>();
@@ -37,8 +40,8 @@ namespace KPO_System
 "join class on class.id_class = pupil.id_class " +
 "where number = {0} and letter = '{1}' order by famil; ", Convert.ToInt32(nClass), letter);
 
-            dt = mdb.selectionQuery(sql);
-            dt.Columns.Add("Оценка");
+            dtForMarks = mdb.selectionQuery(sql);
+            dtForMarks.Columns.Add("Оценка");
 
             //получили список оценок за дату
 
@@ -52,23 +55,23 @@ namespace KPO_System
             //находим соотвествия
             for (int i = 0; i < dtMarks.Rows.Count; i++)
             {
-                for (int j = 0; j < dt.Rows.Count; j++)
+                for (int j = 0; j < dtForMarks.Rows.Count; j++)
                 {
-                    if ((dt.Rows[j][0]).ToString() == dtMarks.Rows[i][0].ToString())
+                    if ((dtForMarks.Rows[j][0]).ToString() == dtMarks.Rows[i][0].ToString())
                     {
-                        dt.Rows[j][4] = dtMarks.Rows[i][1];
+                        dtForMarks.Rows[j][4] = dtMarks.Rows[i][1];
                     }
                 }
             }
             //сохраняем порядок id и удаляем столбец
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dtForMarks.Rows.Count; i++)
             {
-                listID.Add(Convert.ToInt32(dt.Rows[i][0]));
+                listID.Add(Convert.ToInt32(dtForMarks.Rows[i][0]));
             }
 
-            dt.Columns.RemoveAt(0);
+            dtForMarks.Columns.RemoveAt(0);
 
-            return dt;
+            return dtForMarks;
         }
 
        
@@ -159,13 +162,13 @@ namespace KPO_System
 
             string sql = "";
 
-            if (mark.Length == 1 && dt.Rows[index][3].ToString() == "")
+            if (mark.Length == 1 && dtForMarks.Rows[index][3].ToString() == "")
             {
                 sql = String.Format("insert into Performance (Date_letter,id_pupil, id_discipline,mark) values ('{0}', {1}, {2},'{3}');",
                  Program.date.ToString("yyyy-MM-dd"), listID[index], idDiscipline, mark);
 
             }
-            else if (mark.Length == 1 && dt.Rows[index][3].ToString() != "")
+            else if (mark.Length == 1 && dtForMarks.Rows[index][3].ToString() != "")
             {
                 sql = String.Format("update performance set mark = '{0}' where id_pupil = {1} and id_discipline = {2} and Date_letter = '{3}';",
                     mark, listID[index], idDiscipline, Program.date.ToString("yyyy-MM-dd"));
