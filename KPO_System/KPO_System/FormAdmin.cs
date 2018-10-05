@@ -14,7 +14,7 @@ namespace KPO_System
     {
         DataTable dt = new DataTable();
         AdminController ac;
-        bool isNotChange = false;
+        //bool isNotChange = false;
 
         int indexRow = 0;
         public FormAdmin(ManagerBD mbd)
@@ -82,7 +82,8 @@ namespace KPO_System
                 updateCBClass();
 
             }
-            isNotChange = false;
+            //isNotChange = false;
+            getLists();
         }
 
 
@@ -109,7 +110,7 @@ namespace KPO_System
 
         private void CBClass_SelectedIndexChanged(object sender, EventArgs e)
         {
-            isNotChange = false;
+            //isNotChange = false;
 
             CBLetter.Items.Clear();
 
@@ -129,14 +130,19 @@ namespace KPO_System
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            getLists();
         }
 
         private void ButGet_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void getLists()
+        {
             indexRow = 0;
             getList();
-            isNotChange = true;
-
+            //isNotChange = true;
         }
 
         private void getList()
@@ -198,11 +204,11 @@ namespace KPO_System
                 return;
             }
 
-            if (!isNotChange)
-            {
-                MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (!isNotChange)
+            //{
+            //    MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
             if (comboBoxVariants.Text == "Учителя")
             {
@@ -353,11 +359,11 @@ namespace KPO_System
                 return;
             }
 
-            if (!isNotChange)
-            {
-                MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (!isNotChange)
+            //{
+            //    MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             
             DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить запись? \r\nБудут удалены все связные записи, \r\nв том числе оценки!"
                 , "Удалить", MessageBoxButtons.OKCancel);
@@ -386,11 +392,11 @@ namespace KPO_System
                 return;
             }
 
-            if (!isNotChange)
-            {
-                MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (!isNotChange)
+            //{
+            //    MessageBox.Show("Получите актуальные данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
             indexRow = dataGridView.CurrentRow.Index;
 
@@ -618,7 +624,8 @@ dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView.Curre
 
         private void CBLetter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            isNotChange = false;
+            //isNotChange = false;
+            getLists();
         }
 
         private void задатьПарольToolStripMenuItem_Click(object sender, EventArgs e)
