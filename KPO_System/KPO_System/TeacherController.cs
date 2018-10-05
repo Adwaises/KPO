@@ -29,7 +29,20 @@ namespace KPO_System
         {
             mdb = mbd;
             getDiscipline(Program.login);
+
+            selectClass();
         }
+
+        DataTable classes;
+
+        //запрос классов
+        private void selectClass()
+        {
+            string sql = " select number,letter from class;";
+
+            classes = mdb.selectionQuery(sql);
+        }
+
 
         //лист на форму учителя за день
         public DataTable getList(string nClass, string letter)
@@ -79,13 +92,28 @@ namespace KPO_System
         {
             //запрос номеров классов
             List<string> list = new List<string>();
-            string sql = " select number from class group by number order by number;";
+            //string sql = " select number from class group by number order by number;";
 
-            dt = mdb.selectionQuery(sql);
+            //dt = mdb.selectionQuery(sql);
 
-            for (int i = 0; i < dt.Rows.Count; i++)
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    list.Add(dt.Rows[i][0].ToString());
+            //}
+
+
+            var results = from myRow in classes.AsEnumerable()
+                          group myRow by myRow.Field<int>("number") into g
+                          select new
+                          {
+                              ChargeTag = g.Key
+                          };
+
+            foreach (var anonymous in results)
             {
-                list.Add(dt.Rows[i][0].ToString());
+                string value = anonymous.ChargeTag.ToString();
+
+                list.Add(value);
             }
 
             return list;
@@ -136,14 +164,31 @@ namespace KPO_System
         public List<string> getListLetters(string nClass)
         {
             List<string> list = new List<string>();
-            string sql = String.Format(" select letter from class where number = {0} group by letter order by letter;",
-               Convert.ToInt32(nClass));
+            //string sql = String.Format(" select letter from class where number = {0} group by letter order by letter;",
+            //   Convert.ToInt32(nClass));
 
-            dt = mdb.selectionQuery(sql);
-            for (int i = 0; i < dt.Rows.Count; i++)
+            //dt = mdb.selectionQuery(sql);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    list.Add(dt.Rows[i][0].ToString());
+            //}
+
+            var results = from myRow in classes.AsEnumerable()
+                          where myRow.Field<int>("number") == Convert.ToInt32(nClass)
+                          group myRow by myRow.Field<string>("letter")
+                          into g
+                          select new
+                          {
+                              ChargeTag = g.Key
+                          };
+
+            foreach (var anonymous in results)
             {
-                list.Add(dt.Rows[i][0].ToString());
+                string value = anonymous.ChargeTag.ToString();
+
+                list.Add(value);
             }
+
             return list;
         }
 

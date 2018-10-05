@@ -206,128 +206,143 @@ namespace KPO_System
 
             if (comboBoxVariants.Text == "Учителя")
             {
-                FormAdd fa = new FormAdd(comboBoxVariants.Text);
-                fa.Text = "Добавить";
-                fa.buttonOK.Click += (senderSlave, eSlave) =>
-                {
-
-                    //валидация
-                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text))
-                    {
-                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    //insert
-                    try
-                    {
-                        ac.insertTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text);
-                        MessageBox.Show("Добавлено\r\nНе забудьте довабить дисциплину", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                };
-                fa.ShowDialog();
+                insTeachers();
             }
             else if (comboBoxVariants.Text == "Предметы")
             {
-
-                FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers());
-                fa.Text = "Добавить";
-                fa.buttonOK.Click += (senderSlave, eSlave) =>
-                {
-                    //валидация
-
-                    if (!validate(fa.textBox1.Text))
-                    {
-                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    try
-                    {
-                        ac.insertDiscipline(fa.textBox1.Text, fa.comboBox1.SelectedIndex);
-                        MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("У одного учителя может быть только одна дисциплина\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                };
-                fa.ShowDialog();
-
-
+                insDisc();
             }
             else if (comboBoxVariants.Text == "Классы")
             {
 
-                FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers());
-                fa.Text = "Добавить";
-                fa.buttonOK.Click += (senderSlave, eSlave) =>
-                {
-                    //валидация
-                    if (!validate(fa.textBox1.Text, fa.textBox2.Text))
-                    {
-                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    try
-                    {
-                        ac.insertClass(fa.textBox1.Text, fa.textBox2.Text, fa.comboBox1.SelectedIndex);
-                        MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-
-                };
-                fa.ShowDialog();
+                insClass();
 
             }
             else if (comboBoxVariants.Text == "Класс")
             {
-                
-                FormAdd fa = new FormAdd(comboBoxVariants.Text);
-                fa.Text = "Добавить";
-                fa.buttonOK.Click += (senderSlave, eSlave) =>
-                {
-                    //валидация
 
-                    if(!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
-                    {
-                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    try
-                    {
-                        ac.insertPupil(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, CBClass.Text,CBLetter.Text);
-                        MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-
-                };
-                fa.ShowDialog();
+                insPupil();
 
             }
             getList();
+        }
+
+        private void insTeachers()
+        {
+            FormAdd fa = new FormAdd(comboBoxVariants.Text);
+            fa.Text = "Добавить";
+            fa.buttonOK.Click += (senderSlave, eSlave) =>
+            {
+
+                //валидация
+                if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text))
+                {
+                    MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //insert
+                try
+                {
+                    ac.insertTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text);
+                    MessageBox.Show("Добавлено\r\nНе забудьте довабить дисциплину", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            };
+            fa.ShowDialog();
+        }
+
+        private void insDisc()
+        {
+            FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers());
+            fa.Text = "Добавить";
+            fa.buttonOK.Click += (senderSlave, eSlave) =>
+            {
+                //валидация
+
+                if (!validate(fa.textBox1.Text))
+                {
+                    MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                try
+                {
+                    ac.insertDiscipline(fa.textBox1.Text, fa.comboBox1.SelectedIndex);
+                    MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("У одного учителя может быть только одна дисциплина\r\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            };
+            fa.ShowDialog();
+        }
+
+        private void insClass()
+        {
+            FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers());
+            fa.Text = "Добавить";
+            fa.buttonOK.Click += (senderSlave, eSlave) =>
+            {
+                //валидация
+                if (!validate(fa.textBox1.Text, fa.textBox2.Text))
+                {
+                    MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                try
+                {
+                    ac.insertClass(fa.textBox1.Text, fa.textBox2.Text, fa.comboBox1.SelectedIndex);
+                    MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
 
+            };
+            fa.ShowDialog();
+        }
+
+        private void insPupil()
+        {
+            FormAdd fa = new FormAdd(comboBoxVariants.Text);
+            fa.Text = "Добавить";
+            fa.buttonOK.Click += (senderSlave, eSlave) =>
+            {
+                //валидация
+
+                if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
+                {
+                    MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                try
+                {
+                    ac.insertPupil(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, CBClass.Text, CBLetter.Text);
+                    MessageBox.Show("Добавлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+            };
+            fa.ShowDialog();
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
@@ -381,126 +396,147 @@ namespace KPO_System
 
             if (comboBoxVariants.Text == "Учителя")
             {
-                FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView.CurrentRow.Index][0].ToString(),
-                    dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView.CurrentRow.Index][2].ToString(), dt.Rows[dataGridView.CurrentRow.Index][3].ToString());
-                fa.Text = "Изменить";
-                fa.buttonOK.Click += (senderSlave, eSlave) =>
-                {
-
-                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text))
-                    {
-                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    try { 
-                    ac.updateTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text, dataGridView.CurrentRow.Index);
-                    MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                };
-                fa.ShowDialog();
+                updTeacher();
             }
             else if (comboBoxVariants.Text == "Предметы")
             {
 
-                int idDisc = ac.getIdDisc(dataGridView.CurrentRow.Index);
-
-                FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers(),
-                    dt.Rows[dataGridView.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView.CurrentRow.Index][1].ToString()) ;
-                fa.Text = "Изменить";
-
-                fa.buttonOK.Click += (senderSlave, eSlave) =>
-                {
-                    //валидация
-
-                    if (!validate(fa.textBox1.Text))
-                    {
-                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    try
-                    {
-                        ac.updateDiscipline(fa.textBox1.Text, fa.comboBox1.SelectedIndex,idDisc);
-                        MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                };
-                fa.ShowDialog();
+                updDisc();
 
             }
             else if (comboBoxVariants.Text == "Классы")
             {
 
-                int idClass = ac.getIdClass(dataGridView.CurrentRow.Index);
-
-                FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers(),
-                    dt.Rows[dataGridView.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), 
-                    dt.Rows[dataGridView.CurrentRow.Index][2].ToString());
-                fa.Text = "Изменить";
-
-                fa.buttonOK.Click += (senderSlave, eSlave) =>
-                {
-                    //валидация
-                    if (!validate(fa.textBox1.Text, fa.textBox2.Text))
-                    {
-                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-
-                    try
-                    {
-                        ac.updateClass(fa.textBox1.Text, fa.textBox2.Text, fa.comboBox1.SelectedIndex, idClass);
-                        MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                };
-                fa.ShowDialog();
-
+                updClass();
 
             }
             else if (comboBoxVariants.Text == "Класс")
             {
-                FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView.CurrentRow.Index][0].ToString(),
-    dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView.CurrentRow.Index][2].ToString());
-                fa.Text = "Изменить";
-                fa.buttonOK.Click += (senderSlave, eSlave) =>
-                {
-                    if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
-                    {
-                        MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    try { 
-                    ac.updatePupil(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, dataGridView.CurrentRow.Index);
-                }
-                    catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                };
-                fa.ShowDialog();
+                updPupil();
 
             }
             getList();
 
 
+        }
+
+        private void updTeacher()
+        {
+            FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView.CurrentRow.Index][0].ToString(),
+    dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView.CurrentRow.Index][2].ToString(), dt.Rows[dataGridView.CurrentRow.Index][3].ToString());
+            fa.Text = "Изменить";
+            fa.buttonOK.Click += (senderSlave, eSlave) =>
+            {
+
+                if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text))
+                {
+                    MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                try
+                {
+                    ac.updateTeacher(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, fa.textBox4.Text, dataGridView.CurrentRow.Index);
+                    MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
+            fa.ShowDialog();
+        }
+
+        private void updClass()
+        {
+            int idClass = ac.getIdClass(dataGridView.CurrentRow.Index);
+
+            FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers(),
+                dt.Rows[dataGridView.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView.CurrentRow.Index][1].ToString(),
+                dt.Rows[dataGridView.CurrentRow.Index][2].ToString());
+            fa.Text = "Изменить";
+
+            fa.buttonOK.Click += (senderSlave, eSlave) =>
+            {
+                //валидация
+                if (!validate(fa.textBox1.Text, fa.textBox2.Text))
+                {
+                    MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
+                try
+                {
+                    ac.updateClass(fa.textBox1.Text, fa.textBox2.Text, fa.comboBox1.SelectedIndex, idClass);
+                    MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            };
+            fa.ShowDialog();
+
+        }
+        private void updPupil()
+        {
+            FormAdd fa = new FormAdd(comboBoxVariants.Text, dt.Rows[dataGridView.CurrentRow.Index][0].ToString(),
+dt.Rows[dataGridView.CurrentRow.Index][1].ToString(), dt.Rows[dataGridView.CurrentRow.Index][2].ToString());
+            fa.Text = "Изменить";
+            fa.buttonOK.Click += (senderSlave, eSlave) =>
+            {
+                if (!validate(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text))
+                {
+                    MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    ac.updatePupil(fa.textBox1.Text, fa.textBox2.Text, fa.textBox3.Text, dataGridView.CurrentRow.Index);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };
+            fa.ShowDialog();
+        }
+
+        private void updDisc()
+        {
+            int idDisc = ac.getIdDisc(dataGridView.CurrentRow.Index);
+
+            FormAdd fa = new FormAdd(comboBoxVariants.Text, ac.getListTeachers(),
+                dt.Rows[dataGridView.CurrentRow.Index][0].ToString(), dt.Rows[dataGridView.CurrentRow.Index][1].ToString());
+            fa.Text = "Изменить";
+
+            fa.buttonOK.Click += (senderSlave, eSlave) =>
+            {
+                //валидация
+
+                if (!validate(fa.textBox1.Text))
+                {
+                    MessageBox.Show("Данные введены не верно", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                try
+                {
+                    ac.updateDiscipline(fa.textBox1.Text, fa.comboBox1.SelectedIndex, idDisc);
+                    MessageBox.Show("Обновлено", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            };
+            fa.ShowDialog();
         }
 
         private bool validate(string s1, string s2, string s3, string s4)
